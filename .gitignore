@@ -1,0 +1,59 @@
+# Python packages
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# AI Models (too large)
+models/
+*.bin
+*.pt
+*.pth
+*.onnx
+*.h5
+
+# Logs
+logs/
+*.log
+
+# Data
+data/
+*.db
+*.sqlite
+*.sqlite3
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Java
+*.class
+*.jar
+!lib/*.jar
+bin/
+build/
+.gradle/
+target/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Mobile
+node_modules/
+*.apk
+*.ipa
+*.aab
+
+# Temp
+*.tmp
+*.temp
+.cache/
