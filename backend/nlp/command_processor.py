@@ -120,8 +120,9 @@ class CommandProcessor:
                 r"remind me (to|about)",
             ],
             "calculation": [
-                r"(calculate|compute|what'?s?) (.+)",
+                r"(calculate|compute) (.+)",
                 r"\d+\s*[+\-*/]\s*\d+",
+                r"what('?s| is) \d+",
             ],
             "memory_query": [
                 r"what (do you know|have you learned) about me",
