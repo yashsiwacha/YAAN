@@ -1,0 +1,96 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--secondary-bg);
+  border-bottom: 1px solid var(--border);
+  gap: 1rem;
+  height: 70px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 0 0 auto;
+}
+
+.menu-btn {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+
+  @media (max-width: 768px) {
+    font-size: 1.25rem;
+  }
+}
+
+.app-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--accent);
+  margin: 0;
+}
+
+.header-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  background-color: var(--tertiary-bg);
+  font-size: 0.875rem;
+
+  &.connected {
+    color: var(--success);
+  }
+
+  &.disconnected {
+    color: var(--warning);
+  }
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: currentColor;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.header-right {
+  display: flex;
+  gap: 0.5rem;
+  flex: 0 0 auto;
+}
+
+.voice-btn,
+.settings-btn {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  transition: var(--transition);
+
+  &:hover {
+    color: var(--accent);
+    transform: scale(1.1);
+  }
+
+  &.active {
+    color: var(--accent);
+  }
+}

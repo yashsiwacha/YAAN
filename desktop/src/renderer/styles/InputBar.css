@@ -1,0 +1,79 @@
+.input-bar {
+  padding: 1rem;
+  background-color: var(--secondary-bg);
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.connection-warning {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: var(--warning);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.input-container {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-end;
+}
+
+.voice-record-btn {
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  background-color: var(--tertiary-bg);
+  transition: var(--transition);
+
+  &:hover:not(:disabled) {
+    background-color: var(--accent);
+  }
+
+  &.recording {
+    animation: recordPulse 1s infinite;
+  }
+}
+
+@keyframes recordPulse {
+  0%, 100% {
+    background-color: var(--error);
+  }
+  50% {
+    background-color: rgba(239, 68, 68, 0.6);
+  }
+}
+
+.input-field {
+  flex: 1;
+  max-height: 120px;
+  resize: vertical;
+  font-size: 1rem;
+  line-height: 1.5;
+
+  &:focus {
+    background-color: var(--tertiary-bg);
+  }
+}
+
+.send-btn {
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  background-color: var(--accent);
+  transition: var(--transition);
+
+  &:hover:not(:disabled) {
+    background-color: var(--accent-hover);
+  }
+
+  &:disabled {
+    background-color: var(--tertiary-bg);
+    opacity: 0.5;
+  }
+}

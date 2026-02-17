@@ -12,10 +12,17 @@ const BACKEND_URL = `http://localhost:${BACKEND_PORT}`;
 // Check if backend is already running
 async function isBackendRunning() {
   try {
-    await axios.get(`${BACKEND_URL}/api/health`, { timeout: 2000 });
+    // Try root path instead of /api/health (not all backends have health endpoint)
+    await axios.get(BACKEND_URL, { timeout: 2000 });
     return true;
-  } catch {
-    return false;
+  } catch (err) {
+    // Also try /api/health for backends that have it
+    try {
+      await axios.get(`${BACKEND_URL}/api/health`, { timeout: 2000 });
+      return true;
+    } catch {
+      return false;
+    }
   }
 }
 
@@ -34,11 +41,17 @@ async function startBackend() {
   const backendPath = path.join(__dirname, '..', 'backend');
   const pythonScript = path.join(backendPath, 'main.py');
   
+  // Check for venv Python first, fallback to system Python
+  const venvPython = path.join(__dirname, '..', '.venv', 'Scripts', 'python.exe');
+  const fs = require('fs');
+  const pythonExecutable = fs.existsSync(venvPython) ? venvPython : 'python';
+  
   console.log(`Backend path: ${backendPath}`);
   console.log(`Python script: ${pythonScript}`);
+  console.log(`Python executable: ${pythonExecutable}`);
   
   // Use python with properly quoted path (no shell to avoid argument issues)
-  pythonProcess = spawn('python', [pythonScript], {
+  pythonProcess = spawn(pythonExecutable, [pythonScript], {
     cwd: backendPath,
     shell: false
   });
@@ -82,7 +95,7 @@ function createWindow() {
     },
     titleBarStyle: 'default',
     autoHideMenuBar: true,
-    backgroundColor: '#1a1a1a',
+    backgroundColor: '#0a0e27',
     show: false // Don't show until ready
   });
 
@@ -91,17 +104,28 @@ function createWindow() {
     mainWindow.show();
   });
 
-  // Load the web UI from backend
-  mainWindow.loadURL(`${BACKEND_URL}/`).catch(err => {
-    console.error('Failed to load backend URL:', err);
-    // Load a simple error page
-    mainWindow.loadURL(`data:text/html,<html><body style="background:#1a1a1a;color:#fff;font-family:system-ui;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;"><div style="text-align:center;"><h1>⚠️ Backend Connection Failed</h1><p>Could not connect to YAAN backend on port ${BACKEND_PORT}</p><p>Please check if Python backend is running.</p><button onclick="location.reload()" style="padding:10px 20px;margin-top:20px;font-size:16px;cursor:pointer;">Retry</button></div></body></html>`);
+  // Load the React UI
+  const isDev = process.argv.includes('--dev');
+  let startUrl;
+  
+  if (isDev && process.env.ELECTRON_START_URL) {
+    // Development: Load from webpack dev server
+    startUrl = process.env.ELECTRON_START_URL;
+  } else {
+    // Production: Load from dist folder (relative to main.js location)
+    const distPath = path.resolve(__dirname, 'dist', 'index.html');
+    startUrl = `file://${distPath}`;
+  }
+  
+  console.log(`Loading UI from: ${startUrl}`);
+  
+  mainWindow.loadURL(startUrl).catch(err => {
+    console.error('Failed to load UI:', err);
+    mainWindow.loadURL(`data:text/html,<html><body style="background:#1a1a1a;color:#fff;font-family:system-ui;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;"><div style="text-align:center;"><h1>⚠️  UI Load Failed</h1><p>${err.message}</p><p style="font-size:12px;margin-top:10px;color:#999;">Expected: ${startUrl}</p><button onclick="location.reload()" style="padding:10px 20px;margin-top:20px;font-size:16px;cursor:pointer;">Retry</button></div></body></html>`);
   });
 
-  // Open DevTools in development
-  if (process.argv.includes('--dev')) {
-    mainWindow.webContents.openDevTools();
-  }
+  // Always open DevTools for debugging
+  mainWindow.webContents.openDevTools({ mode: 'bottom' });
 
   mainWindow.on('close', (event) => {
     if (!app.isQuitting) {
