@@ -1,0 +1,57 @@
+name: Desktop Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: desktop/package-lock.json
+
+      - name: Install dependencies
+        working-directory: desktop
+        run: npm ci
+
+      - name: Build Windows artifacts
+        working-directory: desktop
+        run: npm run build:win
+
+      - name: Upload workflow artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: yaan-desktop-windows
+          path: |
+            desktop/dist/*.exe
+            desktop/dist/*.yml
+            desktop/dist/*.yaml
+            desktop/dist/*.blockmap
+          if-no-files-found: error
+
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            desktop/dist/*.exe
+            desktop/dist/*.yml
+            desktop/dist/*.yaml
+            desktop/dist/*.blockmap
+          generate_release_notes: true
+          draft: false
+          prerelease: false

@@ -89,6 +89,22 @@ docker-compose up -d
 
 For detailed instructions on all deployment methods, troubleshooting, and production configuration, see the [DEPLOYMENT.md](DEPLOYMENT.md) guide.
 
+### 🖥️ Desktop Release Distribution
+
+Desktop binaries are distributed through **GitHub Releases** (not committed to git history).
+
+#### Create a desktop release
+
+```bash
+git tag v2.1.0
+git push origin v2.1.0
+```
+
+This triggers the workflow at [.github/workflows/desktop-release.yml](.github/workflows/desktop-release.yml), which:
+- builds Windows desktop artifacts from `desktop/`
+- uploads build artifacts to the workflow run
+- publishes `.exe` release assets on the GitHub Release page for the tag
+
 ## 🎯 Features
 
 ### 💻 Advanced Coding Assistant
