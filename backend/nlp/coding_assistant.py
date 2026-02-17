@@ -551,67 +551,276 @@ class CodingAssistant:
         return analysis
     
     def generate_explanation(self, concept: str) -> Optional[str]:
-        """Explain programming concepts"""
+        """Explain programming concepts with structured format"""
         concept_lower = concept.lower()
         
         concepts = {
-            "variable": "A **variable** is a named container that stores a value. Think of it as a labeled box where you can put data. Example: `x = 5` creates a variable 'x' and stores the value 5 in it.",
+            "dynamic programming": {
+                "name": "Dynamic Programming (DP)",
+                "definition": "An optimization technique that solves complex problems by breaking them into simpler overlapping subproblems and storing their results to avoid redundant calculations.",
+                "use_case": "Optimization problems where the same subproblems are computed multiple times. Ideal for problems with overlapping subproblems and optimal substructure.",
+                "syntax": """
+```python
+# Memoization (Top-Down)
+def fibonacci(n, memo={}):
+    if n in memo:
+        return memo[n]
+    if n <= 1:
+        return n
+    memo[n] = fibonacci(n-1, memo) + fibonacci(n-2, memo)
+    return memo[n]
+
+# Tabulation (Bottom-Up)
+def fibonacci_tab(n):
+    if n <= 1:
+        return n
+    dp = [0] * (n + 1)
+    dp[1] = 1
+    for i in range(2, n + 1):
+        dp[i] = dp[i-1] + dp[i-2]
+    return dp[n]
+```""",
+                "uses": """• Fibonacci sequence calculation
+• Knapsack problem (0/1, fractional, unbounded)
+• Longest common subsequence (LCS)
+• Shortest path algorithms (Floyd-Warshall)
+• Matrix chain multiplication
+• Coin change problem
+• Edit distance calculation""",
+                "key_takeaways": """✓ Two approaches: Memoization (top-down) and Tabulation (bottom-up)
+✓ Reduces time complexity from exponential to polynomial
+✓ Trade-off: Uses extra memory to store subproblem results
+✓ Optimal substructure: Solution contains optimal sub-solutions
+✓ Overlapping subproblems: Same calculations repeated multiple times"""
+            },
             
-            "function": "A **function** is a reusable block of code that performs a specific task. It can take inputs (parameters) and return outputs. Functions help organize code and avoid repetition.",
+            "oop": {
+                "name": "Object-Oriented Programming (OOP)",
+                "definition": "A programming paradigm that organizes code around objects containing both data (attributes) and behavior (methods), rather than functions and logic.",
+                "use_case": "Building complex applications with reusable, maintainable code. Ideal for modeling real-world entities and their interactions.",
+                "syntax": """
+```python
+class Animal:
+    def __init__(self, name, species):
+        self.name = name
+        self.species = species
+    
+    def make_sound(self):
+        pass  # Abstract method
+
+class Dog(Animal):  # Inheritance
+    def __init__(self, name):
+        super().__init__(name, "Canine")
+    
+    def make_sound(self):  # Polymorphism
+        return "Woof!"
+
+# Usage
+dog = Dog("Buddy")
+print(dog.make_sound())  # Output: Woof!
+```""",
+                "uses": """• Software design and architecture
+• GUI applications and game development
+• Enterprise applications (Java, C#)
+• Web frameworks (Django, ASP.NET)
+• Mobile app development
+• Database modeling (ORM)""",
+                "key_takeaways": """✓ Four pillars: Encapsulation, Inheritance, Polymorphism, Abstraction
+✓ Encapsulation: Bundle data and methods, hide internal details
+✓ Inheritance: Create new classes from existing ones
+✓ Polymorphism: Same interface, different implementations
+✓ Abstraction: Hide complexity, show only essentials"""
+            },
             
-            "loop": "A **loop** repeats a block of code multiple times. Common types:\n• **for loop**: Iterate a specific number of times\n• **while loop**: Repeat while a condition is true",
+            "recursion": {
+                "name": "Recursion",
+                "definition": "A technique where a function calls itself to solve a problem by breaking it into smaller, similar subproblems until reaching a base case.",
+                "use_case": "Problems that can be naturally divided into smaller similar problems: tree traversal, factorial, Fibonacci, divide-and-conquer algorithms.",
+                "syntax": """
+```python
+def factorial(n):
+    # Base case
+    if n == 0 or n == 1:
+        return 1
+    # Recursive case
+    return n * factorial(n - 1)
+
+# Example: factorial(5) = 5 * 4 * 3 * 2 * 1 = 120
+
+# Tree traversal
+def traverse_tree(node):
+    if node is None:
+        return
+    print(node.value)
+    traverse_tree(node.left)   # Recursive call
+    traverse_tree(node.right)  # Recursive call
+```""",
+                "uses": """• Tree and graph traversal (DFS)
+• Factorial and Fibonacci calculations
+• Divide-and-conquer algorithms (merge sort, quicksort)
+• Backtracking problems (N-Queens, Sudoku)
+• Mathematical computations (GCD, power function)
+• File system navigation""",
+                "key_takeaways": """✓ Must have a base case to prevent infinite recursion
+✓ Each recursive call works on a smaller problem
+✓ Call stack stores each function call (watch for stack overflow)
+✓ Can be more elegant than iterative solutions
+✓ Trade-off: Uses more memory due to call stack"""
+            },
             
-            "array": "An **array** (or list) is an ordered collection of items. Each item has an index (position). Example: `[1, 2, 3, 4]` - you can access items by their position.",
+            "stack": {
+                "name": "Stack Data Structure",
+                "definition": "A Last-In-First-Out (LIFO) linear data structure where elements are added and removed from the same end (top).",
+                "use_case": "Function call management, undo operations, expression evaluation, backtracking algorithms, browser history.",
+                "syntax": """
+```python
+# Using list as stack
+stack = []
+stack.append(1)      # Push - O(1)
+stack.append(2)
+stack.append(3)
+top = stack.pop()    # Pop - O(1)
+peek = stack[-1]     # Peek - O(1)
+
+# Using collections.deque (more efficient)
+from collections import deque
+stack = deque()
+stack.append(1)
+top = stack.pop()
+
+# Class implementation
+class Stack:
+    def __init__(self):
+        self.items = []
+    
+    def push(self, item):
+        self.items.append(item)
+    
+    def pop(self):
+        return self.items.pop() if not self.is_empty() else None
+    
+    def peek(self):
+        return self.items[-1] if not self.is_empty() else None
+    
+    def is_empty(self):
+        return len(self.items) == 0
+```""",
+                "uses": """• Function call stack (recursion)
+• Undo/Redo functionality in applications
+• Expression evaluation and syntax parsing
+• Backtracking algorithms (maze solving)
+• Browser back/forward navigation
+• Depth-First Search (DFS) in graphs""",
+                "key_takeaways": """✓ LIFO: Last element added is first removed
+✓ O(1) time for push, pop, and peek operations
+✓ Think: Stack of plates - add/remove from top only
+✓ Limited access: Can only access top element
+✓ Perfect for reversing and tracking history"""
+            },
             
-            "list": "A **list** (or array) is an ordered, mutable collection of items. You can add, remove, or modify elements. Example: `[1, 2, 3]` - very flexible data structure!",
+            "queue": {
+                "name": "Queue Data Structure",
+                "definition": "A First-In-First-Out (FIFO) linear data structure where elements are added at the rear and removed from the front.",
+                "use_case": "Task scheduling, resource management, breadth-first search, handling asynchronous requests, printer job management.",
+                "syntax": """
+```python
+# Using collections.deque (efficient)
+from collections import deque
+queue = deque()
+queue.append(1)      # Enqueue - O(1)
+queue.append(2)
+front = queue.popleft()  # Dequeue - O(1)
+
+# Class implementation
+class Queue:
+    def __init__(self):
+        self.items = deque()
+    
+    def enqueue(self, item):
+        self.items.append(item)
+    
+    def dequeue(self):
+        return self.items.popleft() if not self.is_empty() else None
+    
+    def front(self):
+        return self.items[0] if not self.is_empty() else None
+    
+    def is_empty(self):
+        return len(self.items) == 0
+```""",
+                "uses": """• Breadth-First Search (BFS) in graphs/trees
+• CPU and disk scheduling in operating systems
+• Print job spooling
+• Handling asynchronous data transfer
+• Call center phone systems
+• Message queues in distributed systems""",
+                "key_takeaways": """✓ FIFO: First element added is first removed
+✓ O(1) time for enqueue and dequeue with deque
+✓ Think: Line at a store - first person served first
+✓ Two ends: Front (remove) and Rear (add)
+✓ Fair ordering: Maintains arrival sequence"""
+            },
             
-            "object": "An **object** stores data as key-value pairs. It's like a dictionary where each piece of data has a name (key). Example: `{name: 'John', age: 30}`",
-            
-            "recursion": "**Recursion** is when a function calls itself. Useful for problems that can be broken into smaller similar problems. Must have a base case to stop!",
-            
-            "algorithm": "An **algorithm** is a step-by-step procedure to solve a problem. Like a recipe - you follow specific steps to get the desired result.",
-            
-            "api": "An **API** (Application Programming Interface) is a way for programs to communicate with each other. It defines what requests you can make and what responses you'll get.",
-            
-            "class": "A **class** is a blueprint for creating objects. It defines properties (attributes) and behaviors (methods) that objects of that type will have.",
-            
-            "async": "**Asynchronous** programming allows code to run without blocking. Operations happen in the background while other code continues executing. Essential for handling I/O operations efficiently.",
-            
-            "dynamic programming": "**Dynamic Programming (DP)** is an optimization technique that solves complex problems by breaking them into simpler subproblems. Key principles:\n\n• **Memoization**: Store results of expensive function calls\n• **Optimal substructure**: Optimal solution contains optimal solutions to subproblems\n• **Overlapping subproblems**: Same subproblems are solved multiple times\n\nCommon examples: Fibonacci sequence, knapsack problem, shortest path algorithms.",
-            
-            "oop": "**Object-Oriented Programming (OOP)** organizes code around objects rather than functions. Core principles:\n• **Encapsulation**: Bundle data and methods\n• **Inheritance**: Create new classes from existing ones\n• **Polymorphism**: Objects of different types respond to the same method\n• **Abstraction**: Hide complex implementation details",
-            
-            "inheritance": "**Inheritance** lets a class (child) inherit properties and methods from another class (parent). It promotes code reuse - child classes get all parent functionality and can add their own.",
-            
-            "polymorphism": "**Polymorphism** means 'many forms' - different classes can be treated the same way through a common interface. Example: Different shapes (circle, square) all have a `draw()` method.",
-            
-            "encapsulation": "**Encapsulation** bundles data and the methods that operate on that data into a single unit (class). It hides internal details and protects data from unauthorized access.",
-            
-            "abstraction": "**Abstraction** hides complex implementation details and shows only essential features. Like driving a car - you use the steering wheel without knowing how the engine works!",
-            
-            "data structure": "A **data structure** organizes and stores data efficiently. Different structures serve different purposes:\n• Arrays: Sequential access\n• Linked Lists: Dynamic size\n• Trees: Hierarchical data\n• Hash Tables: Fast lookups",
-            
-            "stack": "A **stack** is a Last-In-First-Out (LIFO) data structure. Like a stack of plates - you add/remove from the top. Operations: push (add), pop (remove), peek (view top).",
-            
-            "queue": "A **queue** is a First-In-First-Out (FIFO) data structure. Like a line at a store - first person in is first served. Operations: enqueue (add), dequeue (remove).",
-            
-            "linked list": "A **linked list** is a sequence of nodes where each node contains data and a reference to the next node. Unlike arrays, elements aren't stored contiguously in memory.",
-            
-            "tree": "A **tree** is a hierarchical data structure with a root node and child nodes. Each node can have multiple children. Common types: Binary Tree, BST, AVL Tree, Red-Black Tree.",
-            
-            "graph": "A **graph** consists of vertices (nodes) connected by edges. Used to represent networks, relationships, maps. Types: Directed/Undirected, Weighted/Unweighted.",
-            
-            "hash table": "A **hash table** (or hash map) stores key-value pairs using a hash function. Provides O(1) average time for lookups, inserts, and deletes. Very efficient!",
-            
-            "big o": "**Big O notation** describes algorithm efficiency - how runtime/memory grows with input size:\n• O(1): Constant\n• O(log n): Logarithmic\n• O(n): Linear\n• O(n²): Quadratic\n• O(2ⁿ): Exponential",
-            
-            "time complexity": "**Time complexity** measures how an algorithm's runtime grows with input size. Expressed in Big O notation. Lower is better: O(1) < O(log n) < O(n) < O(n²) < O(2ⁿ).",
-            
-            "space complexity": "**Space complexity** measures how much memory an algorithm uses relative to input size. Important for large datasets. Trade-off: Sometimes using more space makes algorithms faster.",
+            "array": {
+                "name": "Array/List",
+                "definition": "A contiguous collection of elements stored at adjacent memory locations, accessible by index positions starting from 0.",
+                "use_case": "Storing ordered collections of data, implementing other data structures, mathematical operations on sequences.",
+                "syntax": """
+```python
+# Python list (dynamic array)
+arr = [1, 2, 3, 4, 5]
+arr.append(6)           # Add to end - O(1)
+arr.insert(0, 0)        # Insert at index - O(n)
+item = arr[2]           # Access by index - O(1)
+arr.remove(3)           # Remove value - O(n)
+arr.pop()               # Remove last - O(1)
+
+# Array operations
+length = len(arr)
+arr.sort()              # Sort in place
+arr.reverse()           # Reverse in place
+sliced = arr[1:4]       # Slicing
+
+# List comprehension
+squares = [x**2 for x in range(10)]
+```""",
+                "uses": """• Storing collections of similar data
+• Implementing matrices and multi-dimensional data
+• Lookup tables and caches
+• Foundation for stacks, queues, heaps
+• Image processing (pixel data)
+• Mathematical and statistical computations""",
+                "key_takeaways": """✓ Fast random access: O(1) to access any element by index
+✓ Contiguous memory: Elements stored together
+✓ Fixed or dynamic size (depends on language)
+✓ Insertion/deletion at beginning: O(n)
+✓ Iteration is efficient: Good cache locality"""
+            },
         }
         
-        for key, explanation in concepts.items():
+        for key, details in concepts.items():
             if key in concept_lower:
-                return explanation
+                return self._format_explanation(details)
         
         return None
+    
+    def _format_explanation(self, details: dict) -> str:
+        """Format concept explanation with structured sections"""
+        output = f"""## 📘 {details['name']}
+
+### 🔍 Definition
+{details['definition']}
+
+### 💡 Use Case
+{details['use_case']}
+
+### 📝 Syntax & Examples
+{details['syntax']}
+
+### 🎯 Uses
+{details['uses']}
+
+### ✨ Key Takeaways
+{details['key_takeaways']}
+"""
+        return output
