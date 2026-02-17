@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![Version](https://img.shields.io/badge/version-v1-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.10+-brightgreen.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Status](https://img.shields.io/badge/status-stable-success.svg)
@@ -518,7 +518,7 @@ All data is stored locally on your machine - **no cloud, no external APIs**.
 
 ---
 
-## 📊 Project Stats (v1.0)
+## 📊 Project Stats (v1)
 
 <div align="center">
 
@@ -537,7 +537,7 @@ All data is stored locally on your machine - **no cloud, no external APIs**.
 </div>
 
 ### 🏆 Production Ready
-- ✅ Stable v1.0 release on GitHub
+- ✅ Stable v1 release on GitHub
 - ✅ Comprehensive documentation
 - ✅ Extensive testing & debugging
 - ✅ Real-world usage validated
@@ -575,7 +575,7 @@ All data is stored locally on your machine - **no cloud, no external APIs**.
 |----------|-------------|
 | [README.md](README.md) | Main documentation (this file) |
 | [DEPLOYMENT.md](DEPLOYMENT.md) | Deployment guide for all platforms |
-| [PROJECT_STATUS.md](PROJECT_STATUS.md) | Development progress & v1.0 status |
+| [PROJECT_STATUS.md](PROJECT_STATUS.md) | Development progress & v1 status |
 | [V2_ROADMAP.md](V2_ROADMAP.md) | Future plans & v2.0 features |
 | [QUICKSTART.md](QUICKSTART.md) | Get started in 5 minutes |
 | [GETTING_STARTED.md](GETTING_STARTED.md) | Detailed setup guide |
@@ -695,8 +695,8 @@ YAAN is a personal learning project, but contributions are welcome!
 ## 🔗 Links & Resources
 
 - **GitHub Repository:** [github.com/yashsiwacha/YAAN](https://github.com/yashsiwacha/YAAN)
-- **Latest Release:** [v1.0.0](https://github.com/yashsiwacha/YAAN/releases/tag/v1.0.0)
-- **Stable Branch:** [v1.0](https://github.com/yashsiwacha/YAAN/tree/v1.0)
+- **Latest Release:** [v1](https://github.com/yashsiwacha/YAAN/releases/tag/v1)
+- **Stable Branch:** [v1](https://github.com/yashsiwacha/YAAN/tree/v1)
 - **Development Branch:** [main](https://github.com/yashsiwacha/YAAN/tree/main)
 - **Issues:** [Report bugs or request features](https://github.com/yashsiwacha/YAAN/issues)
 
@@ -725,7 +725,7 @@ Special thanks to the open-source community for excellent tools and documentatio
 
 <div align="center">
 
-**YAAN v1.0.0** | February 2026 | Made with ❤️ and ☕
+**YAAN v1** | February 2026 | Made with ❤️ and ☕
 
 [![GitHub](https://img.shields.io/badge/GitHub-yashsiwacha/YAAN-blue?logo=github)](https://github.com/yashsiwacha/YAAN)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
