@@ -34,10 +34,13 @@ async function startBackend() {
   const backendPath = path.join(__dirname, '..', 'backend');
   const pythonScript = path.join(backendPath, 'main.py');
   
-  // Try to use python3, fallback to python
+  console.log(`Backend path: ${backendPath}`);
+  console.log(`Python script: ${pythonScript}`);
+  
+  // Use python with properly quoted path (no shell to avoid argument issues)
   pythonProcess = spawn('python', [pythonScript], {
     cwd: backendPath,
-    shell: true
+    shell: false
   });
 
   pythonProcess.stdout.on('data', (data) => {
@@ -78,11 +81,22 @@ function createWindow() {
       preload: path.join(__dirname, 'preload.js')
     },
     titleBarStyle: 'default',
-    autoHideMenuBar: true
+    autoHideMenuBar: true,
+    backgroundColor: '#1a1a1a',
+    show: false // Don't show until ready
+  });
+
+  // Show window when ready
+  mainWindow.once('ready-to-show', () => {
+    mainWindow.show();
   });
 
   // Load the web UI from backend
-  mainWindow.loadURL(`${BACKEND_URL}/`);
+  mainWindow.loadURL(`${BACKEND_URL}/`).catch(err => {
+    console.error('Failed to load backend URL:', err);
+    // Load a simple error page
+    mainWindow.loadURL(`data:text/html,<html><body style="background:#1a1a1a;color:#fff;font-family:system-ui;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;"><div style="text-align:center;"><h1>⚠️ Backend Connection Failed</h1><p>Could not connect to YAAN backend on port ${BACKEND_PORT}</p><p>Please check if Python backend is running.</p><button onclick="location.reload()" style="padding:10px 20px;margin-top:20px;font-size:16px;cursor:pointer;">Retry</button></div></body></html>`);
+  });
 
   // Open DevTools in development
   if (process.argv.includes('--dev')) {
@@ -104,6 +118,13 @@ function createWindow() {
 // Create system tray
 function createTray() {
   const iconPath = path.join(__dirname, 'assets', 'tray-icon.png');
+  
+  // Check if icon exists, skip tray if not
+  if (!require('fs').existsSync(iconPath)) {
+    console.log('⚠️  Tray icon not found, skipping system tray');
+    return;
+  }
+  
   tray = new Tray(iconPath);
 
   const contextMenu = Menu.buildFromTemplate([
