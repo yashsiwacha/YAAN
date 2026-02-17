@@ -57,3 +57,11 @@ node_modules/
 *.tmp
 *.temp
 .cache/
+
+# Media (videos are too large for git, keep screenshots)
+media/video/
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.webm
