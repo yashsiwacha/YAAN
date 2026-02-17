@@ -1,0 +1,522 @@
+2026-02-17 10:09:02 | INFO     | __main__:main:45 - Starting YAAN Backend Server...
+2026-02-17 10:09:02 | INFO     | __main__:main:49 - Configuration loaded: 127.0.0.1:8000
+2026-02-17 10:09:02 | INFO     | core.server:_init_components:46 - Initializing AI components...
+2026-02-17 10:09:02 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-17 10:09:02 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-17 10:09:02 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-17 10:09:02 | INFO     | nlp.proactive_learning:_init_database:110 - Learning database initialized
+2026-02-17 10:09:02 | INFO     | nlp.proactive_learning:__init__:62 - Proactive learning system initialized
+2026-02-17 10:09:02 | INFO     | nlp.command_processor:__init__:49 - Command processor initialized with user memory, coding assistant, reminder system, and proactive learning
+2026-02-17 10:09:02 | INFO     | core.server:_init_components:58 - Components initialized successfully
+2026-02-17 10:09:02 | INFO     | core.server:start:165 - Starting server on 127.0.0.1:8000
+2026-02-17 10:09:45 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-17 10:09:45 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-17 10:09:45 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-17 10:09:45 | INFO     | nlp.proactive_learning:_init_database:110 - Learning database initialized
+2026-02-17 10:09:45 | INFO     | nlp.proactive_learning:__init__:62 - Proactive learning system initialized
+2026-02-17 10:09:45 | INFO     | nlp.command_processor:__init__:49 - Command processor initialized with user memory, coding assistant, reminder system, and proactive learning
+2026-02-17 10:09:45 | INFO     | nlp.command_processor:process:221 - Processing command: add todo: finish documentation
+2026-02-17 10:09:45 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-17 10:09:45 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 18), ('programming', 10), ('technology', 4)]
+2026-02-17 10:09:45 | INFO     | nlp.command_processor:process:245 - Intent matched: create_todo
+2026-02-17 10:09:45 | INFO     | nlp.reminder_system:create_todo:119 - Created todo: finish documentation (ID: 12)
+2026-02-17 10:09:45 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-17 10:09:45 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-17 10:09:45 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-17 10:09:45 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-17 10:09:45 | INFO     | nlp.command_processor:process:221 - Processing command: show my todos
+2026-02-17 10:09:45 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-17 10:09:45 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 19), ('programming', 10), ('technology', 4)]
+2026-02-17 10:09:45 | INFO     | nlp.command_processor:process:245 - Intent matched: show_todos
+2026-02-17 10:09:45 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-17 10:09:45 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-17 10:09:45 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-17 10:09:45 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-17 10:09:45 | INFO     | nlp.command_processor:process:221 - Processing command: show my reminders
+2026-02-17 10:09:45 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-17 10:09:45 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 20), ('programming', 10), ('technology', 4)]
+2026-02-17 10:09:45 | INFO     | nlp.command_processor:process:245 - Intent matched: show_reminders
+2026-02-17 10:09:45 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-17 10:09:45 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-17 10:09:45 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-17 10:09:45 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-17 10:09:45 | INFO     | nlp.command_processor:process:221 - Processing command: complete todo 1
+2026-02-17 10:09:45 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-17 10:09:45 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 20), ('programming', 10), ('technology', 4)]
+2026-02-17 10:09:45 | INFO     | nlp.command_processor:process:245 - Intent matched: complete_task
+2026-02-17 10:09:45 | INFO     | nlp.reminder_system:complete_todo:262 - Completed todo ID: 1
+2026-02-17 10:09:45 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-17 10:09:45 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-17 10:09:45 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-17 10:09:45 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-17 10:09:45 | INFO     | nlp.command_processor:process:221 - Processing command: delete reminder 2
+2026-02-17 10:09:45 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-17 10:09:45 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 20), ('programming', 10), ('technology', 4)]
+2026-02-17 10:09:45 | INFO     | nlp.command_processor:process:245 - Intent matched: delete_task
+2026-02-17 10:09:45 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-17 10:09:45 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-17 10:09:45 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-17 10:09:45 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-17 10:09:45 | INFO     | nlp.command_processor:process:221 - Processing command: task summary
+2026-02-17 10:09:45 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-17 10:09:45 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 20), ('programming', 10), ('technology', 4)]
+2026-02-17 10:09:45 | INFO     | nlp.command_processor:process:245 - Intent matched: task_summary
+2026-02-17 10:09:45 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-17 10:09:45 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-17 10:09:45 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-17 10:09:45 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-17 10:09:45 | INFO     | nlp.proactive_learning:get_next_question:226 - Generated question from category 'personal': What do you do for work?
+2026-02-17 10:09:45 | INFO     | nlp.command_processor:process:268 - Added proactive question: What do you do for work?
+2026-02-17 10:09:45 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 1
+2026-02-17 10:10:02 | INFO     | nlp.command_processor:process:221 - Processing command: explain dynamic programming
+2026-02-17 10:10:02 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-17 10:10:02 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 17), ('programming', 11), ('technology', 5)]
+2026-02-17 10:10:02 | INFO     | nlp.command_processor:process:245 - Intent matched: code_explain
+2026-02-17 10:10:02 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-17 10:10:02 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-17 10:10:02 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-17 10:10:02 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-17 10:16:50 | INFO     | __main__:main:45 - Starting YAAN Backend Server...
+2026-02-17 10:16:50 | INFO     | __main__:main:49 - Configuration loaded: 127.0.0.1:8000
+2026-02-17 10:16:50 | INFO     | core.server:_init_components:46 - Initializing AI components...
+2026-02-17 10:16:50 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-17 10:16:50 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-17 10:16:50 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-17 10:16:50 | INFO     | nlp.proactive_learning:_init_database:110 - Learning database initialized
+2026-02-17 10:16:50 | INFO     | nlp.proactive_learning:__init__:62 - Proactive learning system initialized
+2026-02-17 10:16:50 | INFO     | nlp.command_processor:__init__:49 - Command processor initialized with user memory, coding assistant, reminder system, and proactive learning
+2026-02-17 10:16:50 | INFO     | core.server:_init_components:58 - Components initialized successfully
+2026-02-17 10:16:50 | INFO     | core.server:start:165 - Starting server on 127.0.0.1:8000
+2026-02-17 10:16:54 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 1
+2026-02-17 10:17:26 | INFO     | core.server:handle_websocket:157 - Client disconnected. Active connections: 0
+2026-02-17 10:17:26 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 1
+2026-02-17 10:22:43 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-17 10:22:43 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-17 10:22:43 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-17 10:22:43 | INFO     | nlp.proactive_learning:_init_database:110 - Learning database initialized
+2026-02-17 10:22:43 | INFO     | nlp.proactive_learning:__init__:62 - Proactive learning system initialized
+2026-02-17 10:22:43 | INFO     | nlp.command_processor:__init__:49 - Command processor initialized with user memory, coding assistant, reminder system, and proactive learning
+2026-02-17 10:26:33 | INFO     | nlp.command_processor:process:229 - Processing command: what is dynamic programming
+2026-02-17 10:26:33 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-17 10:26:33 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 17), ('programming', 12), ('technology', 5)]
+2026-02-17 10:26:33 | INFO     | nlp.command_processor:process:253 - Intent matched: calculation
+2026-02-17 10:26:33 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-17 10:26:33 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-17 10:26:33 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-17 10:26:33 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-17 10:33:15 | INFO     | __main__:main:45 - Starting YAAN Backend Server...
+2026-02-17 10:33:15 | INFO     | __main__:main:49 - Configuration loaded: 127.0.0.1:8000
+2026-02-17 10:33:15 | INFO     | core.server:_init_components:46 - Initializing AI components...
+2026-02-17 10:33:15 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-17 10:33:15 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-17 10:33:15 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-17 10:33:15 | INFO     | nlp.proactive_learning:_init_database:110 - Learning database initialized
+2026-02-17 10:33:15 | INFO     | nlp.proactive_learning:__init__:62 - Proactive learning system initialized
+2026-02-17 10:33:15 | INFO     | nlp.command_processor:__init__:49 - Command processor initialized with user memory, coding assistant, reminder system, and proactive learning
+2026-02-17 10:33:15 | INFO     | core.server:_init_components:58 - Components initialized successfully
+2026-02-17 10:33:15 | INFO     | core.server:start:165 - Starting server on 127.0.0.1:8000
+2026-02-17 10:33:20 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 1
+2026-02-17 10:35:05 | INFO     | nlp.command_processor:process:230 - Processing command: what is dynamic programming'
+2026-02-17 10:35:05 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-17 10:35:05 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 17), ('programming', 13), ('technology', 5)]
+2026-02-17 10:35:05 | INFO     | nlp.command_processor:process:254 - Intent matched: code_explain
+2026-02-17 10:35:05 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-17 10:35:05 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-17 10:35:05 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-17 10:35:05 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-17 10:39:23 | INFO     | __main__:main:45 - Starting YAAN Backend Server...
+2026-02-17 10:39:23 | INFO     | __main__:main:49 - Configuration loaded: 127.0.0.1:8000
+2026-02-17 10:39:23 | INFO     | core.server:_init_components:46 - Initializing AI components...
+2026-02-17 10:39:23 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-17 10:39:23 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-17 10:39:23 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-17 10:39:23 | INFO     | nlp.proactive_learning:_init_database:110 - Learning database initialized
+2026-02-17 10:39:23 | INFO     | nlp.proactive_learning:__init__:62 - Proactive learning system initialized
+2026-02-17 10:39:23 | INFO     | nlp.command_processor:__init__:49 - Command processor initialized with user memory, coding assistant, reminder system, and proactive learning
+2026-02-17 10:39:23 | INFO     | core.server:_init_components:58 - Components initialized successfully
+2026-02-17 10:39:23 | INFO     | core.server:start:165 - Starting server on 127.0.0.1:8000
+2026-02-17 10:39:27 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 1
+2026-02-17 10:40:34 | INFO     | nlp.command_processor:process:230 - Processing command: what is dynamic programming
+2026-02-17 10:40:34 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-17 10:40:34 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 17), ('programming', 14), ('technology', 5)]
+2026-02-17 10:40:34 | INFO     | nlp.command_processor:process:254 - Intent matched: code_explain
+2026-02-17 10:40:34 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-17 10:40:34 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-17 10:40:34 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-17 10:40:34 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-17 10:40:37 | INFO     | core.server:handle_websocket:157 - Client disconnected. Active connections: 0
+2026-02-17 10:40:37 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 1
+2026-02-17 10:40:58 | INFO     | nlp.command_processor:process:230 - Processing command: what is dynamic programming
+2026-02-17 10:40:58 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-17 10:40:58 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 17), ('programming', 15), ('technology', 5)]
+2026-02-17 10:40:58 | INFO     | nlp.command_processor:process:254 - Intent matched: code_explain
+2026-02-17 10:40:58 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-17 10:40:58 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-17 10:40:58 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-17 10:40:58 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-17 10:43:41 | INFO     | __main__:main:45 - Starting YAAN Backend Server...
+2026-02-17 10:43:41 | INFO     | __main__:main:49 - Configuration loaded: 127.0.0.1:8000
+2026-02-17 10:43:41 | INFO     | core.server:_init_components:46 - Initializing AI components...
+2026-02-17 10:43:41 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-17 10:43:41 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-17 10:43:41 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-17 10:43:41 | INFO     | nlp.proactive_learning:_init_database:110 - Learning database initialized
+2026-02-17 10:43:41 | INFO     | nlp.proactive_learning:__init__:62 - Proactive learning system initialized
+2026-02-17 10:43:41 | INFO     | nlp.command_processor:__init__:49 - Command processor initialized with user memory, coding assistant, reminder system, and proactive learning
+2026-02-17 10:43:41 | INFO     | core.server:_init_components:58 - Components initialized successfully
+2026-02-17 10:43:41 | INFO     | core.server:start:165 - Starting server on 127.0.0.1:8000
+2026-02-17 10:43:46 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 1
+2026-02-17 10:44:02 | INFO     | nlp.command_processor:process:230 - Processing command: what is dynamic programming
+2026-02-17 10:44:02 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-17 10:44:02 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 17), ('programming', 16), ('technology', 5)]
+2026-02-17 10:44:02 | INFO     | nlp.command_processor:process:254 - Intent matched: code_explain
+2026-02-17 10:44:02 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-17 10:44:02 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-17 10:44:02 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-17 10:44:02 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-17 10:47:28 | INFO     | core.server:handle_websocket:157 - Client disconnected. Active connections: 0
+2026-02-17 10:47:28 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 1
+2026-02-17 10:47:52 | INFO     | nlp.command_processor:process:230 - Processing command: what is inheritance
+2026-02-17 10:47:52 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-17 10:47:52 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 17), ('programming', 16), ('technology', 5)]
+2026-02-17 10:47:52 | INFO     | nlp.command_processor:process:254 - Intent matched: code_explain
+2026-02-17 10:47:52 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-17 10:47:52 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-17 10:47:52 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-17 10:47:52 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-17 10:51:36 | INFO     | __main__:main:45 - Starting YAAN Backend Server...
+2026-02-17 10:51:36 | INFO     | __main__:main:49 - Configuration loaded: 127.0.0.1:8000
+2026-02-17 10:51:36 | INFO     | core.server:_init_components:46 - Initializing AI components...
+2026-02-17 10:51:36 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-17 10:51:36 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-17 10:51:36 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-17 10:51:36 | INFO     | nlp.proactive_learning:_init_database:110 - Learning database initialized
+2026-02-17 10:51:36 | INFO     | nlp.proactive_learning:__init__:62 - Proactive learning system initialized
+2026-02-17 10:51:36 | INFO     | nlp.command_processor:__init__:49 - Command processor initialized with user memory, coding assistant, reminder system, and proactive learning
+2026-02-17 10:51:36 | INFO     | core.server:_init_components:58 - Components initialized successfully
+2026-02-17 10:51:36 | INFO     | core.server:start:165 - Starting server on 127.0.0.1:8000
+2026-02-17 10:51:40 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 1
+2026-02-17 10:52:39 | INFO     | nlp.command_processor:process:230 - Processing command: what is dynamic programming" "explain recursion"
+2026-02-17 10:52:39 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-17 10:52:39 | INFO     | user.memory:_update_interests:169 - Top user interests: [('programming', 17), ('personal', 17), ('technology', 6)]
+2026-02-17 10:52:39 | INFO     | nlp.command_processor:process:254 - Intent matched: code_explain
+2026-02-17 10:52:39 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-17 10:52:39 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-17 10:52:39 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-17 10:52:39 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-17 11:05:05 | INFO     | core.server:handle_websocket:157 - Client disconnected. Active connections: 0
+2026-02-17 11:05:06 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 1
+2026-02-17 11:11:06 | INFO     | nlp.command_processor:process:230 - Processing command: hello what is dynamic programming explain recursion my name is Tester what do you know about me? remind me to test tomorrow show my reminders debug this: TypeError in Python what can you do? thank you
+2026-02-17 11:11:06 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-17 11:11:06 | INFO     | user.memory:_update_interests:169 - Top user interests: [('programming', 18), ('personal', 18), ('technology', 7)]
+2026-02-17 11:11:06 | INFO     | user.memory:_extract_user_facts:181 - Learned user name: Tester
+2026-02-17 11:11:06 | INFO     | nlp.command_processor:process:245 - Responding from memory
+2026-02-17 11:11:06 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-17 11:11:06 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-17 11:11:06 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-17 11:11:06 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 1, Interests: 5
+2026-02-17 11:17:03 | INFO     | nlp.command_processor:process:230 - Processing command: what is dynamic programming
+2026-02-17 11:17:03 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-17 11:17:03 | INFO     | user.memory:_update_interests:169 - Top user interests: [('programming', 19), ('personal', 18), ('technology', 7)]
+2026-02-17 11:17:03 | INFO     | nlp.command_processor:process:254 - Intent matched: code_explain
+2026-02-17 11:17:03 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-17 11:17:03 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-17 11:17:03 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-17 11:17:03 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 1, Interests: 5
+2026-02-17 11:17:10 | INFO     | nlp.command_processor:process:230 - Processing command: explain recursion
+2026-02-17 11:17:10 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-17 11:17:10 | INFO     | user.memory:_update_interests:169 - Top user interests: [('programming', 19), ('personal', 18), ('technology', 8)]
+2026-02-17 11:17:10 | INFO     | nlp.command_processor:process:254 - Intent matched: code_explain
+2026-02-17 11:17:10 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-17 11:17:10 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-17 11:17:10 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-17 11:17:10 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 1, Interests: 5
+2026-02-17 11:17:28 | INFO     | nlp.command_processor:process:230 - Processing command: what do you know about me?
+2026-02-17 11:17:28 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-17 11:17:28 | INFO     | user.memory:_update_interests:169 - Top user interests: [('programming', 19), ('personal', 19), ('technology', 8)]
+2026-02-17 11:17:28 | INFO     | nlp.command_processor:process:254 - Intent matched: capabilities
+2026-02-17 11:17:28 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-17 11:17:28 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-17 11:17:28 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-17 11:17:28 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 1, Interests: 5
+2026-02-17 11:17:51 | INFO     | nlp.command_processor:process:230 - Processing command: remind me to test tomorrow at 2pm
+2026-02-17 11:17:51 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-17 11:17:51 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 20), ('programming', 19), ('technology', 8)]
+2026-02-17 11:17:51 | INFO     | nlp.command_processor:process:254 - Intent matched: reminder
+2026-02-17 11:17:51 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-17 11:17:51 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-17 11:17:51 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-17 11:17:51 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 1, Interests: 5
+2026-02-17 11:34:08 | INFO     | core.server:handle_websocket:157 - Client disconnected. Active connections: 0
+2026-02-17 11:42:52 | INFO     | __main__:main:45 - Starting YAAN Backend Server...
+2026-02-17 11:42:52 | INFO     | __main__:main:49 - Configuration loaded: 127.0.0.1:8000
+2026-02-17 11:42:52 | INFO     | core.server:_init_components:46 - Initializing AI components...
+2026-02-17 11:42:52 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-17 11:42:52 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-17 11:42:52 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-17 11:42:52 | INFO     | nlp.proactive_learning:_init_database:110 - Learning database initialized
+2026-02-17 11:42:52 | INFO     | nlp.proactive_learning:__init__:62 - Proactive learning system initialized
+2026-02-17 11:42:52 | INFO     | nlp.command_processor:__init__:49 - Command processor initialized with user memory, coding assistant, reminder system, and proactive learning
+2026-02-17 11:42:52 | INFO     | core.server:_init_components:58 - Components initialized successfully
+2026-02-17 11:42:52 | INFO     | core.server:start:165 - Starting server on 127.0.0.1:8000
+2026-02-17 11:50:02 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 1
+2026-02-17 11:53:46 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 2
+2026-02-17 11:53:48 | INFO     | core.server:handle_websocket:157 - Client disconnected. Active connections: 1
+2026-02-17 11:53:50 | INFO     | core.server:handle_websocket:157 - Client disconnected. Active connections: 0
+2026-02-17 11:53:51 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 1
+2026-02-17 11:54:04 | INFO     | core.server:handle_websocket:157 - Client disconnected. Active connections: 0
+2026-02-17 11:54:06 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 1
+2026-02-17 12:03:24 | INFO     | core.server:handle_websocket:157 - Client disconnected. Active connections: 0
+2026-02-17 13:22:17 | INFO     | __main__:main:45 - Starting YAAN Backend Server...
+2026-02-17 13:22:17 | INFO     | __main__:main:49 - Configuration loaded: 127.0.0.1:8000
+2026-02-17 13:22:17 | INFO     | core.server:_init_components:46 - Initializing AI components...
+2026-02-17 13:22:17 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-17 13:22:17 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-17 13:22:17 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-17 13:22:17 | INFO     | nlp.proactive_learning:_init_database:110 - Learning database initialized
+2026-02-17 13:22:17 | INFO     | nlp.proactive_learning:__init__:62 - Proactive learning system initialized
+2026-02-17 13:22:17 | INFO     | nlp.command_processor:__init__:49 - Command processor initialized with user memory, coding assistant, reminder system, and proactive learning
+2026-02-17 13:22:17 | INFO     | core.server:_init_components:58 - Components initialized successfully
+2026-02-17 13:22:17 | INFO     | core.server:start:165 - Starting server on 127.0.0.1:8000
+2026-02-17 13:23:30 | ERROR    | __main__:main:60 - Fatal error: 'charmap' codec can't encode characters in position 6-50: character maps to <undefined>
+2026-02-17 13:24:01 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 1
+2026-02-17 13:24:09 | INFO     | nlp.command_processor:process:230 - Processing command: hey
+2026-02-17 13:24:09 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-17 13:24:09 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 20), ('programming', 19), ('technology', 8)]
+2026-02-17 13:24:09 | INFO     | nlp.command_processor:process:254 - Intent matched: greeting
+2026-02-17 13:24:09 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-17 13:24:09 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-17 13:24:09 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-17 13:24:09 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 1, Interests: 5
+2026-02-17 13:24:16 | INFO     | nlp.command_processor:process:230 - Processing command: My name is Yash Siwach
+2026-02-17 13:24:16 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-17 13:24:16 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 21), ('programming', 19), ('technology', 8)]
+2026-02-17 13:24:16 | INFO     | user.memory:_extract_user_facts:181 - Learned user name: Yash
+2026-02-17 13:24:16 | INFO     | nlp.command_processor:process:245 - Responding from memory
+2026-02-17 13:24:16 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-17 13:24:16 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-17 13:24:16 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-17 13:24:16 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 1, Interests: 5
+2026-02-17 13:24:17 | INFO     | core.server:handle_websocket:157 - Client disconnected. Active connections: 0
+2026-02-17 13:24:35 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 1
+2026-02-17 13:24:41 | INFO     | nlp.command_processor:process:230 - Processing command: hi
+2026-02-17 13:24:41 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-17 13:24:41 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 21), ('programming', 19), ('technology', 8)]
+2026-02-17 13:24:41 | INFO     | nlp.command_processor:process:254 - Intent matched: greeting
+2026-02-17 13:24:41 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-17 13:24:41 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-17 13:24:41 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-17 13:24:41 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 1, Interests: 5
+2026-02-17 13:24:44 | INFO     | nlp.command_processor:process:230 - Processing command: I am good
+2026-02-17 13:24:44 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-17 13:24:44 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 22), ('programming', 19), ('technology', 8)]
+2026-02-17 13:24:44 | INFO     | user.memory:_extract_user_facts:181 - Learned user name: Good
+2026-02-17 13:24:44 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-17 13:24:44 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-17 13:24:44 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-17 13:24:44 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 1, Interests: 5
+2026-02-17 13:24:58 | INFO     | nlp.command_processor:process:230 - Processing command: What are my reminders?
+2026-02-17 13:24:58 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-17 13:24:58 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 23), ('programming', 19), ('technology', 8)]
+2026-02-17 13:24:58 | INFO     | nlp.command_processor:process:254 - Intent matched: code_explain
+2026-02-17 13:24:58 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-17 13:24:58 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-17 13:24:58 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-17 13:24:58 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 1, Interests: 5
+2026-02-17 13:35:27 | INFO     | __main__:main:45 - Starting YAAN Backend Server...
+2026-02-17 13:35:27 | INFO     | __main__:main:49 - Configuration loaded: 127.0.0.1:8000
+2026-02-17 13:35:27 | INFO     | core.server:_init_components:46 - Initializing AI components...
+2026-02-17 13:35:27 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-17 13:35:27 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-17 13:35:27 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-17 13:35:27 | INFO     | nlp.proactive_learning:_init_database:110 - Learning database initialized
+2026-02-17 13:35:27 | INFO     | nlp.proactive_learning:__init__:62 - Proactive learning system initialized
+2026-02-17 13:35:27 | INFO     | nlp.command_processor:__init__:49 - Command processor initialized with user memory, coding assistant, reminder system, and proactive learning
+2026-02-17 13:35:27 | INFO     | core.server:_init_components:58 - Components initialized successfully
+2026-02-17 13:35:27 | INFO     | core.server:start:165 - Starting server on 127.0.0.1:8000
+2026-02-17 13:35:32 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 1
+2026-02-17 14:17:37 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 2
+2026-02-17 14:27:40 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 3
+2026-02-17 14:30:22 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 4
+2026-02-17 14:30:36 | INFO     | nlp.command_processor:process:230 - Processing command: hey
+2026-02-17 14:30:36 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-17 14:30:36 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 23), ('programming', 19), ('technology', 8)]
+2026-02-17 14:30:36 | INFO     | nlp.command_processor:process:254 - Intent matched: greeting
+2026-02-17 14:30:36 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-17 14:30:36 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-17 14:30:36 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-17 14:30:36 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 1, Interests: 5
+2026-02-17 14:33:35 | INFO     | core.server:handle_websocket:157 - Client disconnected. Active connections: 3
+2026-02-17 14:33:35 | INFO     | core.server:handle_websocket:157 - Client disconnected. Active connections: 2
+2026-02-17 14:33:35 | INFO     | core.server:handle_websocket:157 - Client disconnected. Active connections: 1
+2026-02-17 14:33:35 | INFO     | core.server:handle_websocket:157 - Client disconnected. Active connections: 0
+2026-02-17 14:34:00 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 1
+2026-02-17 14:36:02 | INFO     | core.server:handle_websocket:157 - Client disconnected. Active connections: 0
+2026-02-17 14:36:29 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 1
+2026-02-17 14:46:07 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 2
+2026-02-17 14:50:08 | INFO     | __main__:main:45 - Starting YAAN Backend Server...
+2026-02-17 14:50:08 | INFO     | __main__:main:49 - Configuration loaded: 127.0.0.1:8000
+2026-02-17 14:50:08 | INFO     | core.server:_init_components:47 - Initializing AI components...
+2026-02-17 14:50:08 | INFO     | core.database:_init_database:105 - Database tables created/verified
+2026-02-17 14:50:08 | INFO     | core.database:_insert_default_data:119 - Inserting default learning paths...
+2026-02-17 14:50:08 | INFO     | core.database:_insert_default_data:131 - Inserted 4 learning paths
+2026-02-17 14:50:08 | INFO     | core.database:_insert_default_data:138 - Inserting default tasks...
+2026-02-17 14:50:08 | INFO     | core.database:_insert_default_data:151 - Inserted 3 tasks
+2026-02-17 14:50:08 | INFO     | core.database:_insert_default_data:158 - Initializing user stats...
+2026-02-17 14:50:08 | INFO     | core.database:_insert_default_data:170 - Initialized 4 user stats
+2026-02-17 14:50:08 | INFO     | core.database:_insert_default_data:177 - Generating sample activity data...
+2026-02-17 14:50:08 | INFO     | core.database:_insert_default_data:203 - Generated 90 days of activity data
+2026-02-17 14:50:08 | INFO     | core.database:__init__:30 - Database initialized at C:\Users\YashSiwach\OneDrive - EPAM\YaanProject\backend\data\yaan.db
+2026-02-17 14:50:08 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-17 14:50:08 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-17 14:50:08 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-17 14:50:08 | INFO     | nlp.proactive_learning:_init_database:110 - Learning database initialized
+2026-02-17 14:50:08 | INFO     | nlp.proactive_learning:__init__:62 - Proactive learning system initialized
+2026-02-17 14:50:08 | INFO     | nlp.command_processor:__init__:49 - Command processor initialized with user memory, coding assistant, reminder system, and proactive learning
+2026-02-17 14:50:08 | INFO     | core.server:_init_components:62 - Components initialized successfully
+2026-02-17 14:50:08 | INFO     | core.server:start:286 - Starting server on 127.0.0.1:8000
+2026-02-17 14:50:08 | INFO     | core.server:handle_websocket:254 - Client connected. Active connections: 1
+2026-02-17 14:50:08 | INFO     | core.server:handle_websocket:254 - Client connected. Active connections: 2
+2026-02-17 14:50:37 | INFO     | __main__:main:45 - Starting YAAN Backend Server...
+2026-02-17 14:50:37 | INFO     | __main__:main:49 - Configuration loaded: 127.0.0.1:8000
+2026-02-17 14:50:37 | INFO     | core.server:_init_components:47 - Initializing AI components...
+2026-02-17 14:50:37 | INFO     | core.database:_init_database:105 - Database tables created/verified
+2026-02-17 14:50:37 | INFO     | core.database:__init__:30 - Database initialized at C:\Users\YashSiwach\OneDrive - EPAM\YaanProject\backend\data\yaan.db
+2026-02-17 14:50:37 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-17 14:50:37 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-17 14:50:37 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-17 14:50:37 | INFO     | nlp.proactive_learning:_init_database:110 - Learning database initialized
+2026-02-17 14:50:37 | INFO     | nlp.proactive_learning:__init__:62 - Proactive learning system initialized
+2026-02-17 14:50:37 | INFO     | nlp.command_processor:__init__:49 - Command processor initialized with user memory, coding assistant, reminder system, and proactive learning
+2026-02-17 14:50:37 | INFO     | core.server:_init_components:62 - Components initialized successfully
+2026-02-17 14:50:37 | INFO     | core.server:start:286 - Starting server on 127.0.0.1:8000
+2026-02-17 14:53:46 | INFO     | core.server:handle_websocket:278 - Client disconnected. Active connections: 1
+2026-02-17 14:53:46 | INFO     | core.server:handle_websocket:278 - Client disconnected. Active connections: 0
+2026-02-17 14:53:59 | INFO     | core.server:handle_websocket:254 - Client connected. Active connections: 1
+2026-02-17 15:02:19 | INFO     | core.server:handle_websocket:278 - Client disconnected. Active connections: 0
+2026-02-17 15:02:32 | INFO     | core.server:handle_websocket:254 - Client connected. Active connections: 1
+2026-02-17 15:03:44 | INFO     | core.server:handle_websocket:278 - Client disconnected. Active connections: 0
+2026-02-17 15:04:10 | INFO     | core.server:handle_websocket:254 - Client connected. Active connections: 1
+2026-02-17 15:11:54 | INFO     | core.server:handle_websocket:278 - Client disconnected. Active connections: 0
+2026-02-17 15:12:16 | INFO     | core.server:handle_websocket:254 - Client connected. Active connections: 1
+2026-02-17 15:15:02 | INFO     | core.server:_init_components:48 - Initializing AI components...
+2026-02-17 15:15:02 | INFO     | core.database:_init_database:123 - Database tables created/verified
+2026-02-17 15:15:02 | INFO     | core.database:__init__:30 - Database initialized at C:\Users\YashSiwach\OneDrive - EPAM\YaanProject\backend\data\yaan.db
+2026-02-17 15:15:02 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-17 15:15:02 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-17 15:15:02 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-17 15:15:02 | INFO     | core.server:_init_components:48 - Initializing AI components...
+2026-02-17 15:15:02 | INFO     | nlp.proactive_learning:_init_database:110 - Learning database initialized
+2026-02-17 15:15:02 | INFO     | core.database:_init_database:123 - Database tables created/verified
+lized
+2026-02-17 15:15:02 | INFO     | nlp.command_processor:__init__:49 - Command processor initialized with user memory, coding assistant, reminder system, and proactive learning
+2026-02-17 15:15:02 | INFO     | core.server:_init_components:66 - Components initialized successfully
+2026-02-17 15:15:02 | INFO     | core.database:__init__:30 - Database initialized at C:\Users\YashSiwach\OneDrive - EPAM\YaanProject\backend\data\yaan.db
+2026-02-17 15:15:02 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-17 15:15:02 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-17 15:15:02 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-17 15:15:02 | INFO     | nlp.proactive_learning:_init_database:110 - Learning database initialized
+2026-02-17 15:15:02 | INFO     | nlp.proactive_learning:__init__:62 - Proactive learning system initialized
+2026-02-17 15:15:02 | INFO     | nlp.command_processor:__init__:49 - Command processor initialized with user memory, coding assistant, reminder system, and proactive learning
+2026-02-17 15:15:02 | INFO     | core.server:_init_components:66 - Components initialized successfully
+2026-02-17 15:15:08 | INFO     | core.server:_init_components:48 - Initializing AI components...
+2026-02-17 15:15:08 | INFO     | core.database:_init_database:123 - Database tables created/verified
+2026-02-17 15:15:08 | INFO     | core.database:__init__:30 - Database initialized at C:\Users\YashSiwach\OneDrive - EPAM\YaanProject\backend\data\yaan.db
+2026-02-17 15:15:08 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-17 15:15:08 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-17 15:15:08 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-17 15:15:08 | INFO     | nlp.proactive_learning:_init_database:110 - Learning database initialized
+2026-02-17 15:15:08 | INFO     | nlp.proactive_learning:__init__:62 - Proactive learning system initialized
+2026-02-17 15:15:08 | INFO     | nlp.command_processor:__init__:49 - Command processor initialized with user memory, coding assistant, reminder system, and proactive learning
+2026-02-17 15:15:08 | INFO     | core.server:_init_components:66 - Components initialized successfully
+2026-02-17 15:15:08 | INFO     | core.server:_init_components:48 - Initializing AI components...
+2026-02-17 15:15:08 | INFO     | core.database:_init_database:123 - Database tables created/verified
+2026-02-17 15:15:08 | INFO     | core.database:__init__:30 - Database initialized at C:\Users\YashSiwach\OneDrive - EPAM\YaanProject\backend\data\yaan.db
+2026-02-17 15:15:08 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-17 15:15:08 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-17 15:15:08 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-17 15:15:08 | INFO     | nlp.proactive_learning:_init_database:110 - Learning database initialized
+2026-02-17 15:15:08 | INFO     | nlp.proactive_learning:__init__:62 - Proactive learning system initialized
+2026-02-17 15:15:08 | INFO     | nlp.command_processor:__init__:49 - Command processor initialized with user memory, coding assistant, reminder system, and proactive learning
+2026-02-17 15:15:08 | INFO     | core.server:_init_components:66 - Components initialized successfully
+2026-02-17 15:15:08 | INFO     | core.server:_init_components:48 - Initializing AI components...
+2026-02-17 15:15:08 | INFO     | core.database:_init_database:123 - Database tables created/verified
+2026-02-17 15:15:08 | INFO     | core.database:__init__:30 - Database initialized at C:\Users\YashSiwach\OneDrive - EPAM\YaanProject\backend\data\yaan.db
+2026-02-17 15:15:08 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-17 15:15:08 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-17 15:15:08 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-17 15:15:08 | INFO     | nlp.proactive_learning:_init_database:110 - Learning database initialized
+2026-02-17 15:15:08 | INFO     | nlp.proactive_learning:__init__:62 - Proactive learning system initialized
+2026-02-17 15:15:08 | INFO     | nlp.command_processor:__init__:49 - Command processor initialized with user memory, coding assistant, reminder system, and proactive learning
+2026-02-17 15:15:08 | INFO     | core.server:_init_components:66 - Components initialized successfully
+2026-02-17 15:15:08 | INFO     | core.server:handle_websocket:299 - Client connected. Active connections: 1
+2026-02-17 15:15:53 | INFO     | core.server:handle_websocket:323 - Client disconnected. Active connections: 0
+2026-02-17 15:15:53 | INFO     | core.server:_init_components:48 - Initializing AI components...
+2026-02-17 15:15:53 | INFO     | core.database:_init_database:123 - Database tables created/verified
+2026-02-17 15:15:53 | INFO     | core.database:__init__:30 - Database initialized at C:\Users\YashSiwach\OneDrive - EPAM\YaanProject\backend\data\yaan.db
+2026-02-17 15:15:53 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-17 15:15:53 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-17 15:15:53 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-17 15:15:53 | INFO     | nlp.proactive_learning:_init_database:110 - Learning database initialized
+2026-02-17 15:15:53 | INFO     | nlp.proactive_learning:__init__:62 - Proactive learning system initialized
+2026-02-17 15:15:53 | INFO     | nlp.command_processor:__init__:49 - Command processor initialized with user memory, coding assistant, reminder system, and proactive learning
+2026-02-17 15:15:53 | INFO     | core.server:_init_components:66 - Components initialized successfully
+2026-02-17 15:15:53 | INFO     | core.server:_init_components:48 - Initializing AI components...
+2026-02-17 15:15:54 | INFO     | core.database:_init_database:123 - Database tables created/verified
+2026-02-17 15:15:54 | INFO     | core.database:__init__:30 - Database initialized at C:\Users\YashSiwach\OneDrive - EPAM\YaanProject\backend\data\yaan.db
+2026-02-17 15:15:54 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-17 15:15:54 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-17 15:15:54 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-17 15:15:54 | INFO     | nlp.proactive_learning:_init_database:110 - Learning database initialized
+2026-02-17 15:15:54 | INFO     | nlp.proactive_learning:__init__:62 - Proactive learning system initialized
+2026-02-17 15:15:54 | INFO     | nlp.command_processor:__init__:49 - Command processor initialized with user memory, coding assistant, reminder system, and proactive learning
+2026-02-17 15:15:54 | INFO     | core.server:_init_components:66 - Components initialized successfully
+2026-02-17 15:15:54 | INFO     | core.server:_init_components:48 - Initializing AI components...
+2026-02-17 15:15:54 | INFO     | core.database:_init_database:123 - Database tables created/verified
+2026-02-17 15:15:54 | INFO     | core.database:__init__:30 - Database initialized at C:\Users\YashSiwach\OneDrive - EPAM\YaanProject\backend\data\yaan.db
+2026-02-17 15:15:54 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-17 15:15:54 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-17 15:15:54 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-17 15:15:54 | INFO     | nlp.proactive_learning:_init_database:110 - Learning database initialized
+2026-02-17 15:15:54 | INFO     | nlp.proactive_learning:__init__:62 - Proactive learning system initialized
+2026-02-17 15:15:54 | INFO     | nlp.command_processor:__init__:49 - Command processor initialized with user memory, coding assistant, reminder system, and proactive learning
+2026-02-17 15:15:54 | INFO     | core.server:_init_components:66 - Components initialized successfully
+2026-02-17 15:15:59 | INFO     | core.server:handle_websocket:299 - Client connected. Active connections: 1
+2026-02-17 15:16:03 | INFO     | core.server:handle_websocket:323 - Client disconnected. Active connections: 0
+2026-02-17 15:16:03 | INFO     | core.server:_init_components:48 - Initializing AI components...
+2026-02-17 15:16:03 | INFO     | core.database:_init_database:123 - Database tables created/verified
+2026-02-17 15:16:03 | INFO     | core.database:__init__:30 - Database initialized at C:\Users\YashSiwach\OneDrive - EPAM\YaanProject\backend\data\yaan.db
+2026-02-17 15:16:03 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-17 15:16:03 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-17 15:16:03 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-17 15:16:03 | INFO     | nlp.proactive_learning:_init_database:110 - Learning database initialized
+2026-02-17 15:16:03 | INFO     | nlp.proactive_learning:__init__:62 - Proactive learning system initialized
+2026-02-17 15:16:03 | INFO     | nlp.command_processor:__init__:49 - Command processor initialized with user memory, coding assistant, reminder system, and proactive learning
+2026-02-17 15:16:03 | INFO     | core.server:_init_components:66 - Components initialized successfully
+2026-02-17 15:16:03 | INFO     | core.server:_init_components:48 - Initializing AI components...
+2026-02-17 15:16:03 | INFO     | core.database:_init_database:123 - Database tables created/verified
+2026-02-17 15:16:03 | INFO     | core.database:__init__:30 - Database initialized at C:\Users\YashSiwach\OneDrive - EPAM\YaanProject\backend\data\yaan.db
+2026-02-17 15:16:03 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-17 15:16:03 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-17 15:16:03 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-17 15:16:03 | INFO     | nlp.proactive_learning:_init_database:110 - Learning database initialized
+2026-02-17 15:16:03 | INFO     | nlp.proactive_learning:__init__:62 - Proactive learning system initialized
+2026-02-17 15:16:03 | INFO     | nlp.command_processor:__init__:49 - Command processor initialized with user memory, coding assistant, reminder system, and proactive learning
+2026-02-17 15:16:03 | INFO     | core.server:_init_components:66 - Components initialized successfully
+2026-02-17 15:16:03 | INFO     | core.server:_init_components:48 - Initializing AI components...
+2026-02-17 15:16:03 | INFO     | core.database:_init_database:123 - Database tables created/verified
+2026-02-17 15:16:03 | INFO     | core.database:__init__:30 - Database initialized at C:\Users\YashSiwach\OneDrive - EPAM\YaanProject\backend\data\yaan.db
+2026-02-17 15:16:03 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-17 15:16:03 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-17 15:16:03 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-17 15:16:03 | INFO     | nlp.proactive_learning:_init_database:110 - Learning database initialized
+2026-02-17 15:16:03 | INFO     | nlp.proactive_learning:__init__:62 - Proactive learning system initialized
+2026-02-17 15:16:03 | INFO     | nlp.command_processor:__init__:49 - Command processor initialized with user memory, coding assistant, reminder system, and proactive learning
+2026-02-17 15:16:03 | INFO     | core.server:_init_components:66 - Components initialized successfully
+2026-02-17 15:16:09 | INFO     | core.server:handle_websocket:299 - Client connected. Active connections: 1
+2026-02-17 15:16:43 | INFO     | core.server:handle_websocket:323 - Client disconnected. Active connections: 0
+2026-02-17 15:17:13 | INFO     | core.server:handle_websocket:299 - Client connected. Active connections: 1
+2026-02-17 15:18:26 | INFO     | core.server:handle_websocket:323 - Client disconnected. Active connections: 0
+2026-02-17 15:18:51 | INFO     | core.server:handle_websocket:299 - Client connected. Active connections: 1
+2026-02-17 15:20:23 | INFO     | core.server:handle_websocket:323 - Client disconnected. Active connections: 0
+2026-02-17 15:20:45 | INFO     | core.server:handle_websocket:299 - Client connected. Active connections: 1

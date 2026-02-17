@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/ChatWindow.css';
 interface Message {
     id: string;
-    type: 'user' | 'assistant';
+    type: 'user' | 'assistant' | 'system';
     content: string;
     timestamp: Date;
 }

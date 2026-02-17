@@ -31,7 +31,7 @@ module.exports = [
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: '[name].js',
-      publicPath: '/'
+      publicPath: './' // Use relative paths for file:// protocol
     },
     devtool: isDev ? 'source-map' : false,
     target: 'web',

@@ -4,7 +4,7 @@ interface InputBarProps {
     onSendMessage: (message: string) => void;
     isLoading: boolean;
     isConnected: boolean;
-    voiceMode: boolean;
+    onVoiceModeClick: () => void;
 }
 declare const InputBar: React.FC<InputBarProps>;
 export default InputBar;

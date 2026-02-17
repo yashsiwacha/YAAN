@@ -2,95 +2,89 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
-  background-color: var(--secondary-bg);
+  padding: 1.5rem 2rem;
+  background: var(--primary-bg);
   border-bottom: 1px solid var(--border);
-  gap: 1rem;
-  height: 70px;
 }
 
 .header-left {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  flex: 0 0 auto;
-}
-
-.menu-btn {
-  font-size: 1.5rem;
-  color: var(--text-primary);
-
-  @media (max-width: 768px) {
-    font-size: 1.25rem;
-  }
-}
-
-.app-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--accent);
-  margin: 0;
-}
-
-.header-center {
-  flex: 1;
-  display: flex;
-  justify-content: center;
 }
 
 .status-indicator {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  background-color: var(--tertiary-bg);
   font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
 
-  &.connected {
-    color: var(--success);
-  }
+.status-indicator.connected .status-text {
+  color: var(--success);
+}
 
-  &.disconnected {
-    color: var(--warning);
-  }
+.status-indicator.disconnected .status-text {
+  color: var(--text-muted);
 }
 
 .status-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: currentColor;
-  animation: pulse 2s infinite;
 }
 
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
+.status-indicator.connected .status-dot {
+  background: var(--success);
+  box-shadow: 0 0 8px var(--success);
+}
+
+.status-indicator.disconnected .status-dot {
+  background: var(--text-muted);
 }
 
 .header-right {
   display: flex;
-  gap: 0.5rem;
-  flex: 0 0 auto;
+  gap: 0.75rem;
+  align-items: center;
 }
 
-.voice-btn,
-.settings-btn {
+.icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--secondary-bg);
+  color: var(--text-secondary);
   font-size: 1.25rem;
-  color: var(--text-primary);
+  font-weight: 600;
   transition: var(--transition);
+}
 
-  &:hover {
-    color: var(--accent);
-    transform: scale(1.1);
-  }
+.icon-btn:hover {
+  background: var(--card-bg);
+  color: var(--text-primary);
+}
 
-  &.active {
-    color: var(--accent);
-  }
+.tab-btn {
+  padding: 0.625rem 1.5rem;
+  border-radius: var(--radius);
+  background: var(--secondary-bg);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  transition: var(--transition);
+}
+
+.tab-btn:hover {
+  background: var(--card-bg);
+}
+
+.tab-btn.active {
+  background: var(--accent);
+  color: white;
 }

@@ -3,51 +3,57 @@ import '../styles/Header.css';
 
 interface HeaderProps {
   isConnected: boolean;
-  onMenuClick: () => void;
   onSettingsClick: () => void;
   onVoiceToggle: () => void;
   voiceMode: boolean;
+  activeTab: 'chat' | 'voice';
+  onTabChange: (tab: 'chat' | 'voice') => void;
 }
 
 const Header: React.FC<HeaderProps> = ({
   isConnected,
-  onMenuClick,
   onSettingsClick,
   onVoiceToggle,
-  voiceMode
+  voiceMode,
+  activeTab,
+  onTabChange
 }) => {
   return (
     <header className="header">
       <div className="header-left">
-        <button className="menu-btn" onClick={onMenuClick} title="Menu">
-          ☰
-        </button>
-        <h1 className="app-title">YAAN</h1>
-      </div>
-
-      <div className="header-center">
         <div className={`status-indicator ${isConnected ? 'connected' : 'disconnected'}`}>
           <span className="status-dot"></span>
           <span className="status-text">
-            {isConnected ? 'Connected' : 'Disconnected'}
+            {isConnected ? 'ONLINE' : 'OFFLINE'}
           </span>
         </div>
       </div>
 
       <div className="header-right">
-        <button
-          className={`voice-btn ${voiceMode ? 'active' : ''}`}
-          onClick={onVoiceToggle}
-          title="Toggle Voice Mode"
+        <button 
+          className="icon-btn help-btn"
+          title="Help"
         >
-          🎤
+          ?
         </button>
         <button 
-          className="settings-btn"
+          className="icon-btn settings-btn"
           onClick={onSettingsClick}
           title="Settings"
         >
-          ⚙️
+          ⚙
+        </button>
+        <button
+          className={`tab-btn ${activeTab === 'voice' ? 'active' : ''}`}
+          onClick={() => onTabChange('voice')}
+        >
+          VOICE
+        </button>
+        <button
+          className={`tab-btn ${activeTab === 'chat' ? 'active' : ''}`}
+          onClick={() => onTabChange('chat')}
+        >
+          CHAT
         </button>
       </div>
     </header>

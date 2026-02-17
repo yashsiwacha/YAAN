@@ -1,0 +1,448 @@
+2026-02-16 17:32:11 | INFO     | __main__:main:45 - Starting YAAN Backend Server...
+2026-02-16 17:32:11 | INFO     | __main__:main:49 - Configuration loaded: 127.0.0.1:8000
+2026-02-16 17:32:11 | INFO     | core.server:_init_components:46 - Initializing AI components...
+2026-02-16 17:32:11 | INFO     | core.server:_init_components:58 - Components initialized successfully
+2026-02-16 17:32:11 | INFO     | core.server:start:165 - Starting server on 127.0.0.1:8000
+2026-02-16 17:33:09 | INFO     | __main__:main:45 - Starting YAAN Backend Server...
+2026-02-16 17:33:09 | INFO     | __main__:main:49 - Configuration loaded: 127.0.0.1:8000
+2026-02-16 17:33:09 | INFO     | core.server:_init_components:46 - Initializing AI components...
+2026-02-16 17:33:09 | INFO     | core.server:_init_components:58 - Components initialized successfully
+2026-02-16 17:33:09 | INFO     | core.server:start:165 - Starting server on 127.0.0.1:8000
+2026-02-16 17:33:56 | INFO     | __main__:main:45 - Starting YAAN Backend Server...
+2026-02-16 17:33:56 | INFO     | __main__:main:49 - Configuration loaded: 127.0.0.1:8000
+2026-02-16 17:33:56 | INFO     | core.server:_init_components:46 - Initializing AI components...
+2026-02-16 17:33:56 | INFO     | core.server:_init_components:58 - Components initialized successfully
+2026-02-16 17:33:56 | INFO     | core.server:start:165 - Starting server on 127.0.0.1:8000
+2026-02-16 17:34:46 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 1
+2026-02-16 17:34:46 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 2
+2026-02-16 17:34:55 | INFO     | nlp.command_processor:process:90 - Processing command: hey
+2026-02-16 17:34:55 | INFO     | nlp.command_processor:process:96 - Intent matched: greeting
+2026-02-16 17:35:00 | INFO     | nlp.command_processor:process:90 - Processing command: help me code
+2026-02-16 17:35:00 | INFO     | nlp.command_processor:process:96 - Intent matched: help
+2026-02-16 17:42:49 | INFO     | core.server:handle_websocket:157 - Client disconnected. Active connections: 1
+2026-02-16 17:42:49 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 2
+2026-02-16 17:43:45 | INFO     | core.server:handle_websocket:157 - Client disconnected. Active connections: 1
+2026-02-16 17:43:46 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 2
+2026-02-16 17:45:31 | INFO     | core.server:handle_websocket:157 - Client disconnected. Active connections: 1
+2026-02-16 17:57:28 | INFO     | core.server:handle_websocket:157 - Client disconnected. Active connections: 0
+2026-02-16 18:12:52 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 1
+2026-02-16 18:13:10 | INFO     | nlp.command_processor:process:90 - Processing command: Hey
+2026-02-16 18:13:10 | INFO     | nlp.command_processor:process:96 - Intent matched: greeting
+2026-02-16 18:13:17 | INFO     | nlp.command_processor:process:90 - Processing command: Code a website
+2026-02-16 18:13:26 | INFO     | core.server:handle_websocket:157 - Client disconnected. Active connections: 0
+2026-02-16 18:25:52 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-16 18:25:52 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-16 18:25:52 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-16 18:25:52 | INFO     | nlp.command_processor:__init__:43 - Command processor initialized with user memory, coding assistant, and reminder system
+2026-02-16 18:26:29 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-16 18:26:29 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-16 18:26:29 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:__init__:43 - Command processor initialized with user memory, coding assistant, and reminder system
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:205 - Processing command: explain this code: 
+def factorial(n):
+    if n == 0:
+        return 1
+    return n * factorial(n-1)
+
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:29 | INFO     | user.memory:_update_interests:169 - Top user interests: [('programming', 1), ('technology', 1)]
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:229 - Intent matched: code_help
+2026-02-16 18:26:29 | INFO     | nlp.coding_assistant:detect_language:121 - Detected language: python
+2026-02-16 18:26:29 | ERROR    | nlp.command_processor:_handle_code_help:558 - Error in code help: CodingAssistant.explain_code() takes 2 positional arguments but 3 were given
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:29 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 2
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:205 - Processing command: help debug this Python code with syntax error: 
+def hello()
+    print('hello world')
+
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:29 | INFO     | user.memory:_update_interests:169 - Top user interests: [('programming', 2), ('technology', 1)]
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:229 - Intent matched: capabilities
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:29 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 2
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:205 - Processing command: what is recursion?
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:29 | INFO     | user.memory:_update_interests:169 - Top user interests: [('programming', 2), ('technology', 1)]
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:229 - Intent matched: calculation
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:29 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 2
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:205 - Processing command: explain loops in programming
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:29 | INFO     | user.memory:_update_interests:169 - Top user interests: [('programming', 3), ('technology', 2)]
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:229 - Intent matched: code_explain
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:29 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 2
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:205 - Processing command: analyze this JavaScript code: 
+function greet(name) {
+    return `Hello, ${name}!`;
+}
+
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:29 | INFO     | user.memory:_update_interests:169 - Top user interests: [('programming', 4), ('technology', 2), ('personal', 1)]
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:29 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 4
+2026-02-16 18:26:29 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-16 18:26:29 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-16 18:26:29 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:__init__:43 - Command processor initialized with user memory, coding assistant, and reminder system
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:205 - Processing command: remind me to call John tomorrow at 3pm
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:29 | INFO     | user.memory:_update_interests:169 - Top user interests: [('programming', 4), ('technology', 2), ('personal', 2)]
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:229 - Intent matched: reminder
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:29 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 4
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:205 - Processing command: remind me about the meeting at 10am [high]
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:29 | INFO     | user.memory:_update_interests:169 - Top user interests: [('programming', 4), ('personal', 3), ('technology', 2)]
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:229 - Intent matched: reminder
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:29 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:205 - Processing command: show my reminders
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:29 | INFO     | user.memory:_update_interests:169 - Top user interests: [('programming', 4), ('personal', 4), ('technology', 2)]
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:229 - Intent matched: show_reminders
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:29 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:205 - Processing command: add todo: finish project documentation #work
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:29 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 5), ('programming', 4), ('technology', 2)]
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:229 - Intent matched: create_todo
+2026-02-16 18:26:29 | INFO     | nlp.reminder_system:create_todo:119 - Created todo: finish project documentation (ID: 1)
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:29 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:205 - Processing command: create task: review pull request [high] #code
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:29 | INFO     | user.memory:_update_interests:169 - Top user interests: [('programming', 5), ('personal', 5), ('technology', 2)]
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:229 - Intent matched: create_todo
+2026-02-16 18:26:29 | INFO     | nlp.reminder_system:create_todo:119 - Created todo: review pull request [high] (ID: 2)
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:29 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:205 - Processing command: show my todos
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:29 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 6), ('programming', 5), ('technology', 2)]
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:229 - Intent matched: create_todo
+2026-02-16 18:26:29 | INFO     | nlp.reminder_system:create_todo:119 - Created todo: s (ID: 3)
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:29 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:205 - Processing command: task summary
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:29 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 6), ('programming', 5), ('technology', 2)]
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:229 - Intent matched: task_summary
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:29 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:205 - Processing command: complete todo 1
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:29 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 6), ('programming', 5), ('technology', 2)]
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:229 - Intent matched: create_todo
+2026-02-16 18:26:29 | INFO     | nlp.reminder_system:create_todo:119 - Created todo: 1 (ID: 4)
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:29 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:205 - Processing command: show my todos
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:29 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 7), ('programming', 5), ('technology', 2)]
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:229 - Intent matched: create_todo
+2026-02-16 18:26:29 | INFO     | nlp.reminder_system:create_todo:119 - Created todo: s (ID: 5)
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:29 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:205 - Processing command: delete reminder 1
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:29 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 7), ('programming', 5), ('technology', 2)]
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:229 - Intent matched: delete_task
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:29 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:26:29 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-16 18:26:29 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-16 18:26:29 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:__init__:43 - Command processor initialized with user memory, coding assistant, and reminder system
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:205 - Processing command: help
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:29 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 7), ('programming', 5), ('technology', 2)]
+2026-02-16 18:26:29 | INFO     | nlp.command_processor:process:229 - Intent matched: capabilities
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:29 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:29 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:26:54 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-16 18:26:54 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-16 18:26:54 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-16 18:26:54 | INFO     | nlp.command_processor:__init__:43 - Command processor initialized with user memory, coding assistant, and reminder system
+2026-02-16 18:26:54 | INFO     | nlp.command_processor:process:205 - Processing command: explain this code: 
+def factorial(n):
+    if n == 0:
+        return 1
+    return n * factorial(n-1)
+
+2026-02-16 18:26:54 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:54 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 7), ('programming', 6), ('technology', 3)]
+2026-02-16 18:26:54 | INFO     | nlp.command_processor:process:229 - Intent matched: code_help
+2026-02-16 18:26:54 | INFO     | nlp.coding_assistant:detect_language:121 - Detected language: python
+2026-02-16 18:26:54 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:54 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:54 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:54 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:26:54 | INFO     | nlp.command_processor:process:205 - Processing command: help debug this Python code with syntax error: 
+def hello()
+    print('hello world')
+
+2026-02-16 18:26:54 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:54 | INFO     | user.memory:_update_interests:169 - Top user interests: [('programming', 7), ('personal', 7), ('technology', 3)]
+2026-02-16 18:26:54 | INFO     | nlp.command_processor:process:229 - Intent matched: capabilities
+2026-02-16 18:26:54 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:54 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:55 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:process:205 - Processing command: what is recursion?
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:55 | INFO     | user.memory:_update_interests:169 - Top user interests: [('programming', 7), ('personal', 7), ('technology', 3)]
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:process:229 - Intent matched: calculation
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:55 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:process:205 - Processing command: explain loops in programming
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:55 | INFO     | user.memory:_update_interests:169 - Top user interests: [('programming', 8), ('personal', 7), ('technology', 4)]
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:process:229 - Intent matched: code_explain
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:55 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:process:205 - Processing command: analyze this JavaScript code: 
+function greet(name) {
+    return `Hello, ${name}!`;
+}
+
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:55 | INFO     | user.memory:_update_interests:169 - Top user interests: [('programming', 9), ('personal', 8), ('technology', 4)]
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:55 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:26:55 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-16 18:26:55 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-16 18:26:55 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:__init__:43 - Command processor initialized with user memory, coding assistant, and reminder system
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:process:205 - Processing command: remind me to call John tomorrow at 3pm
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:55 | INFO     | user.memory:_update_interests:169 - Top user interests: [('programming', 9), ('personal', 9), ('technology', 4)]
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:process:229 - Intent matched: reminder
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:55 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:process:205 - Processing command: remind me about the meeting at 10am [high]
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:55 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 10), ('programming', 9), ('technology', 4)]
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:process:229 - Intent matched: reminder
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:55 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:process:205 - Processing command: show my reminders
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:55 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 11), ('programming', 9), ('technology', 4)]
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:process:229 - Intent matched: show_reminders
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:55 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:process:205 - Processing command: add todo: finish project documentation #work
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:55 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 12), ('programming', 9), ('technology', 4)]
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:process:229 - Intent matched: create_todo
+2026-02-16 18:26:55 | INFO     | nlp.reminder_system:create_todo:119 - Created todo: finish project documentation (ID: 6)
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:55 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:process:205 - Processing command: create task: review pull request [high] #code
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:55 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 12), ('programming', 10), ('technology', 4)]
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:process:229 - Intent matched: create_todo
+2026-02-16 18:26:55 | INFO     | nlp.reminder_system:create_todo:119 - Created todo: review pull request [high] (ID: 7)
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:55 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:process:205 - Processing command: show my todos
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:55 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 13), ('programming', 10), ('technology', 4)]
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:process:229 - Intent matched: create_todo
+2026-02-16 18:26:55 | INFO     | nlp.reminder_system:create_todo:119 - Created todo: s (ID: 8)
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:55 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:process:205 - Processing command: task summary
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:55 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 13), ('programming', 10), ('technology', 4)]
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:process:229 - Intent matched: task_summary
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:55 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:process:205 - Processing command: complete todo 1
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:55 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 13), ('programming', 10), ('technology', 4)]
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:process:229 - Intent matched: create_todo
+2026-02-16 18:26:55 | INFO     | nlp.reminder_system:create_todo:119 - Created todo: 1 (ID: 9)
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:55 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:process:205 - Processing command: show my todos
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:55 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 14), ('programming', 10), ('technology', 4)]
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:process:229 - Intent matched: create_todo
+2026-02-16 18:26:55 | INFO     | nlp.reminder_system:create_todo:119 - Created todo: s (ID: 10)
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:55 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:process:205 - Processing command: delete reminder 1
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:55 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 14), ('programming', 10), ('technology', 4)]
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:process:229 - Intent matched: delete_task
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:55 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:26:55 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-16 18:26:55 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-16 18:26:55 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:__init__:43 - Command processor initialized with user memory, coding assistant, and reminder system
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:process:205 - Processing command: help
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:26:55 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 14), ('programming', 10), ('technology', 4)]
+2026-02-16 18:26:55 | INFO     | nlp.command_processor:process:229 - Intent matched: capabilities
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:26:55 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:26:55 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:27:29 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-16 18:27:29 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-16 18:27:29 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-16 18:27:29 | INFO     | nlp.command_processor:__init__:43 - Command processor initialized with user memory, coding assistant, and reminder system
+2026-02-16 18:27:29 | INFO     | nlp.command_processor:process:205 - Processing command: add todo: finish documentation
+2026-02-16 18:27:29 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:27:29 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 15), ('programming', 10), ('technology', 4)]
+2026-02-16 18:27:29 | INFO     | nlp.command_processor:process:229 - Intent matched: create_todo
+2026-02-16 18:27:29 | INFO     | nlp.reminder_system:create_todo:119 - Created todo: finish documentation (ID: 11)
+2026-02-16 18:27:29 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:27:29 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:27:29 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:27:29 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:27:29 | INFO     | nlp.command_processor:process:205 - Processing command: show my todos
+2026-02-16 18:27:29 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:27:29 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 16), ('programming', 10), ('technology', 4)]
+2026-02-16 18:27:29 | INFO     | nlp.command_processor:process:229 - Intent matched: show_todos
+2026-02-16 18:27:29 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:27:29 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:27:29 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:27:29 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:27:29 | INFO     | nlp.command_processor:process:205 - Processing command: show my reminders
+2026-02-16 18:27:29 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:27:29 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 17), ('programming', 10), ('technology', 4)]
+2026-02-16 18:27:29 | INFO     | nlp.command_processor:process:229 - Intent matched: show_reminders
+2026-02-16 18:27:29 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:27:29 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:27:29 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:27:29 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:27:29 | INFO     | nlp.command_processor:process:205 - Processing command: complete todo 1
+2026-02-16 18:27:29 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:27:29 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 17), ('programming', 10), ('technology', 4)]
+2026-02-16 18:27:29 | INFO     | nlp.command_processor:process:229 - Intent matched: complete_task
+2026-02-16 18:27:29 | INFO     | nlp.reminder_system:complete_todo:262 - Completed todo ID: 1
+2026-02-16 18:27:29 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:27:29 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:27:29 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:27:29 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:27:29 | INFO     | nlp.command_processor:process:205 - Processing command: delete reminder 2
+2026-02-16 18:27:29 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:27:29 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 17), ('programming', 10), ('technology', 4)]
+2026-02-16 18:27:29 | INFO     | nlp.command_processor:process:229 - Intent matched: delete_task
+2026-02-16 18:27:29 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:27:29 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:27:29 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:27:29 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:27:29 | INFO     | nlp.command_processor:process:205 - Processing command: task summary
+2026-02-16 18:27:29 | INFO     | user.profile:set_preference:77 - Preference set: total_messages
+2026-02-16 18:27:29 | INFO     | user.memory:_update_interests:169 - Top user interests: [('personal', 17), ('programming', 10), ('technology', 4)]
+2026-02-16 18:27:29 | INFO     | nlp.command_processor:process:229 - Intent matched: task_summary
+2026-02-16 18:27:29 | INFO     | user.profile:set_preference:77 - Preference set: user_facts
+2026-02-16 18:27:29 | INFO     | user.profile:set_preference:77 - Preference set: interests
+2026-02-16 18:27:29 | INFO     | user.profile:set_preference:77 - Preference set: communication_style
+2026-02-16 18:27:29 | INFO     | user.memory:save_memory:279 - Memory saved - Known facts: 0, Interests: 5
+2026-02-16 18:29:13 | INFO     | __main__:main:45 - Starting YAAN Backend Server...
+2026-02-16 18:29:13 | INFO     | __main__:main:49 - Configuration loaded: 127.0.0.1:8000
+2026-02-16 18:29:13 | INFO     | core.server:_init_components:46 - Initializing AI components...
+2026-02-16 18:29:13 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-16 18:29:13 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-16 18:29:13 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-16 18:29:13 | INFO     | nlp.command_processor:__init__:43 - Command processor initialized with user memory, coding assistant, and reminder system
+2026-02-16 18:29:13 | INFO     | core.server:_init_components:58 - Components initialized successfully
+2026-02-16 18:29:13 | INFO     | core.server:start:165 - Starting server on 127.0.0.1:8000
+2026-02-16 18:29:22 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 1
+2026-02-16 18:30:42 | INFO     | core.server:handle_websocket:157 - Client disconnected. Active connections: 0
+2026-02-16 18:30:43 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 1
+2026-02-16 18:30:58 | INFO     | core.server:handle_websocket:157 - Client disconnected. Active connections: 0
+2026-02-16 18:30:58 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 1
+2026-02-16 18:33:14 | INFO     | nlp.command_processor:process:90 - Processing command: Hey
+2026-02-16 18:33:14 | INFO     | nlp.command_processor:process:96 - Intent matched: greeting
+2026-02-16 18:33:20 | INFO     | nlp.command_processor:process:90 - Processing command: What is my name?
+2026-02-16 18:33:31 | INFO     | nlp.command_processor:process:90 - Processing command: then ask me questions about me
+2026-02-16 18:33:40 | INFO     | core.server:handle_websocket:157 - Client disconnected. Active connections: 0
+2026-02-16 18:40:54 | INFO     | __main__:main:45 - Starting YAAN Backend Server...
+2026-02-16 18:40:54 | INFO     | __main__:main:49 - Configuration loaded: 127.0.0.1:8000
+2026-02-16 18:40:54 | INFO     | core.server:_init_components:46 - Initializing AI components...
+2026-02-16 18:40:54 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-16 18:40:54 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-16 18:40:54 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-16 18:40:54 | INFO     | nlp.proactive_learning:_init_database:110 - Learning database initialized
+2026-02-16 18:40:54 | INFO     | nlp.proactive_learning:__init__:62 - Proactive learning system initialized
+2026-02-16 18:40:54 | INFO     | nlp.command_processor:__init__:49 - Command processor initialized with user memory, coding assistant, reminder system, and proactive learning
+2026-02-16 18:40:54 | INFO     | core.server:_init_components:58 - Components initialized successfully
+2026-02-16 18:40:54 | INFO     | core.server:start:165 - Starting server on 127.0.0.1:8000
+2026-02-16 18:41:13 | INFO     | __main__:main:45 - Starting YAAN Backend Server...
+2026-02-16 18:41:13 | INFO     | __main__:main:49 - Configuration loaded: 127.0.0.1:8000
+2026-02-16 18:41:13 | INFO     | core.server:_init_components:46 - Initializing AI components...
+2026-02-16 18:41:13 | INFO     | user.profile:_init_database:63 - User profile database initialized
+2026-02-16 18:41:13 | INFO     | user.memory:_load_persistent_memory:46 - User memory loaded
+2026-02-16 18:41:13 | INFO     | nlp.reminder_system:_init_database:73 - Reminder system database initialized
+2026-02-16 18:41:13 | INFO     | nlp.proactive_learning:_init_database:110 - Learning database initialized
+2026-02-16 18:41:13 | INFO     | nlp.proactive_learning:__init__:62 - Proactive learning system initialized
+2026-02-16 18:41:13 | INFO     | nlp.command_processor:__init__:49 - Command processor initialized with user memory, coding assistant, reminder system, and proactive learning
+2026-02-16 18:41:13 | INFO     | core.server:_init_components:58 - Components initialized successfully
+2026-02-16 18:41:13 | INFO     | core.server:start:165 - Starting server on 127.0.0.1:8000
+2026-02-16 18:41:39 | INFO     | core.server:handle_websocket:133 - Client connected. Active connections: 1
+2026-02-16 18:47:00 | INFO     | core.server:handle_websocket:157 - Client disconnected. Active connections: 0

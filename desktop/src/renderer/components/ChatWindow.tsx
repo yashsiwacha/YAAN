@@ -3,7 +3,7 @@ import '../styles/ChatWindow.css';
 
 interface Message {
   id: string;
-  type: 'user' | 'assistant';
+  type: 'user' | 'assistant' | 'system';
   content: string;
   timestamp: Date;
 }
@@ -24,46 +24,23 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ messages, isLoading }) => {
   }, [messages]);
 
   return (
-    <div className="chat-window">
+    <div className="chat-area">
       {messages.length === 0 ? (
-        <div className="chat-empty">
-          <div className="empty-icon">💬</div>
-          <h2>Start a Conversation</h2>
-          <p>Ask me anything or type a command</p>
+        <div className="message system">
+          <div className="message-content">
+            Welcome to YAAN - Your AI Assistant Network. How may I help you today?
+          </div>
         </div>
       ) : (
-        <div className="chat-messages">
+        <>
           {messages.map((message) => (
-            <div key={message.id} className={`message message-${message.type}`}>
-              <div className="message-avatar">
-                {message.type === 'user' ? '👤' : '🤖'}
-              </div>
-              <div className="message-body">
-                <div className="message-content">{message.content}</div>
-                <div className="message-time">
-                  {message.timestamp.toLocaleTimeString([], {
-                    hour: '2-digit',
-                    minute: '2-digit'
-                  })}
-                </div>
-              </div>
+            <div key={message.id} className={`message ${message.type}`}>
+              <div className="message-content">{message.content}</div>
             </div>
           ))}
-          {isLoading && (
-            <div className="message message-assistant">
-              <div className="message-avatar">🤖</div>
-              <div className="message-body">
-                <div className="message-loading">
-                  <span className="dot"></span>
-                  <span className="dot"></span>
-                  <span className="dot"></span>
-                </div>
-              </div>
-            </div>
-          )}
-          <div ref={endRef} />
-        </div>
+        </>
       )}
+      <div ref={endRef} />
     </div>
   );
 };

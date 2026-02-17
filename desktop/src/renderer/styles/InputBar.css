@@ -1,79 +1,71 @@
-.input-bar {
-  padding: 1rem;
-  background-color: var(--secondary-bg);
-  border-top: 1px solid var(--border);
+.input-area {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.connection-warning {
-  background-color: rgba(245, 158, 11, 0.1);
-  color: var(--warning);
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius);
-  font-size: 0.875rem;
-  text-align: center;
-}
-
-.input-container {
-  display: flex;
-  gap: 0.5rem;
-  align-items: flex-end;
-}
-
-.voice-record-btn {
-  flex-shrink: 0;
-  font-size: 1.25rem;
-  padding: 0.5rem;
-  border-radius: var(--radius);
-  background-color: var(--tertiary-bg);
-  transition: var(--transition);
-
-  &:hover:not(:disabled) {
-    background-color: var(--accent);
-  }
-
-  &.recording {
-    animation: recordPulse 1s infinite;
-  }
-}
-
-@keyframes recordPulse {
-  0%, 100% {
-    background-color: var(--error);
-  }
-  50% {
-    background-color: rgba(239, 68, 68, 0.6);
-  }
+  gap: 15px;
+  padding: 20px 32px;
+  background: rgba(10, 10, 10, 0.6);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .input-field {
   flex: 1;
-  max-height: 120px;
-  resize: vertical;
-  font-size: 1rem;
-  line-height: 1.5;
-
-  &:focus {
-    background-color: var(--tertiary-bg);
-  }
+  padding: 15px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  color: white;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
 }
 
-.send-btn {
-  flex-shrink: 0;
-  font-size: 1.25rem;
-  padding: 0.5rem;
-  border-radius: var(--radius);
-  background-color: var(--accent);
-  transition: var(--transition);
+.input-field:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(102, 126, 234, 0.5);
+}
 
-  &:hover:not(:disabled) {
-    background-color: var(--accent-hover);
-  }
+.input-field::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
 
-  &:disabled {
-    background-color: var(--tertiary-bg);
-    opacity: 0.5;
-  }
+.input-field:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.btn-send {
+  background: linear-gradient(135deg, #6366f1, #7c3aed);
+  color: white;
+}
+
+.btn-send:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+}
+
+.btn-voice {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.btn-voice:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

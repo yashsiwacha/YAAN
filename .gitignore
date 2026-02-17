@@ -65,3 +65,11 @@ media/video/
 *.mov
 *.mkv
 *.webm
+
+# Desktop build artifacts (large binaries)
+desktop/dist/win-unpacked/
+desktop/dist/*.exe
+desktop/dist/*.dmg
+desktop/dist/*.AppImage
+desktop/dist/*.deb
+desktop/dist/*.rpm

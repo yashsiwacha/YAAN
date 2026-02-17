@@ -5,19 +5,17 @@ interface InputBarProps {
   onSendMessage: (message: string) => void;
   isLoading: boolean;
   isConnected: boolean;
-  voiceMode: boolean;
+  onVoiceModeClick: () => void;
 }
 
 const InputBar: React.FC<InputBarProps> = ({
   onSendMessage,
   isLoading,
   isConnected,
-  voiceMode
+  onVoiceModeClick
 }) => {
   const [input, setInput] = useState('');
-  const [isRecording, setIsRecording] = useState(false);
   const inputRef = useRef<HTMLTextAreaElement>(null);
-  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
 
   const handleSend = () => {
     if (input.trim() && !isLoading && isConnected) {
@@ -34,78 +32,40 @@ const InputBar: React.FC<InputBarProps> = ({
     }
   };
 
-  const handleVoiceClick = async () => {
-    if (!voiceMode) return;
-
-    if (isRecording) {
-      mediaRecorderRef.current?.stop();
-      setIsRecording(false);
-    } else {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        const mediaRecorder = new MediaRecorder(stream);
-
-        const audioChunks: Blob[] = [];
-
-        mediaRecorder.ondataavailable = (e) => {
-          audioChunks.push(e.data);
-        };
-
-        mediaRecorder.onstop = () => {
-          const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
-          // Here you would typically send the audio to the backend for transcription
-          console.log('Audio recorded:', audioBlob);
-          stream.getTracks().forEach(track => track.stop());
-        };
-
-        mediaRecorder.start();
-        mediaRecorderRef.current = mediaRecorder;
-        setIsRecording(true);
-      } catch (err) {
-        console.error('Microphone access denied:', err);
-      }
-    }
+  const handleVoiceClick = () => {
+    onVoiceModeClick();
   };
 
   return (
-    <div className="input-bar">
-      {!isConnected && (
-        <div className="connection-warning">
-          ⚠️ Not connected to backend. Check your connection.
-        </div>
-      )}
-      <div className="input-container">
-        {voiceMode && (
-          <button
-            className={`voice-record-btn ${isRecording ? 'recording' : ''}`}
-            onClick={handleVoiceClick}
-            disabled={!voiceMode}
-            title={isRecording ? 'Stop recording' : 'Start recording'}
-          >
-            {isRecording ? '⏹️' : '🎙️'}
-          </button>
-        )}
+    <div className="input-area">
+      <input
+        ref={inputRef as any}
+        type="text"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        onKeyDown={handleKeyDown as any}
+        placeholder="Type your message..."
+        disabled={!isConnected}
+        className="input-field"
+      />
 
-        <textarea
-          ref={inputRef}
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={handleKeyDown}
-          placeholder={voiceMode ? 'Speak or type...' : 'Type your message... (Shift+Enter for new line)'}
-          disabled={!isConnected}
-          rows={3}
-          className="input-field"
-        />
+      <button
+        className="btn btn-voice"
+        onClick={handleVoiceClick}
+        disabled={!isConnected}
+        title="Voice input"
+      >
+        Voice
+      </button>
 
-        <button
-          onClick={handleSend}
-          disabled={!input.trim() || isLoading || !isConnected}
-          className="send-btn"
-          title="Send message (Enter)"
-        >
-          {isLoading ? '⏳' : '📤'}
-        </button>
-      </div>
+      <button
+        onClick={handleSend}
+        disabled={!input.trim() || isLoading || !isConnected}
+        className="btn btn-send"
+        title="Send message"
+      >
+        Send
+      </button>
     </div>
   );
 };
