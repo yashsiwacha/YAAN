@@ -1,48 +1,65 @@
 # YAAN - Your AI Assistant Network
 
-**Version 1.0** | A powerful, intelligent AI assistant with memory, coding help, task management, and proactive learning.
+<div align="center">
+
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![Python](https://img.shields.io/badge/python-3.10+-brightgreen.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Status](https://img.shields.io/badge/status-stable-success.svg)
+
+**A powerful, intelligent AI assistant with memory, coding help, task management, and proactive learning.**
+
+[Quick Start](#-quick-start) • [Features](#-features) • [Examples](#-usage-examples) • [Deployment](DEPLOYMENT.md) • [GitHub](https://github.com/yashsiwacha/YAAN)
+
+</div>
+
+---
 
 ## ✨ What is YAAN?
 
-YAAN is a conversational AI assistant that helps with:
-- 💻 **Coding assistance** - Explain code, debug errors, learn concepts
-- 🧠 **Smart memory** - Remembers your preferences and personal info
-- ⏰ **Task management** - Reminders and todos with natural language
-- 🎓 **Proactive learning** - Asks questions to understand you better
-- 🎨 **Beautiful UI** - Modern web interface with syntax highlighting
+YAAN (Your AI Assistant Network) is a **production-ready, conversational AI assistant** designed to enhance your productivity and learning. Built with Python and FastAPI, YAAN provides intelligent assistance across multiple domains.
+
+### 🎯 Core Capabilities
+
+- 💻 **Advanced Coding Assistant** - Structured concept explanations, debug 60+ error types across 15+ languages
+- 🧠 **Intelligent Memory System** - Learns and remembers your preferences, interests, and personal information  
+- ⏰ **Smart Task Management** - Natural language reminders and todos with categories and priorities
+- 🎓 **Proactive Learning Engine** - Asks strategic questions to understand you better over time
+- 🎨 **Modern Web Interface** - Beautiful UI with syntax highlighting, keyboard shortcuts, and responsive design
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Python 3.10+
-- 2GB+ RAM
-- Windows/Mac/Linux
+- **Python 3.10+** (3.12 recommended)
+- **2GB+ RAM** 
+- **Windows, macOS, or Linux**
 
-### Installation
+### Installation (5 minutes)
+
 ```bash
-# Clone the repository
+# 1. Clone the repository
 git clone https://github.com/yashsiwacha/YAAN.git
-cd YAAN
+cd YAAN/backend
 
-# Set up backend
-cd backend
+# 2. Create virtual environment
 python -m venv venv
 
-# Activate virtual environment
+# 3. Activate virtual environment
 # Windows:
 venv\Scripts\activate
-# Mac/Linux:
+# macOS/Linux:
 source venv/bin/activate
 
-# Install dependencies
+# 4. Install dependencies
 pip install -r requirements.txt
 
-# Start YAAN
+# 5. Start YAAN
 python main.py
 ```
 
-### Access YAAN
-Open your browser and navigate to: **http://localhost:8000**
+**Access YAAN:** Open your browser → **http://localhost:8000**
+
+**First Time?** Type "help" or "what can you do?" to get started!
 
 ## 📦 Deployment
 
@@ -72,276 +89,649 @@ docker-compose up -d
 
 For detailed instructions on all deployment methods, troubleshooting, and production configuration, see the [DEPLOYMENT.md](DEPLOYMENT.md) guide.
 
-## 🎯 Features (v1.0)
+## 🎯 Features
 
-### 🧠 Intelligent Memory System
-- Learns your name, location, occupation
-- Remembers communication preferences
-- Tracks interests by conversation topics
-- Query: "What do you know about me?"
-- Clear memory anytime: "Clear my memory"
+### 💻 Advanced Coding Assistant
 
-### 💻 Coding Assistant
-- **15+ Languages**: Python, JavaScript, TypeScript, Java, C++, C, C#, Go, Rust, PHP, Ruby, Swift, Kotlin, SQL, HTML, CSS
-- **Comprehensive Debugging**: Analyze any error with detailed explanations
-  - 60+ error types across all languages
+#### 🌟 Structured Concept Explanations (Flagship Feature)
+YAAN provides **comprehensive, 5-section structured explanations** for programming concepts:
+
+**Ask about any concept:**
+- "What is dynamic programming?"
+- "Explain recursion"
+- "What is polymorphism?"
+- "Explain async/await"
+
+**Get structured responses with:**
+1. **📖 Definition** - Clear explanation of the concept
+2. **🎯 Use Case** - When and why to use it
+3. **💻 Syntax** - Code examples with syntax highlighting
+4. **✅ Uses** - Practical applications and scenarios
+5. **🔑 Key Takeaways** - Important points to remember
+
+#### 🐛 Comprehensive Error Debugging
+- **60+ Error Types** across all major languages
+- **15+ Supported Languages**: Python, JavaScript, TypeScript, Java, C++, C, C#, Go, Rust, PHP, Ruby, Swift, Kotlin, SQL, HTML/CSS
+- **Intelligent Error Analysis**:
   - Automatic language detection
   - Error pattern matching
-  - Code issue analysis (syntax, null checks, bounds, type mismatches)
-  - Step-by-step debugging guidance
-- **Explain code snippets** in any language
-- **Debug errors** with intelligent error analysis
-- **Learn programming concepts** (recursion, OOP, async, algorithms, etc.)
-- **Code templates** for common patterns
-- **Complexity analysis** (loops, conditionals, lines of code)
-- **Syntax highlighting** in chat
-- **Language-specific debugging tools** suggestions
+  - Syntax error identification
+  - Null/undefined checks
+  - Type mismatch detection
+  - Array bounds checking
+- **Step-by-step debugging guidance** with code fixes
+- **Language-specific tool suggestions** (debuggers, linters)
 
-### ⏰ Task Management
-- Natural language reminders: "Remind me to call John tomorrow at 3pm"
-- Todo lists with priorities: "Add todo: finish project #work [high]"
-- Categories with hashtags (#work, #personal, #school)
-- View/complete/delete tasks
-- Task summary overview
-- Persistent storage across sessions
+#### 📚 Additional Coding Features
+- **Code Explanation** - Understand any code snippet in plain English
+- **Template Generation** - Common patterns (loops, functions, classes)
+- **Complexity Analysis** - Understand your code's structure
+- **Multi-language Support** - Consistent experience across all languages
 
-### 🎓 Proactive Learning (NEW!)
-- AI asks strategic questions to learn about you
-- 25 questions across 5 categories:
-  - Personal (name, location, interests)
-  - Preferences (communication style)
-  - Goals (career, learning)
-  - Workflow (habits, routines)
-  - Feedback (improvements)
-- Smart timing: 30% chance after 5+ messages
-- Max 2 questions per day, 5min intervals
-- Enable/disable anytime
-- View learning summary
+### 🧠 Intelligent Memory System
 
-### 🎨 Modern UI Features
-- Settings panel (gear icon)
-- Help & guide panel (? icon)
-- Keyboard shortcuts (Ctrl+K, Ctrl+/)
-- Code syntax highlighting
-- Typing indicator
-- Toast notifications
-- Quick suggestion buttons
-- Export conversations
-- Dark theme optimized
+YAAN learns and remembers information about you across conversations:
 
-## 📚 Usage Examples
+**What YAAN Remembers:**
+- 👤 **Personal Information** - Name, location, occupation
+- 💬 **Communication Preferences** - Detailed vs concise, formal vs casual
+- 🎯 **Interests & Hobbies** - Topics you discuss frequently
+- 🎓 **Learning Goals** - Career aspirations, skills to learn
+- 🔧 **Workflow & Habits** - Work patterns, routines
 
-### Memory & Personalization
+**Memory Commands:**
+- "What do you know about me?" - View all stored information
+- "Clear my memory" - Reset all data
+- "Forget about [topic]" - Remove specific information
+
+**Privacy First:** All data stored locally in SQLite, no external API calls.
+
+### ⏰ Smart Task Management
+
+Natural language task creation with intelligent parsing:
+
+**Features:**
+- 📅 **Smart Date Parsing** - "tomorrow", "next Friday", "in 2 hours"
+- 🏷️ **Categories** - Use hashtags (#work, #personal, #school)
+- ⚡ **Priority Levels** - [high], [medium], [low]
+- ✅ **Todo Lists** - Track tasks with completion status
+- 🔔 **Reminders** - Time-based notifications
+
+**Examples:**
 ```
-You: "My name is John and I live in New York"
-YAAN: ✅ I'll remember that!
+"Remind me to call John tomorrow at 3pm #personal"
+"Add todo: finish project report #work [high]"
+"Show my reminders"
+"Complete todo 1"
+```
+
+### 🎓 Proactive Learning Engine
+
+YAAN proactively asks questions to understand you better:
+
+**Smart Learning System:**
+- 25 strategic questions across 5 categories
+- 30% chance to ask after 5+ messages
+- Max 2 questions per day, 5-minute intervals
+- Enable/disable anytime with "stop asking questions"
+- View what YAAN has learned with "learning summary"
+
+**Question Categories:**
+1. Personal - Name, location, interests
+2. Preferences - Communication style, response format
+3. Goals - Career objectives, learning targets
+4. Workflow - Habits, routines, work patterns
+5. Feedback - Improvements, feature requests
+
+### 🎨 Modern Web Interface
+
+Beautiful, responsive UI with powerful features:
+
+**UI Features:**
+- ⚙️ **Settings Panel** - Configure preferences (gear icon)
+- ❓ **Help & Guide** - Interactive help system (? icon)
+- ⌨️ **Keyboard Shortcuts** - Ctrl+K (clear), Ctrl+/ (help)
+- 🎨 **Code Highlighting** - Syntax highlighting with Highlight.js
+- 💬 **Typing Indicator** - Real-time feedback
+- 🔔 **Toast Notifications** - Success/error messages
+- 💡 **Quick Suggestions** - One-click command buttons
+- 📤 **Export Conversations** - Save chat history
+- 🌙 **Dark Theme** - Optimized for long sessions
+
+
+
+## � Usage Examples
+
+### 🌟 Structured Concept Explanations
+
+**Input:** `What is dynamic programming?`
+
+**YAAN Output:**
+```
+📖 DEFINITION
+Dynamic programming is a method for solving complex problems by breaking them 
+down into simpler overlapping subproblems and storing their solutions.
+
+🎯 USE CASE
+When you have problems with overlapping subproblems and optimal substructure
+(like Fibonacci, shortest path, longest common subsequence).
+
+💻 SYNTAX
+# Memoization (Top-Down)
+def fib_memo(n, memo={}):
+    if n in memo: return memo[n]
+    if n <= 1: return n
+    memo[n] = fib_memo(n-1, memo) + fib_memo(n-2, memo)
+    return memo[n]
+
+# Tabulation (Bottom-Up)
+def fib_tab(n):
+    dp = [0] * (n + 1)
+    dp[1] = 1
+    for i in range(2, n + 1):
+        dp[i] = dp[i-1] + dp[i-2]
+    return dp[n]
+
+✅ USES
+• Optimization problems (knapsack, coin change)
+• Pathfinding algorithms (shortest path)
+• String problems (edit distance, LCS)
+• Game theory (min-max strategies)
+
+🔑 KEY TAKEAWAYS
+• Reduces time complexity by avoiding redundant calculations
+• Two approaches: memoization (recursive) and tabulation (iterative)
+• Time-space tradeoff: uses memory to save computation time
+```
+
+---
+
+### 💻 Code Explanation
+
+**Input:** `Explain this code: def factorial(n): return 1 if n <= 1 else n * factorial(n-1)`
+
+**YAAN Output:**
+```
+This is a recursive function that calculates factorial:
+
+1. Base case: Returns 1 when n <= 1
+2. Recursive case: Multiplies n by factorial(n-1)
+3. Works by breaking problem down to smaller subproblems
+
+Example: factorial(5)
+→ 5 * factorial(4)
+→ 5 * 4 * factorial(3)
+→ 5 * 4 * 3 * 2 * 1 = 120
+
+Time Complexity: O(n)
+Space Complexity: O(n) due to call stack
+```
+
+---
+
+### 🐛 Error Debugging
+
+**Input:** 
+```
+Debug this error:
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+
+Code:
+x = 5
+y = "10"
+result = x + y
+```
+
+**YAAN Output:**
+```
+## 🐛 Debug Analysis
+
+**Error Type:** TypeError (Python)
+**Issue:** Cannot use + operator between int and str
+
+**What's Wrong:**
+You're trying to add a number (5) and a string ("10"). Python doesn't
+know if you want mathematical addition or string concatenation.
+
+**Potential Issues:**
+✗ Mixing incompatible data types
+✗ Missing type conversion
+
+**Solutions:**
+
+1️⃣ For String Concatenation:
+result = str(x) + y  # "510"
+
+2️⃣ For Mathematical Addition:
+result = x + int(y)  # 15
+
+3️⃣ Use f-strings (recommended):
+result = f"{x}{y}"  # "510"
+
+**Best Practice:** Always convert types explicitly before operations.
+
+**Debugging Tools:** Use type() to check variable types: print(type(x), type(y))
+
+Detected Language: PYTHON
+```
+
+---
+
+### 🧠 Memory & Personalization
+
+**Conversation:**
+```
+You: "My name is Alex and I work as a software engineer in Seattle"
+YAAN: ✅ Got it! I'll remember that you're Alex, a software engineer in Seattle.
+
+You: "I prefer concise explanations"
+YAAN: ✅ Noted! I'll keep my responses brief.
 
 You: "What do you know about me?"
 YAAN: Here's what I know about you:
-      - Name: John
-      - Location: New York
+      👤 Name: Alex
+      💼 Occupation: Software engineer
+      📍 Location: Seattle
+      💬 Communication: Prefers concise explanations
 ```
 
-### Coding Help
-```
-You: "explain this code: def fibonacci(n): return n if n <= 1 else fibonacci(n-1) + fibonacci(n-2)"
-YAAN: [Detailed explanation of recursive Fibonacci function]
+---
 
-You: "what is polymorphism in C++?"
-YAAN: [Comprehensive explanation with examples]
-```
+### ⏰ Task Management
 
-### Debug Any Error (15+ Languages)
+**Natural Language Tasks:**
 ```
-You: "I'm getting: TypeError: unsupported operand type(s) for +: 'int' and 'str'
-      Code: x = 5; y = '10'; result = x + y"
-
-YAAN: ## 🐛 Debug Analysis
-      
-      TypeError (Python) - Wrong data type operation. 
-      Can't add string + integer directly.
-      
-      Potential Issues: Mixing strings and numbers
-      
-      Fix: Use str(x) + y for concatenation 
-           OR x + int(y) for math
-      
-      Detected language: PYTHON
-```
-
-### Task Management
-```
-You: "remind me to submit report tomorrow at 5pm #work"
-YAAN: ✅ Reminder set: Submit report
+You: "Remind me to submit the project report tomorrow at 5pm #work [high]"
+YAAN: ✅ Reminder created successfully!
+      📋 Task: Submit the project report
       📅 Due: Tomorrow at 5:00 PM
       🏷️ Category: work
+      ⚡ Priority: HIGH
 
-You: "show my todos"
-YAAN: [Lists all todos with priorities and categories]
+You: "Add todo: buy groceries #personal"
+YAAN: ✅ Todo added!
+
+You: "Show my tasks"
+YAAN: 📋 Your Reminders & Todos
+      
+      ⏰ REMINDERS:
+      1. [HIGH] Submit project report (Tomorrow, 5:00 PM) #work
+      
+      ✅ TODOS:
+      1. Buy groceries #personal
 ```
 
-### Proactive Learning
+---
+
+### 🎓 Proactive Learning
+
+**YAAN asks questions over time:**
 ```
-YAAN: "I'd love to learn more about you! What's your preferred communication style - detailed or concise?"
-You: "I prefer concise responses"
-YAAN: ✅ Thanks! I'll keep my responses brief and to the point.
+YAAN: "I'd love to learn more about you! What programming languages do you 
+       use most often?"
+You: "Mainly Python and JavaScript"
+YAAN: ✅ Thanks for sharing! I'll remember that.
+
+[Later in conversation...]
+
+YAAN: "What's your preferred communication style - detailed explanations 
+       or brief summaries?"
+You: "Brief summaries please"
+YAAN: ✅ Perfect! I'll keep things concise.
 ```
+
+
+
+## ⌨️ Commands Reference
+
+### 💻 Coding Commands
+| Command | Example |
+|---------|---------|
+| Structured explanations | "What is recursion?", "Explain polymorphism" |
+| Concept learning | "What is async/await?", "Explain OOP" |
+| Code explanation | "Explain this code: [code]" |
+| Error debugging | "Debug this error: [error]" |
+| Fix errors | "Fix this: [error + code]" |
+| How-to queries | "How do I sort an array in Python?" |
+| Templates | "Show me a Python class template" |
+
+**Supported Languages:** Python, JavaScript, TypeScript, Java, C++, C, C#, Go, Rust, PHP, Ruby, Swift, Kotlin, SQL, HTML, CSS
+
+### 🧠 Memory Commands
+| Command | Description |
+|---------|-------------|
+| `What do you know about me?` | View all stored information |
+| `Clear my memory` | Reset all data |
+| `Forget about [topic]` | Remove specific information |
+
+### ⏰ Task Commands
+| Command | Example |
+|---------|---------|
+| Create reminder | `Remind me to [task] [when]` |
+| Add todo | `Add todo: [task] #[category] [priority]` |
+| View tasks | `Show my reminders`, `Show my todos` |
+| Complete task | `Complete todo 1` |
+| Delete task | `Delete reminder 2` |
+| Task overview | `Task summary` |
+
+**Priorities:** `[high]`, `[medium]`, `[low]`  
+**Categories:** Use hashtags like `#work`, `#personal`, `#school`
+
+### 🎓 Learning Commands
+| Command | Description |
+|---------|-------------|
+| `Learning summary` | View what YAAN has learned |
+| `Stop asking questions` | Disable proactive learning |
+| `Enable learning questions` | Re-enable learning mode |
+
+### 🔧 General Commands
+| Command | Description |
+|---------|-------------|
+| `Help` | Show help guide |
+| `What can you do?` | List all capabilities |
+| `What time is it?` | Current time |
+| `Calculate [expression]` | Math calculations |
+| `Tell me a joke` | Get a random joke |
+
+---
 
 ## ⌨️ Keyboard Shortcuts
 
 | Shortcut | Action |
 |----------|--------|
 | `Enter` | Send message |
-| `Ctrl+K` | Clear chat |
-| `Ctrl+/` | Toggle help |
-| `Esc` | Close panels |
+| `Shift + Enter` | New line in input |
+| `Ctrl + K` | Clear chat history |
+| `Ctrl + /` | Toggle help panel |
+| `Esc` | Close open panels |
 
-## 🔧 Commands Reference
 
-### Memory Commands
-- "What do you know about me?"
-- "Clear my memory"
-- "Forget about [topic]"
-
-### Coding Commands
-- "Explain this code: [code]"
-- "What is [concept]?" (recursion, OOP, async, etc.)
-- "Debug this error: [error message]"  
-- "Fix this error: [error + code]"
-- "Why am I getting [error type]?"
-- "How do I [task] in [language]?"
-- Supported: Python, JavaScript, TypeScript, Java, C++, C, C#, Go, Rust, PHP, Ruby, Swift, Kotlin, SQL, HTML, CSS
-
-### Task Commands
-- "Remind me to [task] [when]"
-- "Add todo: [task] #[category] [priority]"
-- "Show my reminders/todos"
-- "Complete todo [number]"
-- "Delete reminder [number]"
-- "Task summary"
-
-### Learning Commands
-- "Learning summary"
-- "Stop asking questions"
-- "Enable learning questions"
-
-### General Commands
-- "What time is it?"
-- "Calculate [expression]"
-- "Tell me a joke"
-- "Help" or "What can you do?"
 
 ## 🏗️ Architecture
 
 ```
 YAAN/
 ├── backend/
-│   ├── core/              # Server & configuration
-│   ├── nlp/               # AI engine, command processor
-│   │   ├── ai_engine.py           # Main AI logic
-│   │   ├── command_processor.py   # Intent matching (26 intents)
-│   │   ├── coding_assistant.py    # Coding help
-│   │   ├── reminder_system.py     # Task management
-│   │   └── proactive_learning.py  # Learning system
-│   ├── user/              # Memory & profile
-│   ├── static/            # Web UI
-│   └── data/              # SQLite databases
-├── docs/                  # Documentation
-└── PROJECT_STATUS.md      # Development tracking
+│   ├── main.py                    # FastAPI server & WebSocket handler
+│   ├── core/
+│   │   ├── server.py              # Server configuration
+│   │   └── config.py              # System settings
+│   ├── nlp/
+│   │   ├── ai_engine.py           # Main AI logic & response generator
+│   │   ├── command_processor.py   # Intent matching (27 intents)
+│   │   ├── coding_assistant.py    # Structured explanations & debugging
+│   │   ├── reminder_system.py     # Task & reminder management
+│   │   ├── proactive_learning.py  # Question engine
+│   │   └── error_database.py      # 400+ common errors database
+│   ├── user/
+│   │   ├── memory_manager.py      # User profile & memory
+│   │   └── user_profile.py        # Profile data model
+│   ├── static/
+│   │   ├── index.html             # Main UI
+│   │   ├── styles.css             # Responsive design
+│   │   └── app.js                 # WebSocket client & UI logic
+│   └── data/                      # SQLite databases
+│       ├── user_profile.db        # Memory & preferences
+│       ├── reminders.db           # Tasks & todos
+│       ├── learning.db            # Learning Q&A
+│       └── debug_errors.db        # Error patterns
+├── docs/                          # Documentation
+├── tests/                         # Test suites
+├── PROJECT_STATUS.md              # Development tracking
+├── V2_ROADMAP.md                  # Future plans
+└── README.md                      # This file
 ```
 
-## 🗄️ Databases
+### 🔄 How It Works
 
-YAAN uses 4 SQLite databases:
-- `user_profile.db` - Memory and preferences
-- `reminders.db` - Tasks and todos
-- `learning.db` - Questions and answers
-- `debug_errors.db` - Common coding errors (400+)
+1. **User Input** → WebSocket connection sends message to backend
+2. **Intent Matching** → Command processor identifies user intent (27 patterns)
+3. **AI Processing** → Appropriate module handles request:
+   - `coding_assistant.py` → Code explanations & debugging
+   - `memory_manager.py` → Store/retrieve user information
+   - `reminder_system.py` → Task management
+   - `proactive_learning.py` → Ask strategic questions
+4. **Response Generation** → Format and send response with Markdown/code
+5. **UI Rendering** → Display with syntax highlighting & formatting
 
-## 📊 Project Stats
 
-- **27 Intents** - Command recognition patterns (added debug_error)
-- **45+ Features** - Fully implemented
-- **6500+ Lines** - Production code
-- **4 Databases** - SQLite storage
-- **15+ Languages** - Comprehensive coding support
-- **60+ Error Types** - Across all major languages
-- **90%+ Test Coverage** - Comprehensive testing
+
+## 🗄️ Data Storage
+
+YAAN uses **4 SQLite databases** for persistent storage:
+
+| Database | Purpose | Tables |
+|----------|---------|--------|
+| `user_profile.db` | User memory & preferences | profiles, memories |
+| `reminders.db` | Tasks & todos | reminders, todos |
+| `learning.db` | Questions & answers | questions, answers, asked_questions |
+| `debug_errors.db` | Common coding errors | errors (400+ patterns) |
+
+**Why SQLite?**
+- ✅ Zero configuration required
+- ✅ Serverless and self-contained
+- ✅ ACID-compliant transactions
+- ✅ Cross-platform compatibility
+- ✅ Perfect for single-user applications
+
+All data is stored locally on your machine - **no cloud, no external APIs**.
+
+---
+
+## 📊 Project Stats (v1.0)
+
+<div align="center">
+
+| Metric | Count |
+|--------|-------|
+| **Total Code Lines** | 7,700+ |
+| **Features Implemented** | 46+ |
+| **Intent Patterns** | 27 |
+| **Programming Languages Supported** | 15+ |
+| **Error Types Recognized** | 60+ |
+| **Databases** | 4 |
+| **Common Errors in DB** | 400+ |
+| **Test Coverage** | 90%+ |
+| **Documentation Files** | 10+ |
+
+</div>
+
+### 🏆 Production Ready
+- ✅ Stable v1.0 release on GitHub
+- ✅ Comprehensive documentation
+- ✅ Extensive testing & debugging
+- ✅ Real-world usage validated
+- ✅ Performance optimized
+
+
 
 ## 🛠️ Technology Stack
 
 ### Backend
-- **Python 3.12** - Core language
-- **FastAPI** - Web framework
-- **WebSocket** - Real-time communication
-- **SQLite** - Data persistence
-- **Regex NLP** - Pattern matching
+- **Python 3.12** - Core programming language
+- **FastAPI** - Modern async web framework
+- **WebSocket** - Real-time bidirectional communication
+- **SQLite3** - Embedded database (4 databases)
+- **Regex NLP** - Pattern-based intent matching (27 intents)
 
-### Frontend
-- **HTML5/CSS3/JavaScript** - Web interface
-- **Highlight.js** - Code syntax highlighting
-- **Web Speech API** - Voice capabilities (future)
+### Frontend  
+- **HTML5/CSS3** - Modern web standards
+- **Vanilla JavaScript** - No framework dependencies
+- **Highlight.js** - Syntax highlighting for 15+ languages
+- **Responsive Design** - Works on all screen sizes
+- **WebSocket API** - Real-time messaging
+
+### Development
+- **Git** - Version control
+- **GitHub** - Repository hosting
+- **pytest** - Testing framework (90%+ coverage)
+- **VS Code** - Primary development environment
+
+---
 
 ## 📖 Documentation
 
-- [QUICKSTART.md](QUICKSTART.md) - Get started in 5 minutes
-- [PROJECT_STATUS.md](PROJECT_STATUS.md) - Development progress
-- [MEMORY_GUIDE.md](MEMORY_GUIDE.md) - Memory system details
-- [GETTING_STARTED.md](GETTING_STARTED.md) - Detailed setup
-- [ROADMAP.md](ROADMAP.md) - Future plans
+| Document | Description |
+|----------|-------------|
+| [README.md](README.md) | Main documentation (this file) |
+| [DEPLOYMENT.md](DEPLOYMENT.md) | Deployment guide for all platforms |
+| [PROJECT_STATUS.md](PROJECT_STATUS.md) | Development progress & v1.0 status |
+| [V2_ROADMAP.md](V2_ROADMAP.md) | Future plans & v2.0 features |
+| [QUICKSTART.md](QUICKSTART.md) | Get started in 5 minutes |
+| [GETTING_STARTED.md](GETTING_STARTED.md) | Detailed setup guide |
+| [MEMORY_GUIDE.md](MEMORY_GUIDE.md) | Memory system details |
 
-## 🔄 Development Workflow
+---
 
-### Multi-System Development
-This project uses [PROJECT_STATUS.md](PROJECT_STATUS.md) for tracking work across multiple development systems.
+## 🚀 What's Next? (v2.0 Roadmap)
+
+YAAN v2.0 is planned with major new features:
+
+### 🌟 Flagship Feature: LeetCode Integration
+- 500+ coding problems with solutions
+- 20+ topics (Array, DP, Trees, Graphs, etc.)
+- 15+ problem patterns (Two Pointers, Sliding Window, etc.)
+- Daily challenge system
+- Progress tracking & analytics
+- Multi-language code generation
+
+### 🎤 Additional Features
+- Voice mode with Web Speech API
+- Advanced learning system with spaced repetition
+- Collaboration features (share solutions, compete)
+- Enhanced pattern recognition
+- Performance optimizations
+- Extended language support
+
+**Timeline:** 10 weeks (Feb 25 - May 1, 2026)  
+**See:** [V2_ROADMAP.md](V2_ROADMAP.md) for complete specifications
+
+
+
+## � Development & Testing
 
 ### Running Tests
 ```bash
+# Navigate to backend
 cd backend
+
+# Run all tests
 python tests/test_intent_matching.py
 python tests/test_coding_and_reminders.py
+
+# Or run specific test
+pytest tests/test_memory.py -v
 ```
 
-### Making Changes
-1. Update code
-2. Run tests
-3. Update PROJECT_STATUS.md
-4. Commit with descriptive message
-5. Push to GitHub
+### Development Workflow
+1. **Make Changes** - Edit code in your preferred editor
+2. **Test Locally** - Run test suite to verify changes
+3. **Update Docs** - Keep PROJECT_STATUS.md current
+4. **Commit** - Use descriptive commit messages
+5. **Push** - Sync with GitHub repository
 
-## 🚀 Planned Features (v1.1+)
+### Multi-System Development
+YAAN uses [PROJECT_STATUS.md](PROJECT_STATUS.md) to track development across multiple machines. Check this file for current progress and pending tasks.
 
-- [ ] Full voice mode (Web Speech API)
-- [ ] Weather API integration
-- [ ] Desktop notifications
-- [ ] Search conversation history
-- [ ] Recurring reminders
-- [ ] Theme customization
-- [ ] Code snippet library
-- [ ] Multi-language UI support
+### Code Structure
+- Keep modules focused and single-purpose
+- Follow Python PEP 8 style guidelines
+- Add docstrings to all functions
+- Update tests when adding features
+- Document breaking changes
+
+---
 
 ## 🔐 Privacy & Security
 
-- ✅ All data stored locally
-- ✅ No external API calls
-- ✅ SQLite encryption ready
-- ✅ Open source code
-- ✅ Full user control
+**Your Data, Your Control**
+
+- ✅ **100% Local Storage** - All data stored in SQLite on your machine
+- ✅ **No Cloud Services** - Zero external API calls or data transmission
+- ✅ **No Telemetry** - No usage tracking or analytics
+- ✅ **Open Source** - Full code transparency on GitHub
+- ✅ **Encryption Ready** - SQLite supports encryption extensions
+- ✅ **User Control** - Clear memory anytime with one command
+
+**What YAAN Never Does:**
+- ❌ Send your data to external servers
+- ❌ Track your usage or behavior
+- ❌ Require registration or login
+- ❌ Connect to third-party APIs
+- ❌ Store data outside your machine
+
+---
 
 ## 📝 License
 
-MIT License - Free to use, modify, and distribute
+**MIT License** - Copyright © 2026 Yash Siwach
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software.
+
+See [LICENSE](LICENSE) file for full terms.
+
+---
 
 ## 🤝 Contributing
 
-This is a personal learning project, but suggestions and feedback are welcome!
+YAAN is a personal learning project, but contributions are welcome!
+
+**Ways to Contribute:**
+- 🐛 Report bugs via GitHub Issues
+- 💡 Suggest features or improvements  
+- 📖 Improve documentation
+- 🧪 Add test cases
+- ⭐ Star the repository
+
+**Before Contributing:**
+1. Check existing issues and PRs
+2. Open an issue to discuss major changes
+3. Follow existing code style
+4. Add tests for new features
+5. Update documentation
+
+---
+
+## 🔗 Links & Resources
+
+- **GitHub Repository:** [github.com/yashsiwacha/YAAN](https://github.com/yashsiwacha/YAAN)
+- **Latest Release:** [v1.0.0](https://github.com/yashsiwacha/YAAN/releases/tag/v1.0.0)
+- **Stable Branch:** [v1.0](https://github.com/yashsiwacha/YAAN/tree/v1.0)
+- **Development Branch:** [main](https://github.com/yashsiwacha/YAAN/tree/main)
+- **Issues:** [Report bugs or request features](https://github.com/yashsiwacha/YAAN/issues)
+
+---
 
 ## 👨‍💻 Author
 
 **Yash Siwach**  
-GitHub: [@yashsiwacha](https://github.com/yashsiwacha)  
-Project: [YAAN](https://github.com/yashsiwacha/YAAN)
+Software Engineer | AI Enthusiast
+
+- GitHub: [@yashsiwacha](https://github.com/yashsiwacha)
+- Project: [YAAN - Your AI Assistant Network](https://github.com/yashsiwacha/YAAN)
 
 ---
 
-**Version 1.0** | February 2026 | Made with ❤️ and ☕
+## 🙏 Acknowledgments
+
+Built with passion using:
+- [FastAPI](https://fastapi.tiangolo.com/) - Modern Python web framework
+- [SQLite](https://www.sqlite.org/) - Embedded SQL database
+- [Highlight.js](https://highlightjs.org/) - Syntax highlighting library
+
+Special thanks to the open-source community for excellent tools and documentation.
+
+---
+
+<div align="center">
+
+**YAAN v1.0.0** | February 2026 | Made with ❤️ and ☕
+
+[![GitHub](https://img.shields.io/badge/GitHub-yashsiwacha/YAAN-blue?logo=github)](https://github.com/yashsiwacha/YAAN)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
+[![Status](https://img.shields.io/badge/Status-Stable-success.svg)](https://github.com/yashsiwacha/YAAN/releases)
+
+**[⬆ Back to Top](#yaan---your-ai-assistant-network)**
+
+</div>
