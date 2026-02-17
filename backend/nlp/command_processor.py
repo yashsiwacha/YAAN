@@ -622,7 +622,11 @@ Just speak naturally, and I'll do my best to understand and help!"""
             
             if concept:
                 explanation = self.coding_assistant.generate_explanation(concept)
-                return explanation
+                if explanation:
+                    return explanation
+                else:
+                    # Concept not in database, provide general response
+                    return f"I don't have a detailed explanation for '{concept}' yet, but I can help with:\n\n• Variables, functions, loops, arrays\n• Classes, objects, recursion\n• Algorithms, APIs, async programming\n• Specific programming languages\n• Code debugging and optimization\n\nTry asking about these topics, or share some code for me to explain!"
             else:
                 return "What programming concept would you like me to explain? For example, try asking 'explain loops' or 'what is recursion?'"
                 

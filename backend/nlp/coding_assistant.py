@@ -563,6 +563,8 @@ class CodingAssistant:
             
             "array": "An **array** (or list) is an ordered collection of items. Each item has an index (position). Example: `[1, 2, 3, 4]` - you can access items by their position.",
             
+            "list": "A **list** (or array) is an ordered, mutable collection of items. You can add, remove, or modify elements. Example: `[1, 2, 3]` - very flexible data structure!",
+            
             "object": "An **object** stores data as key-value pairs. It's like a dictionary where each piece of data has a name (key). Example: `{name: 'John', age: 30}`",
             
             "recursion": "**Recursion** is when a function calls itself. Useful for problems that can be broken into smaller similar problems. Must have a base case to stop!",
@@ -574,6 +576,38 @@ class CodingAssistant:
             "class": "A **class** is a blueprint for creating objects. It defines properties (attributes) and behaviors (methods) that objects of that type will have.",
             
             "async": "**Asynchronous** programming allows code to run without blocking. Operations happen in the background while other code continues executing. Essential for handling I/O operations efficiently.",
+            
+            "dynamic programming": "**Dynamic Programming (DP)** is an optimization technique that solves complex problems by breaking them into simpler subproblems. Key principles:\n\n• **Memoization**: Store results of expensive function calls\n• **Optimal substructure**: Optimal solution contains optimal solutions to subproblems\n• **Overlapping subproblems**: Same subproblems are solved multiple times\n\nCommon examples: Fibonacci sequence, knapsack problem, shortest path algorithms.",
+            
+            "oop": "**Object-Oriented Programming (OOP)** organizes code around objects rather than functions. Core principles:\n• **Encapsulation**: Bundle data and methods\n• **Inheritance**: Create new classes from existing ones\n• **Polymorphism**: Objects of different types respond to the same method\n• **Abstraction**: Hide complex implementation details",
+            
+            "inheritance": "**Inheritance** lets a class (child) inherit properties and methods from another class (parent). It promotes code reuse - child classes get all parent functionality and can add their own.",
+            
+            "polymorphism": "**Polymorphism** means 'many forms' - different classes can be treated the same way through a common interface. Example: Different shapes (circle, square) all have a `draw()` method.",
+            
+            "encapsulation": "**Encapsulation** bundles data and the methods that operate on that data into a single unit (class). It hides internal details and protects data from unauthorized access.",
+            
+            "abstraction": "**Abstraction** hides complex implementation details and shows only essential features. Like driving a car - you use the steering wheel without knowing how the engine works!",
+            
+            "data structure": "A **data structure** organizes and stores data efficiently. Different structures serve different purposes:\n• Arrays: Sequential access\n• Linked Lists: Dynamic size\n• Trees: Hierarchical data\n• Hash Tables: Fast lookups",
+            
+            "stack": "A **stack** is a Last-In-First-Out (LIFO) data structure. Like a stack of plates - you add/remove from the top. Operations: push (add), pop (remove), peek (view top).",
+            
+            "queue": "A **queue** is a First-In-First-Out (FIFO) data structure. Like a line at a store - first person in is first served. Operations: enqueue (add), dequeue (remove).",
+            
+            "linked list": "A **linked list** is a sequence of nodes where each node contains data and a reference to the next node. Unlike arrays, elements aren't stored contiguously in memory.",
+            
+            "tree": "A **tree** is a hierarchical data structure with a root node and child nodes. Each node can have multiple children. Common types: Binary Tree, BST, AVL Tree, Red-Black Tree.",
+            
+            "graph": "A **graph** consists of vertices (nodes) connected by edges. Used to represent networks, relationships, maps. Types: Directed/Undirected, Weighted/Unweighted.",
+            
+            "hash table": "A **hash table** (or hash map) stores key-value pairs using a hash function. Provides O(1) average time for lookups, inserts, and deletes. Very efficient!",
+            
+            "big o": "**Big O notation** describes algorithm efficiency - how runtime/memory grows with input size:\n• O(1): Constant\n• O(log n): Logarithmic\n• O(n): Linear\n• O(n²): Quadratic\n• O(2ⁿ): Exponential",
+            
+            "time complexity": "**Time complexity** measures how an algorithm's runtime grows with input size. Expressed in Big O notation. Lower is better: O(1) < O(log n) < O(n) < O(n²) < O(2ⁿ).",
+            
+            "space complexity": "**Space complexity** measures how much memory an algorithm uses relative to input size. Important for large datasets. Trade-off: Sometimes using more space makes algorithms faster.",
         }
         
         for key, explanation in concepts.items():
