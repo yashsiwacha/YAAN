@@ -329,6 +329,101 @@ YAAN:
 
 ---
 
+### 5. Multi-Device Sync 📱💻
+
+**Priority:** MEDIUM | **Status:** 📝 Design Phase
+
+#### Overview
+Enable seamless synchronization of YAAN across multiple devices (phone, laptop, tablet) when connected to the same WiFi network. All conversation history, user preferences, reminders, and learning progress stay in sync in real-time.
+
+#### Features
+- [ ] Local network server discovery
+- [ ] Real-time sync via WebSocket
+- [ ] Cross-device conversation history
+- [ ] Shared user profile & memory
+- [ ] Synced reminders & todos
+- [ ] Learning progress sync
+- [ ] Conflict resolution strategy
+- [ ] Optional authentication/PIN code
+- [ ] Device management interface
+- [ ] Sync status indicators
+- [ ] Offline mode with sync on reconnect
+- [ ] QR code pairing for easy device setup
+
+#### Technical Implementation
+
+**Server Configuration:**
+```python
+# Bind to all network interfaces instead of localhost
+uvicorn.run(
+    app, 
+    host="0.0.0.0",  # Instead of 127.0.0.1
+    port=8000
+)
+```
+
+**Network Discovery:**
+- mDNS/Bonjour for automatic device discovery
+- Broadcast UDP packets for fallback
+- Display server IP on UI for manual connection
+
+**Database Sync:**
+- SQLite databases already support this
+- All devices connect to same server
+- WebSocket ensures real-time updates
+- No cloud services needed - pure local sync
+
+**Security:**
+```python
+# Optional PIN/password protection
+CREATE TABLE devices (
+    id TEXT PRIMARY KEY,
+    device_name TEXT NOT NULL,
+    device_type TEXT,  -- 'mobile', 'desktop', 'tablet'
+    last_seen TIMESTAMP,
+    authorized BOOLEAN DEFAULT FALSE,
+    pin_hash TEXT
+);
+```
+
+**UI Enhancements:**
+- Network indicator showing connected devices
+- "Pair New Device" button with QR code
+- Device list in settings
+- "Disconnect All" option
+- Sync status (syncing/synced/offline)
+
+#### User Experience
+
+**Desktop Setup:**
+1. Start YAAN server
+2. UI shows: "Server running at: http://192.168.1.100:8000"
+3. QR code displayed for mobile pairing
+
+**Mobile/Tablet Setup:**
+1. Open YAAN web interface
+2. Scan QR code OR enter IP address
+3. Enter optional PIN if security enabled
+4. Instant sync of all data
+
+**Real-Time Sync:**
+- Message sent on phone → instantly appears on laptop
+- Reminder added on laptop → notification on all devices
+- Memory learned on one device → available everywhere
+
+#### Benefits
+✅ Work across devices seamlessly  
+✅ No cloud services - complete privacy  
+✅ Real-time synchronization via existing WebSocket  
+✅ Simple setup with QR code pairing  
+✅ Optional security with PIN protection  
+✅ Works on local WiFi - no internet required
+
+#### Estimated Effort
+**8-12 hours** for basic implementation, 15-20 hours with security & device management
+
+---
+
 ## 🔧 Technical Improvements
 
 ### Performance
@@ -380,11 +475,14 @@ YAAN:
 - Add new NLP intents
 - Build recommendation engine
 
-### Phase 3: Voice & Learning (Week 6-7)
+### Phase 3: Voice, Learning & Multi-Device (Week 6-7)
 - Implement voice mode
 - Build learning system
 - Create progress tracking
 - Add achievements
+- **Implement multi-device sync**
+- Network discovery & QR pairing
+- Device management interface
 
 ### Phase 4: Polish & Testing (Week 8-9)
 - UI/UX improvements
