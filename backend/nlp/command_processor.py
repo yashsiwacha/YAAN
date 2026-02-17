@@ -142,6 +142,14 @@ class CommandProcessor:
                 r"(explain|analyze|review) (this )?code",
                 r"code (template|example|snippet)",
             ],
+            "debug_error": [
+                r"(debug|fix|solve) (this |my |the )?(error|bug|issue|problem)",
+                r"(error|exception|crash|bug) (in|with|on)",
+                r"(getting|got|received) (an |this )?error",
+                r"(explain|help with|fix) (this |my |the )?error",
+                r"why (is|does|am|getting)",
+                r"(syntax|type|runtime|logic|null|undefined|reference) error",
+            ],
             "code_explain": [
                 r"explain (what is |the concept of )?(\w+)",
                 r"what (is|are) (\w+)",
@@ -305,6 +313,7 @@ class CommandProcessor:
             "forget_me": lambda: self._handle_forget(),
             "code_help": lambda: self._handle_code_help(text),
             "code_explain": lambda: self._handle_code_explain(text),
+            "debug_error": lambda: self._handle_debug_error(text),
             "create_reminder": lambda: self._handle_create_reminder(text),
             "create_todo": lambda: self._handle_create_todo(text),
             "show_reminders": lambda: self._handle_show_reminders(),
@@ -414,15 +423,19 @@ class CommandProcessor:
 🧮 Math - "Calculate 25 * 4" or simple arithmetic
 😄 Entertainment - "Tell me a joke"
 
-💻 Code Help - "Explain this code: def hello()..." or "Debug my Python code"
-📚 Programming Concepts - "What is recursion?" or "Explain loops"
+💻 Code Help (15+ Languages!) - "Explain this code: def hello()..." 
+🐛 Debug Errors - "Debug this error: TypeError..." or "Fix my code"
+   Supports: Python, JavaScript, TypeScript, Java, C++, C, C#, Go, Rust, PHP, Ruby, Swift, Kotlin, SQL, HTML, CSS
+📚 Programming Concepts - "What is recursion?" or "Explain polymorphism"
 🎯 Code Templates - Request templates for functions, classes, or patterns
+🔍 Error Analysis - Share error messages and I'll explain the cause and solution
 
 ⏰ Reminders - "Remind me to call John tomorrow at 3pm"
 ✅ Todos - "Add todo: finish project #work" or "Create task: review code [high]"
 📋 Task Management - "Show my reminders", "Complete todo 1", "Task summary"
 
 🧠 Memory - I learn about you! Ask "What do you know about me?"
+🎓 Proactive Learning - I'll ask questions to understand you better (max 2/day)
 🌤️ Weather - Coming soon when online
 🚀 Open Apps - Launch applications (in development)
 
@@ -615,6 +628,65 @@ Just speak naturally, and I'll do my best to understand and help!"""
         except Exception as e:
             logger.error(f"Error explaining concept: {e}")
             return "I encountered an issue explaining that concept. Please try again."
+    
+    def _handle_debug_error(self, text: str) -> str:
+        """Handle debugging and error explanation requests"""
+        try:
+            # Extract error message and code from text
+            error_msg = text
+            code_snippet = None
+            
+            # Try to extract code blocks (markdown style)
+            code_match = re.search(r'```[\w]*\n(.*?)```', text, re.DOTALL)
+            if code_match:
+                code_snippet = code_match.group(1).strip()
+                error_msg = text.replace(code_match.group(0), '').strip()
+            
+            # If no markdown, look for lines with typical code patterns
+            elif ':' in text or '{' in text or 'def ' in text or 'function ' in text:
+                lines = text.split('\n')
+                code_lines = []
+                error_lines = []
+                
+                for line in lines:
+                    # Heuristic: lines with typical code characters are code
+                    if any(char in line for char in ['(', ')', '{', '}', ';', ':', '=']) and not line.lower().startswith(('error', 'exception', 'traceback')):
+                        code_lines.append(line)
+                    else:
+                        error_lines.append(line)
+                
+                if code_lines:
+                    code_snippet = '\n'.join(code_lines)
+                if error_lines:
+                    error_msg = '\n'.join(error_lines).strip()
+            
+            # Get debugging help from coding assistant
+            if code_snippet or any(word in text.lower() for word in ['error', 'exception', 'bug', 'crash', 'issue', 'problem', 'fail']):
+                debug_response = self.coding_assistant.debug_help(error_msg, code_snippet)
+                return debug_response
+            else:
+                return """I can help debug your code! Please share:
+
+1. **The error message** you're getting (copy-paste it)
+2. **The code** that's causing the error
+3. **What you expected** to happen
+
+**Example:**
+```
+I'm getting this error:
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+
+Code:
+x = 5
+y = "10"
+result = x + y
+```
+
+I'll analyze it and help you fix it!"""
+                
+        except Exception as e:
+            logger.error(f"Error in debug help: {e}")
+            return "I encountered an issue analyzing the error. Please share the error message and code, and I'll help you debug it."
     
     def _handle_create_reminder(self, text: str) -> str:
         """Handle reminder creation from natural language"""

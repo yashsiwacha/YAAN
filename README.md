@@ -54,13 +54,20 @@ Open your browser and navigate to: **http://localhost:8000**
 - Clear memory anytime: "Clear my memory"
 
 ### 💻 Coding Assistant
-- **5 Languages**: Python, JavaScript, Java, C++, C
-- Explain code snippets
-- Debug common errors (400+ error database)
-- Learn programming concepts
-- Code templates and examples
-- Complexity analysis
-- Syntax highlighting in chat
+- **15+ Languages**: Python, JavaScript, TypeScript, Java, C++, C, C#, Go, Rust, PHP, Ruby, Swift, Kotlin, SQL, HTML, CSS
+- **Comprehensive Debugging**: Analyze any error with detailed explanations
+  - 60+ error types across all languages
+  - Automatic language detection
+  - Error pattern matching
+  - Code issue analysis (syntax, null checks, bounds, type mismatches)
+  - Step-by-step debugging guidance
+- **Explain code snippets** in any language
+- **Debug errors** with intelligent error analysis
+- **Learn programming concepts** (recursion, OOP, async, algorithms, etc.)
+- **Code templates** for common patterns
+- **Complexity analysis** (loops, conditionals, lines of code)
+- **Syntax highlighting** in chat
+- **Language-specific debugging tools** suggestions
 
 ### ⏰ Task Management
 - Natural language reminders: "Remind me to call John tomorrow at 3pm"
@@ -116,6 +123,24 @@ You: "what is polymorphism in C++?"
 YAAN: [Comprehensive explanation with examples]
 ```
 
+### Debug Any Error (15+ Languages)
+```
+You: "I'm getting: TypeError: unsupported operand type(s) for +: 'int' and 'str'
+      Code: x = 5; y = '10'; result = x + y"
+
+YAAN: ## 🐛 Debug Analysis
+      
+      TypeError (Python) - Wrong data type operation. 
+      Can't add string + integer directly.
+      
+      Potential Issues: Mixing strings and numbers
+      
+      Fix: Use str(x) + y for concatenation 
+           OR x + int(y) for math
+      
+      Detected language: PYTHON
+```
+
 ### Task Management
 ```
 You: "remind me to submit report tomorrow at 5pm #work"
@@ -152,9 +177,12 @@ YAAN: ✅ Thanks! I'll keep my responses brief and to the point.
 
 ### Coding Commands
 - "Explain this code: [code]"
-- "What is [concept]?"
-- "Debug: [error message]"
+- "What is [concept]?" (recursion, OOP, async, etc.)
+- "Debug this error: [error message]"  
+- "Fix this error: [error + code]"
+- "Why am I getting [error type]?"
 - "How do I [task] in [language]?"
+- Supported: Python, JavaScript, TypeScript, Java, C++, C, C#, Go, Rust, PHP, Ruby, Swift, Kotlin, SQL, HTML, CSS
 
 ### Task Commands
 - "Remind me to [task] [when]"
@@ -204,11 +232,12 @@ YAAN uses 4 SQLite databases:
 
 ## 📊 Project Stats
 
-- **26 Intents** - Command recognition patterns
+- **27 Intents** - Command recognition patterns (added debug_error)
 - **45+ Features** - Fully implemented
-- **6000+ Lines** - Production code
+- **6500+ Lines** - Production code
 - **4 Databases** - SQLite storage
-- **5 Languages** - Coding support
+- **15+ Languages** - Comprehensive coding support
+- **60+ Error Types** - Across all major languages
 - **90%+ Test Coverage** - Comprehensive testing
 
 ## 🛠️ Technology Stack

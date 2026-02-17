@@ -37,6 +37,12 @@ class CodingAssistant:
                 r"\bconsole\.log\s*\(",
                 r"\.js\b",
             ],
+            "typescript": [
+                r"\binterface\s+\w+",
+                r":\s*(string|number|boolean)",
+                r"\btype\s+\w+\s*=",
+                r"\.ts\b",
+            ],
             "java": [
                 r"\bpublic\s+class\s+\w+",
                 r"\bprivate\s+\w+",
@@ -54,28 +60,155 @@ class CodingAssistant:
                 r"\bprintf\s*\(",
                 r"\.c\b",
             ],
+            "csharp": [
+                r"\busing\s+System",
+                r"\bnamespace\s+\w+",
+                r"\bConsole\.WriteLine",
+                r"\.cs\b",
+            ],
+            "go": [
+                r"\bpackage\s+\w+",
+                r"\bfunc\s+\w+\s*\(",
+                r"\bfmt\.Print",
+                r"\.go\b",
+            ],
+            "rust": [
+                r"\bfn\s+\w+\s*\(",
+                r"\blet\s+mut\s+",
+                r"println!\s*\(",
+                r"\.rs\b",
+            ],
+            "php": [
+                r"<\?php",
+                r"\$\w+\s*=",
+                r"\becho\s+",
+                r"\.php\b",
+            ],
+            "ruby": [
+                r"\bdef\s+\w+",
+                r"\bputs\s+",
+                r"\bend\b",
+                r"\.rb\b",
+            ],
+            "swift": [
+                r"\bfunc\s+\w+\s*\(",
+                r"\bvar\s+\w+",
+                r"\bprint\s*\(",
+                r"\.swift\b",
+            ],
+            "kotlin": [
+                r"\bfun\s+\w+\s*\(",
+                r"\bval\s+\w+",
+                r"\.kt\b",
+            ],
+            "sql": [
+                r"\bSELECT\s+",
+                r"\bFROM\s+\w+",
+                r"\bWHERE\s+",
+                r"\.sql\b",
+            ],
+            "html": [
+                r"<html>",
+                r"<div",
+                r"<body>",
+                r"\.html\b",
+            ],
+            "css": [
+                r"\.\w+\s*{",
+                r"#\w+\s*{",
+                r"color\s*:",
+                r"\.css\b",
+            ],
         }
     
     def _init_common_errors(self) -> Dict[str, Dict]:
         """Initialize common programming errors and solutions"""
         return {
             "python": {
-                "IndentationError": "Check your indentation. Python requires consistent spacing (use 4 spaces).",
+                "IndentationError": "Check your indentation. Python requires consistent spacing (use 4 spaces or tabs, but not both).",
                 "NameError": "Variable not defined. Make sure you've declared the variable before using it.",
-                "TypeError": "Wrong data type operation. Check if you're using the right types together.",
-                "SyntaxError": "Code syntax is incorrect. Check for missing colons, parentheses, or quotes.",
-                "IndexError": "List index out of range. Check your list boundaries.",
-                "KeyError": "Dictionary key doesn't exist. Use .get() method or check if key exists.",
+                "TypeError": "Wrong data type operation. Check if you're using compatible types (e.g., can't add string + integer).",
+                "SyntaxError": "Code syntax is incorrect. Check for missing colons, parentheses, quotes, or incorrect operators.",
+                "IndexError": "List index out of range. Check your list boundaries. Use len() to verify list size.",
+                "KeyError": "Dictionary key doesn't exist. Use .get() method or 'in' operator to check if key exists first.",
+                "AttributeError": "Object doesn't have that attribute/method. Check spelling and object type.",
+                "ValueError": "Correct type but inappropriate value. Example: int('abc') fails because 'abc' isn't a number.",
+                "ImportError": "Module not found. Install it with pip or check the module name spelling.",
+                "ZeroDivisionError": "Cannot divide by zero. Add a check: if divisor != 0 before dividing.",
+                "FileNotFoundError": "File doesn't exist. Check the file path and name are correct.",
+                "ModuleNotFoundError": "Python module not installed. Run: pip install <module-name>",
             },
             "javascript": {
-                "ReferenceError": "Variable is not defined. Declare it with let, const, or var.",
-                "TypeError": "Cannot read property of undefined. Check if object/variable exists first.",
-                "SyntaxError": "Syntax error. Check for missing semicolons, brackets, or parentheses.",
+                "ReferenceError": "Variable is not defined. Declare it with let, const, or var before using.",
+                "TypeError": "Cannot read property of undefined/null. Always check if object exists: if (obj) { ... }",
+                "SyntaxError": "Syntax error. Check for missing semicolons, brackets, parentheses, or quotes.",
+                "RangeError": "Invalid array length or number out of range. Check array operations and number values.",
+                "URIError": "URI encoding/decoding error. Check special characters in URLs.",
+                "Promise rejection": "Unhandled promise rejection. Use .catch() or try-catch with async/await.",
+                "Uncaught": "Error not caught. Wrap code in try-catch block to handle errors gracefully.",
+            },
+            "typescript": {
+                "Type error": "Type mismatch. Check your type annotations match the actual values.",
+                "Cannot find name": "Variable/type not declared. Import it or declare before use.",
+                "Property does not exist": "Accessing undefined property. Check interface/type definitions.",
+            },
+            "java": {
+                "NullPointerException": "Trying to use null object. Always check: if (obj != null) before accessing.",
+                "ArrayIndexOutOfBoundsException": "Array index invalid. Check: index < array.length",
+                "ClassNotFoundException": "Class not found in classpath. Verify imports and dependencies.",
+                "NumberFormatException": "Cannot parse string to number. Validate input before parsing.",
+                "ConcurrentModificationException": "Modifying collection while iterating. Use Iterator.remove() or CopyOnWriteArrayList.",
+                "StackOverflowError": "Infinite recursion. Ensure recursion has a proper base case.",
+            },
+            "cpp": {
+                "segmentation fault": "Invalid memory access. Check: null pointers, array bounds, deleted objects.",
+                "undefined reference": "Function/variable not found by linker. Check spelling and linking.",
+                "no matching function": "Function signature doesn't match. Check parameter types and count.",
+                "invalid conversion": "Type conversion not allowed. Use explicit cast or convert type properly.",
+                "expected ; before": "Missing semicolon. Add ; at the end of the statement.",
+            },
+            "c": {
+                "segmentation fault": "Invalid memory access. Check pointers, array bounds, and memory allocation.",
+                "undefined reference": "Symbol not found during linking. Check function declarations and definitions.",
+                "implicit declaration": "Function used before declaration. Add prototype or include header file.",
+                "format specifies type": "printf format mismatch. Use correct format specifier (%d, %s, %f, etc.).",
+            },
+            "csharp": {
+                "NullReferenceException": "Object is null. Check with: if (obj != null) or use ?. null-conditional operator.",
+                "IndexOutOfRangeException": "Array/list index out of bounds. Verify: index < collection.Count",
+                "DivideByZeroException": "Division by zero. Add check: if (divisor != 0) before dividing.",
+                "FormatException": "String format invalid. Validate input before parsing: int.TryParse().",
+            },
+            "go": {
+                "panic": "Runtime panic. Use defer recover() to handle panics gracefully.",
+                "nil pointer": "Nil pointer dereference. Check: if ptr != nil before accessing.",
+                "index out of range": "Slice/array index invalid. Verify: index < len(slice)",
+                "deadlock": "All goroutines deadlocked. Check channel operations and synchronization.",
+            },
+            "rust": {
+                "borrow checker": "Ownership/borrowing rules violated. Review Rust ownership model - only one mutable reference.",
+                "cannot move": "Value moved and reused. Either clone value or use references (&).",
+                "expected type": "Type mismatch. Rust requires exact type matching - check return types.",
+                "lifetime": "Lifetime annotation error. Ensure borrowed references are valid for required scope.",
+            },
+            "php": {
+                "Parse error": "Syntax error. Check for missing semicolons, brackets, or quotes.",
+                "Fatal error": "Fatal error occurred. Check error message for specific cause.",
+                "Undefined variable": "Variable not initialized. Define variable before using: $var = value;",
+                "Call to undefined function": "Function doesn't exist. Check spelling and include required files.",
+            },
+            "sql": {
+                "syntax error": "SQL syntax incorrect. Check keywords, commas, and query structure.",
+                "column not found": "Column name doesn't exist. Verify column names in table schema.",
+                "foreign key constraint": "Cannot insert/update due to foreign key. Check referenced table has the key.",
+                "duplicate entry": "Unique constraint violated. Value already exists in unique/primary key column.",
             },
             "general": {
-                "logic_error": "Code runs but gives wrong results. Review your algorithm step by step.",
-                "infinite_loop": "Program hangs. Check your loop conditions and ensure they can exit.",
-                "null_pointer": "Trying to access null/undefined. Always check if object exists first.",
+                "logic error": "Code runs but gives wrong results. Debug by: 1) Print intermediate values, 2) Review algorithm step-by-step, 3) Test with simple inputs.",
+                "infinite loop": "Program hangs. Check: 1) Loop condition eventually becomes false, 2) Counter increments/decrements properly, 3) Break conditions are reachable.",
+                "memory leak": "Memory usage grows. Ensure: 1) Free allocated memory, 2) Close file handles, 3) Unsubscribe from events.",
+                "race condition": "Inconsistent results with concurrent execution. Use: 1) Locks/mutexes, 2) Atomic operations, 3) Proper synchronization.",
+                "stack overflow": "Too much recursion or large local variables. Solutions: 1) Add base case to recursion, 2) Use iteration instead, 3) Reduce local variable size.",
             }
         }
     
@@ -205,33 +338,165 @@ class CodingAssistant:
         return suggestions if suggestions else ["Code looks good! Keep it clean and readable."]
     
     def debug_help(self, error_message: str, code: Optional[str] = None) -> str:
-        """Help debug an error"""
+        """Help debug an error with comprehensive analysis"""
         error_lower = error_message.lower()
         
-        # Identify error type
-        for lang, errors in self.common_errors.items():
-            for error_type, solution in errors.items():
-                if error_type.lower() in error_lower:
-                    response = f"**{error_type}**\n\n{solution}"
-                    
-                    if code:
-                        lang_detected = self.detect_language(code)
-                        if lang_detected:
-                            response += f"\n\nDetected language: {lang_detected.upper()}"
-                    
-                    return response
+        # Detect language from code if provided
+        detected_lang = None
+        if code:
+            detected_lang = self.detect_language(code)
         
-        # General debugging advice
-        return """**Debugging Tips:**
-
-1. **Read the error message carefully** - It usually tells you what went wrong and where
-2. **Check the line number** - The error location is your starting point
-3. **Print/log variables** - See what values they have at different points
-4. **Use a debugger** - Step through code line by line
-5. **Google the error** - Others have likely faced the same issue
-6. **Rubber duck debugging** - Explain your code line by line to find the issue
-
-Share the error message and relevant code, and I'll help you figure it out!"""
+        # Search for matching error patterns
+        matched_errors = []
+        
+        # Check language-specific errors first
+        for lang, errors in self.common_errors.items():
+            if lang == "general":
+                continue
+            for error_type, solution in errors.items():
+                if error_type.lower() in error_lower or any(word in error_lower for word in error_type.lower().split()):
+                    matched_errors.append((lang, error_type, solution))
+        
+        # If no specific match, check general errors
+        if not matched_errors:
+            for error_type, solution in self.common_errors.get("general", {}).items():
+                if error_type.lower().replace("_", " ") in error_lower:
+                    matched_errors.append(("general", error_type, solution))
+        
+        # Build comprehensive response
+        if matched_errors:
+            response = "## 🐛 Debug Analysis\n\n"
+            
+            for lang, error_type, solution in matched_errors[:3]:  # Top 3 matches
+                response += f"### **{error_type}**"
+                if lang != "general" and lang != detected_lang:
+                    response += f" ({lang.upper()})"
+                response += "\n\n"
+                response += f"**Solution:** {solution}\n\n"
+            
+            # Add code-specific analysis
+            if code:
+                response += "### 📝 Code Analysis:\n"
+                if detected_lang:
+                    response += f"- Detected language: **{detected_lang.upper()}**\n"
+                
+                # Analyze common issues in code
+                code_issues = self._analyze_code_issues(code, error_lower)
+                if code_issues:
+                    response += "\n**Potential Issues Found:**\n"
+                    for issue in code_issues:
+                        response += f"- {issue}\n"
+            
+            # Add debugging steps
+            response += "\n### 🔍 Debugging Steps:\n"
+            response += "1. **Locate the error** - Check line number in error message\n"
+            response += "2. **Understand the context** - What were you trying to do?\n"
+            response += "3. **Verify assumptions** - Print/log variable values\n"
+            response += "4. **Test hypothesis** - Make one change at a time\n"
+            response += "5. **Search documentation** - Check language docs for the feature\n"
+            
+            return response
+        
+        # No specific error found - provide general debugging guidance
+        return self._general_debug_guidance(error_message, code, detected_lang)
+    
+    def _analyze_code_issues(self, code: str, error_msg: str) -> List[str]:
+        """Analyze code for common issues"""
+        issues = []
+        
+        # Check for common patterns
+        if "undefined" in error_msg or "not defined" in error_msg:
+            # Look for variables that might not be defined
+            variables_used = re.findall(r'\b[a-z_]\w*\b', code)
+            if variables_used:
+                issues.append(f"Check if variables are defined before use: {', '.join(set(variables_used[:5]))}")
+        
+        if "null" in error_msg or "none" in error_msg:
+            # Check for null/None access
+            if re.search(r'\.\w+\(', code):
+                issues.append("Verify objects are not null/None before calling methods")
+        
+        if "index" in error_msg or "bounds" in error_msg:
+            # Check array/list access
+            array_accesses = re.findall(r'\w+\[\s*\d+\s*\]', code)
+            if array_accesses:
+                issues.append(f"Check array bounds for: {', '.join(set(array_accesses[:3]))}")
+        
+        if "syntax" in error_msg:
+            # Check for missing brackets/parentheses
+            open_parens = code.count('(')
+            close_parens = code.count(')')
+            if open_parens != close_parens:
+                issues.append(f"Unbalanced parentheses: {open_parens} open, {close_parens} close")
+            
+            open_brackets = code.count('[')
+            close_brackets = code.count(']')
+            if open_brackets != close_brackets:
+                issues.append(f"Unbalanced brackets: {open_brackets} open, {close_brackets} close")
+            
+            open_braces = code.count('{')
+            close_braces = code.count('}')
+            if open_braces != close_braces:
+                issues.append(f"Unbalanced braces: {open_braces} open, {close_braces} close")
+        
+        if "type" in error_msg:
+            # Check for type mismatches
+            if re.search(r'\d+\s*\+\s*["\']', code) or re.search(r'["\']​\s*\+\s*\d+', code):
+                issues.append("Mixing strings and numbers - use str() or int() to convert")
+        
+        return issues
+    
+    def _general_debug_guidance(self, error_msg: str, code: Optional[str], lang: Optional[str]) -> str:
+        """Provide general debugging guidance"""
+        response = "## 🔍 Debugging Assistance\n\n"
+        
+        if lang:
+            response += f"**Detected Language:** {lang.upper()}\n\n"
+        
+        response += f"**Error Message:**\n```\n{error_msg}\n```\n\n"
+        
+        response += "### Common Debugging Strategies:\n\n"
+        response += "**1. Read the Error Carefully**\n"
+        response += "- Error messages tell you WHAT went wrong and WHERE\n"
+        response += "- Look for: error type, line number, and description\n\n"
+        
+        response += "**2. Isolate the Problem**\n"
+        response += "- Comment out code sections to find where it breaks\n"
+        response += "- Add print statements to track execution flow\n"
+        response += "- Test with simple input first\n\n"
+        
+        response += "**3. Check Common Issues**\n"
+        response += "- Typos in variable/function names\n"
+        response += "- Missing or extra punctuation (;, }, ), ])\n"
+        response += "- Wrong indentation (Python)\n"
+        response += "- Null/undefined objects\n"
+        response += "- Array index out of bounds\n"
+        response += "- Type mismatches\n\n"
+        
+        response += "**4. Use Debugging Tools**\n"
+        if lang == "python":
+            response += "- Use `pdb` debugger: `import pdb; pdb.set_trace()`\n"
+            response += "- Add print statements: `print(f'variable = {variable}')`\n"
+        elif lang == "javascript":
+            response += "- Use browser DevTools (F12)\n"
+            response += "- Add console.log: `console.log('variable:', variable)`\n"
+            response += "- Use debugger statement: `debugger;`\n"
+        elif lang == "java":
+            response += "- Use IDE debugger (Eclipse, IntelliJ)\n"
+            response += "- Add System.out.println for debugging\n"
+        else:
+            response += "- Use your IDE's debugger\n"
+            response += "- Add logging/print statements\n"
+        
+        response += "\n**5. Search for Solutions**\n"
+        response += "- Google the exact error message\n"
+        response += "- Check Stack Overflow\n"
+        response += "- Read official documentation\n"
+        response += "- Ask in programming communities\n\n"
+        
+        response += "💡 **Tip:** Share the complete error message and relevant code for more specific help!"
+        
+        return response
     
     def get_template(self, template_name: str, lang: str) -> Optional[str]:
         """Get a code template"""
