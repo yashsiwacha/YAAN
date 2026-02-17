@@ -1,0 +1,72 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Documentation (not needed in container)
+*.md
+docs/
+
+# Tests
+tests/
+test_*.py
+*_test.py
+
+# CI/CD
+.github/
+
+# Logs (will be generated in container)
+*.log
+logs/
+
+# Database (will be mounted as volume)
+*.db
+*.sqlite
+*.sqlite3
+data/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Deployment files (not needed in container)
+docker-compose.yml
+Dockerfile
+install.ps1
+install.sh
+start.ps1
+start.sh
+
+# Backup files
+*.bak
+*.backup
+*.tmp
+
+# Environment files (should be set via docker-compose)
+.env
+.env.local
+.env.*.local

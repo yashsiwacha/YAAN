@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  yaan:
+    build: .
+    container_name: yaan-assistant
+    ports:
+      - "8000:8000"
+    volumes:
+      # Persist data and logs
+      - ./backend/data:/app/backend/data
+      - ./backend/logs:/app/backend/logs
+    environment:
+      - PORT=8000
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/').read()"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  default:
+    name: yaan-network

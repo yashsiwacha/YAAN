@@ -44,6 +44,34 @@ python main.py
 ### Access YAAN
 Open your browser and navigate to: **http://localhost:8000**
 
+## 📦 Deployment
+
+YAAN supports multiple deployment methods for different use cases:
+
+### One-Click Installation
+```bash
+# Windows
+.\install.ps1
+
+# Linux/Mac
+./install.sh
+```
+
+### Docker Deployment
+```bash
+docker-compose up -d
+```
+
+### Production Deployment
+- Linux systemd service
+- Windows Service (NSSM)
+- Cloud platforms (AWS, GCP, Azure)
+- Nginx reverse proxy
+
+**📘 [Full Deployment Guide →](DEPLOYMENT.md)**
+
+For detailed instructions on all deployment methods, troubleshooting, and production configuration, see the [DEPLOYMENT.md](DEPLOYMENT.md) guide.
+
 ## 🎯 Features (v1.0)
 
 ### 🧠 Intelligent Memory System

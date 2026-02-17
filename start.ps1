@@ -10,7 +10,7 @@ Write-Host "║     ╚██╔╝  ██╔══██║██╔══█�
 Write-Host "║      ██║   ██║  ██║██║  ██║██║ ╚████║   ║" -ForegroundColor Cyan
 Write-Host "║      ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝   ║" -ForegroundColor Cyan
 Write-Host "║                                           ║" -ForegroundColor Cyan
-Write-Host "║     Your AI Assistant Network v0.1.0     ║" -ForegroundColor Cyan
+Write-Host "║     Your AI Assistant Network v1.0.0     ║" -ForegroundColor Cyan
 Write-Host "║          Offline • Private • Yours       ║" -ForegroundColor Cyan
 Write-Host "║                                           ║" -ForegroundColor Cyan
 Write-Host "╚═══════════════════════════════════════════╝" -ForegroundColor Cyan

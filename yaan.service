@@ -1,0 +1,73 @@
+# YAAN - Your AI Assistant Network
+# systemd service file for Linux production deployment
+
+# Installation:
+# 1. Edit this file and replace paths with your actual installation paths
+# 2. Copy to /etc/systemd/system/:
+#    sudo cp yaan.service /etc/systemd/system/
+# 3. Reload systemd:
+#    sudo systemctl daemon-reload
+# 4. Enable service (start on boot):
+#    sudo systemctl enable yaan
+# 5. Start service:
+#    sudo systemctl start yaan
+# 6. Check status:
+#    sudo systemctl status yaan
+
+# Management:
+# - View logs: sudo journalctl -u yaan -f
+# - Stop: sudo systemctl stop yaan
+# - Restart: sudo systemctl restart yaan
+# - Disable: sudo systemctl disable yaan
+
+[Unit]
+Description=YAAN - Your AI Assistant Network v1.0
+Documentation=https://github.com/yashsiwacha/YAAN
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+
+# IMPORTANT: Replace 'your-username' with actual system username
+User=your-username
+Group=your-username
+
+# IMPORTANT: Replace '/path/to/YAAN' with actual installation path
+WorkingDirectory=/path/to/YAAN/backend
+
+# Virtual environment Python executable path
+Environment="PATH=/path/to/YAAN/backend/venv/bin:/usr/local/bin:/usr/bin:/bin"
+Environment="PYTHONUNBUFFERED=1"
+
+# Optional: Set custom port (default: 8000)
+# Environment="PORT=8000"
+
+# Optional: Set log level (DEBUG, INFO, WARNING, ERROR)
+# Environment="LOG_LEVEL=INFO"
+
+# Start command
+ExecStart=/path/to/YAAN/backend/venv/bin/python main.py
+
+# Restart policy
+Restart=always
+RestartSec=10
+KillMode=mixed
+TimeoutStopSec=30
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+
+# Resource limits (optional)
+# LimitNOFILE=65536
+# MemoryMax=2G
+# CPUQuota=200%
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=yaan
+
+[Install]
+WantedBy=multi-user.target
