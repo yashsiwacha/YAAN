@@ -1,7 +1,7 @@
 # YAAN v2.0 - Detailed Roadmap
 
 **Version:** 2.0.0  
-**Status:** Planning Phase 📝  
+**Status:** In Progress 🚧  
 **Theme:** Advanced Code Intelligence & Community Features  
 **Target Release:** May 1, 2026
 
@@ -17,11 +17,29 @@ Transform YAAN from a coding assistant into a comprehensive **AI-powered coding 
 
 ---
 
+## ✅ Progress Update (Feb 18, 2026)
+
+### Recently Completed
+- [x] Added backend auth foundation (password hashing, token sessions, register/login/logout/me)
+- [x] Added DB schema + migration support for auth/session/LeetCode account linking
+- [x] Implemented LeetCode credential login flow (username + password) with sync bootstrap
+- [x] Wired desktop Command Center modal to both login modes:
+    - YAAN username/password login
+    - LeetCode username/password login
+- [x] Fixed desktop interaction blocker (`pointer-events` overlay issue)
+- [x] Improved Electron runtime resilience (backend UI fallback + Windows Python UTF-8 spawn env)
+
+### Current Focus
+- [ ] End-to-end UI acceptance validation for both login modes in packaged desktop flow
+- [ ] Continue v2 LeetCode problems database and pattern-intelligence work
+
+---
+
 ## 🚀 Major Features
 
 ### 1. LeetCode Problems Integration 🔥
 
-**Priority:** HIGH | **Status:** 📝 Design Phase
+**Priority:** HIGH | **Status:** 🚧 Core Auth/Sync In Progress
 
 #### Overview
 Build a comprehensive coding problems database with AI-powered solution generation. This feature will make YAAN an invaluable tool for interview preparation and algorithm learning.
@@ -318,7 +336,7 @@ YAAN:
 **Priority:** LOW | **Status:** 📝 Design Phase
 
 #### Features
-- [ ] User authentication (JWT)
+- [x] User authentication (token session-based)
 - [ ] Multi-user workspaces
 - [ ] Shared problem solving
 - [ ] Code review system
@@ -524,8 +542,8 @@ CREATE TABLE devices (
 
 ---
 
-**Status:** 📝 Planning Phase  
-**Next Steps:** Begin Phase 1 on main branch  
+**Status:** 🚧 Active Development  
+**Next Steps:** Complete login-flow UI acceptance checks, then continue LeetCode problem pipeline (import + pattern mapping)  
 **Questions?** Open a GitHub issue or discussion
 
 **Let's build YAAN v2.0 together! 🚀**
