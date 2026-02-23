@@ -19,6 +19,7 @@ const App: React.FC = () => {
   const [showSettings, setShowSettings] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
   const [activeMode, setActiveMode] = useState<'chat' | 'voice'>('chat');
+  const [isVoiceSpeaking, setIsVoiceSpeaking] = useState(false);
   const [currentView, setCurrentView] = useState<'chat' | 'command-center'>('command-center');
   const [quickSuggestions, setQuickSuggestions] = useState([
     '⏰ What time is it?',
@@ -28,6 +29,15 @@ const App: React.FC = () => {
     '😄 Tell me a joke'
   ]);
   const wsRef = useRef<WebSocket | null>(null);
+  const voiceSpeakTimeoutRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (voiceSpeakTimeoutRef.current) {
+        window.clearTimeout(voiceSpeakTimeoutRef.current);
+      }
+    };
+  }, []);
 
   // Initialize WebSocket connection
   useEffect(() => {
@@ -254,7 +264,15 @@ const App: React.FC = () => {
 
           {/* Voice Mode */}
           <div className={`voice-mode ${activeMode === 'chat' ? 'hidden' : ''}`}>
-            <div className="orb-container" onClick={() => {
+            <div className={`orb-container ${isVoiceSpeaking ? 'speaking' : 'idle'}`} onClick={() => {
+              setIsVoiceSpeaking(true);
+              if (voiceSpeakTimeoutRef.current) {
+                window.clearTimeout(voiceSpeakTimeoutRef.current);
+              }
+              voiceSpeakTimeoutRef.current = window.setTimeout(() => {
+                setIsVoiceSpeaking(false);
+              }, 1400);
+
               const systemMessage: Message = {
                 id: Date.now().toString(),
                 type: 'system',

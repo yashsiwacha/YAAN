@@ -56,6 +56,7 @@
     "files": [
       "main.js",
       "preload.js",
+      "dist/**/*",
       "assets/**/*",
       "node_modules/**/*"
     ],
@@ -64,6 +65,7 @@
         "nsis",
         "portable"
       ],
+      "signAndEditExecutable": false,
       "icon": "assets/icon.png"
     },
     "mac": {

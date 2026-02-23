@@ -5,6 +5,7 @@ SQLite database for user data, learning progress, tasks, and activity tracking
 
 import sqlite3
 import json
+import hashlib
 from pathlib import Path
 from datetime import datetime, date
 from typing import List, Dict, Optional, Any
@@ -48,6 +49,64 @@ class YAANDatabase:
         """Create database tables if they don't exist"""
         with self.get_connection() as conn:
             cursor = conn.cursor()
+
+            # Auth users table
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS users (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    username TEXT NOT NULL UNIQUE,
+                    email TEXT UNIQUE,
+                    password_hash TEXT,
+                    auth_provider TEXT NOT NULL DEFAULT 'local',
+                    leetcode_username TEXT,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    last_login_at TIMESTAMP
+                )
+            """)
+
+            # Session table
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS user_sessions (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    user_id INTEGER NOT NULL,
+                    token_hash TEXT NOT NULL UNIQUE,
+                    expires_at TIMESTAMP NOT NULL,
+                    revoked INTEGER NOT NULL DEFAULT 0,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY (user_id) REFERENCES users(id)
+                )
+            """)
+
+            # User <> LeetCode link table
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS user_leetcode_links (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    user_id INTEGER NOT NULL UNIQUE,
+                    leetcode_username TEXT NOT NULL,
+                    linked_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    last_synced TIMESTAMP,
+                    FOREIGN KEY (user_id) REFERENCES users(id)
+                )
+            """)
+
+            # Backward-compatible schema upgrades for existing DBs
+            self._ensure_column(cursor, "users", "email", "TEXT")
+            self._ensure_column(cursor, "users", "password_hash", "TEXT")
+            self._ensure_column(cursor, "users", "auth_provider", "TEXT DEFAULT 'local'")
+            self._ensure_column(cursor, "users", "leetcode_username", "TEXT")
+            self._ensure_column(cursor, "users", "last_login_at", "TIMESTAMP")
+
+            self._ensure_column(cursor, "user_sessions", "user_id", "INTEGER")
+            self._ensure_column(cursor, "user_sessions", "token_hash", "TEXT")
+            self._ensure_column(cursor, "user_sessions", "expires_at", "TIMESTAMP")
+            self._ensure_column(cursor, "user_sessions", "revoked", "INTEGER DEFAULT 0")
+            self._ensure_column(cursor, "user_sessions", "created_at", "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+
+            self._ensure_column(cursor, "user_leetcode_links", "user_id", "INTEGER")
+            self._ensure_column(cursor, "user_leetcode_links", "leetcode_username", "TEXT")
+            self._ensure_column(cursor, "user_leetcode_links", "linked_at", "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+            self._ensure_column(cursor, "user_leetcode_links", "last_synced", "TIMESTAMP")
             
             # Learning Paths table
             cursor.execute("""
@@ -119,11 +178,42 @@ class YAANDatabase:
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 )
             """)
+
+            # Helpful indexes
+            cursor.execute("CREATE INDEX IF NOT EXISTS idx_user_sessions_user_id ON user_sessions(user_id)")
+            cursor.execute("CREATE INDEX IF NOT EXISTS idx_user_sessions_token_hash ON user_sessions(token_hash)")
+            cursor.execute("CREATE INDEX IF NOT EXISTS idx_user_leetcode_links_user_id ON user_leetcode_links(user_id)")
             
             logger.info("Database tables created/verified")
             
             # Insert default data if tables are empty
             self._insert_default_data(conn)
+
+    @staticmethod
+    def _ensure_column(cursor: sqlite3.Cursor, table_name: str, column_name: str, column_sql: str) -> None:
+        """Ensure a column exists in a SQLite table"""
+        cursor.execute(f"PRAGMA table_info({table_name})")
+        existing_columns = {row[1] for row in cursor.fetchall()}
+        if column_name not in existing_columns:
+            cursor.execute(f"ALTER TABLE {table_name} ADD COLUMN {column_name} {column_sql}")
+
+    @staticmethod
+    def _hash_token(token: str) -> str:
+        """Hash a session token before storing/querying"""
+        return hashlib.sha256(token.encode("utf-8")).hexdigest()
+
+    @staticmethod
+    def _row_to_user(row: sqlite3.Row) -> Dict[str, Any]:
+        """Convert user DB row to dict"""
+        return {
+            "id": row["id"],
+            "username": row["username"],
+            "email": row["email"],
+            "authProvider": row["auth_provider"],
+            "leetcodeUsername": row["leetcode_username"],
+            "createdAt": row["created_at"],
+            "lastLoginAt": row["last_login_at"],
+        }
     
     def _insert_default_data(self, conn: sqlite3.Connection):
         """Insert default learning paths and initial data"""
@@ -313,8 +403,8 @@ class YAANDatabase:
                 INSERT INTO tasks (title, description, priority, due_date)
                 VALUES (?, ?, ?, ?)
             """, (title, description, priority, due_date))
-            
-            return cursor.lastrowid
+
+            return int(cursor.lastrowid or 0)
     
     def update_task(self, task_id: int, **kwargs) -> bool:
         """Update a task"""
@@ -562,3 +652,250 @@ class YAANDatabase:
             
             logger.info("Learning paths updated from LeetCode data")
             return True
+
+    # Auth API
+    def create_user(
+        self,
+        username: str,
+        email: Optional[str] = None,
+        password_hash: Optional[str] = None,
+        auth_provider: str = "local",
+        leetcode_username: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        """Create a new user and return it"""
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute(
+                """
+                INSERT INTO users (username, email, password_hash, auth_provider, leetcode_username)
+                VALUES (?, ?, ?, ?, ?)
+                """,
+                (username, email, password_hash, auth_provider, leetcode_username),
+            )
+            user_id = cursor.lastrowid
+            cursor.execute("SELECT * FROM users WHERE id = ?", (user_id,))
+            row = cursor.fetchone()
+            return self._row_to_user(row)
+
+    def get_user_by_id(self, user_id: int) -> Optional[Dict[str, Any]]:
+        """Get user by ID"""
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM users WHERE id = ?", (user_id,))
+            row = cursor.fetchone()
+            return self._row_to_user(row) if row else None
+
+    def get_user_by_username(self, username: str) -> Optional[Dict[str, Any]]:
+        """Get user by username"""
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM users WHERE lower(username) = lower(?)", (username,))
+            row = cursor.fetchone()
+            return self._row_to_user(row) if row else None
+
+    def get_user_auth_record(self, username_or_email: str) -> Optional[Dict[str, Any]]:
+        """Get auth record by username/email including password hash"""
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute(
+                """
+                SELECT * FROM users
+                WHERE lower(username) = lower(?) OR lower(email) = lower(?)
+                LIMIT 1
+                """,
+                (username_or_email, username_or_email),
+            )
+            row = cursor.fetchone()
+            if not row:
+                return None
+            user = self._row_to_user(row)
+            user["passwordHash"] = row["password_hash"]
+            return user
+
+    def get_user_by_leetcode_username(self, leetcode_username: str) -> Optional[Dict[str, Any]]:
+        """Get user directly by attached LeetCode username"""
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute(
+                "SELECT * FROM users WHERE lower(leetcode_username) = lower(?) LIMIT 1",
+                (leetcode_username,),
+            )
+            row = cursor.fetchone()
+            return self._row_to_user(row) if row else None
+
+    def username_exists(self, username: str) -> bool:
+        """Check if username already exists"""
+        return self.get_user_by_username(username) is not None
+
+    def email_exists(self, email: str) -> bool:
+        """Check if email already exists"""
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT id FROM users WHERE lower(email) = lower(?) LIMIT 1", (email,))
+            return cursor.fetchone() is not None
+
+    def update_last_login(self, user_id: int) -> None:
+        """Update last login timestamp"""
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute(
+                "UPDATE users SET last_login_at = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP WHERE id = ?",
+                (user_id,),
+            )
+
+    def set_user_password_hash(self, user_id: int, password_hash: str, auth_provider: Optional[str] = None) -> None:
+        """Set or update password hash for a user"""
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            if auth_provider:
+                cursor.execute(
+                    """
+                    UPDATE users
+                    SET password_hash = ?, auth_provider = ?, updated_at = CURRENT_TIMESTAMP
+                    WHERE id = ?
+                    """,
+                    (password_hash, auth_provider, user_id),
+                )
+            else:
+                cursor.execute(
+                    """
+                    UPDATE users
+                    SET password_hash = ?, updated_at = CURRENT_TIMESTAMP
+                    WHERE id = ?
+                    """,
+                    (password_hash, user_id),
+                )
+
+    def create_session(self, user_id: int, token: str, expires_at: datetime) -> None:
+        """Create a new session for user"""
+        token_hash = self._hash_token(token)
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            columns = self._table_columns(conn, "user_sessions")
+            if "token" in columns:
+                cursor.execute(
+                    """
+                    INSERT INTO user_sessions (user_id, token, token_hash, expires_at, revoked)
+                    VALUES (?, ?, ?, ?, 0)
+                    """,
+                    (user_id, token, token_hash, expires_at.isoformat()),
+                )
+            else:
+                cursor.execute(
+                    """
+                    INSERT INTO user_sessions (user_id, token_hash, expires_at, revoked)
+                    VALUES (?, ?, ?, 0)
+                    """,
+                    (user_id, token_hash, expires_at.isoformat()),
+                )
+
+    def get_user_by_session_token(self, token: str) -> Optional[Dict[str, Any]]:
+        """Resolve user from non-revoked, non-expired session token"""
+        token_hash = self._hash_token(token)
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            columns = self._table_columns(conn, "user_sessions")
+            token_predicate = "s.token_hash = ?" if "token_hash" in columns else "s.token = ?"
+            token_value = token_hash if "token_hash" in columns else token
+
+            cursor.execute(
+                """
+                SELECT u.*
+                FROM user_sessions s
+                JOIN users u ON u.id = s.user_id
+                WHERE """ + token_predicate + """ AND s.revoked = 0
+                LIMIT 1
+                """,
+                (token_value,),
+            )
+            row = cursor.fetchone()
+            if not row:
+                return None
+
+            cursor.execute(
+                f"SELECT expires_at FROM user_sessions WHERE {token_predicate.replace('s.', '')} LIMIT 1",
+                (token_value,),
+            )
+            session_row = cursor.fetchone()
+            if not session_row:
+                return None
+
+            try:
+                expires_at = datetime.fromisoformat(session_row["expires_at"])
+            except Exception:
+                return None
+
+            if datetime.utcnow() >= expires_at.replace(tzinfo=None):
+                return None
+
+            return self._row_to_user(row)
+
+    def revoke_session(self, token: str) -> None:
+        """Revoke a single session token"""
+        token_hash = self._hash_token(token)
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            columns = self._table_columns(conn, "user_sessions")
+            if "token_hash" in columns:
+                cursor.execute("UPDATE user_sessions SET revoked = 1 WHERE token_hash = ?", (token_hash,))
+            elif "token" in columns:
+                cursor.execute("UPDATE user_sessions SET revoked = 1 WHERE token = ?", (token,))
+
+    def revoke_all_user_sessions(self, user_id: int) -> None:
+        """Revoke all active sessions for a user"""
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute("UPDATE user_sessions SET revoked = 1 WHERE user_id = ?", (user_id,))
+
+    def link_leetcode_account(self, user_id: int, leetcode_username: str) -> None:
+        """Link or update LeetCode username for a user"""
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute(
+                """
+                INSERT INTO user_leetcode_links (user_id, leetcode_username, last_synced)
+                VALUES (?, ?, NULL)
+                ON CONFLICT(user_id)
+                DO UPDATE SET leetcode_username = excluded.leetcode_username
+                """,
+                (user_id, leetcode_username),
+            )
+            cursor.execute(
+                """
+                UPDATE users
+                SET leetcode_username = ?, updated_at = CURRENT_TIMESTAMP
+                WHERE id = ?
+                """,
+                (leetcode_username, user_id),
+            )
+
+    def get_linked_leetcode_username(self, user_id: int) -> Optional[str]:
+        """Get linked LeetCode username for user"""
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute(
+                "SELECT leetcode_username FROM user_leetcode_links WHERE user_id = ? LIMIT 1",
+                (user_id,),
+            )
+            row = cursor.fetchone()
+            if row and row["leetcode_username"]:
+                return row["leetcode_username"]
+
+            cursor.execute("SELECT leetcode_username FROM users WHERE id = ? LIMIT 1", (user_id,))
+            fallback = cursor.fetchone()
+            return fallback["leetcode_username"] if fallback else None
+
+    def mark_leetcode_sync(self, user_id: int) -> None:
+        """Update last sync timestamp for user's LeetCode link"""
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute(
+                "UPDATE user_leetcode_links SET last_synced = CURRENT_TIMESTAMP WHERE user_id = ?",
+                (user_id,),
+            )
+
+    def _table_columns(self, conn: sqlite3.Connection, table_name: str) -> set:
+        """Get column names for a table"""
+        cursor = conn.cursor()
+        cursor.execute(f"PRAGMA table_info({table_name})")
+        return {row[1] for row in cursor.fetchall()}

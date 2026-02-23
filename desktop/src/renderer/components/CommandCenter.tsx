@@ -43,6 +43,8 @@ interface LeetCodeSync {
 }
 
 const CommandCenter: React.FC = () => {
+  const [authToken, setAuthToken] = useState<string>(() => localStorage.getItem('yaan_auth_token') || '');
+  const [authUsername, setAuthUsername] = useState<string>(() => localStorage.getItem('yaan_auth_user') || '');
   const [learningPaths, setLearningPaths] = useState<LearningPath[]>([]);
   const [tasks, setTasks] = useState<Task[]>([]);
   const [heatmapData, setHeatmapData] = useState<ActivityDay[]>([]);
@@ -56,6 +58,7 @@ const CommandCenter: React.FC = () => {
   const [syncing, setSyncing] = useState(false);
   const [showLeetCodeModal, setShowLeetCodeModal] = useState(false);
   const [leetcodeUsername, setLeetcodeUsername] = useState('');
+  const [leetcodePassword, setLeetcodePassword] = useState('');
   const [leetcodeStatus, setLeetcodeStatus] = useState<LeetCodeSync | null>(null);
 
   // Fetch all data on component mount
@@ -64,9 +67,23 @@ const CommandCenter: React.FC = () => {
     checkLeetCodeStatus();
   }, []);
 
+  const getAuthHeaders = (): HeadersInit => {
+    if (!authToken) return {};
+    return { Authorization: `Bearer ${authToken}` };
+  };
+
+  const saveAuthSession = (token: string, username: string) => {
+    setAuthToken(token);
+    setAuthUsername(username);
+    localStorage.setItem('yaan_auth_token', token);
+    localStorage.setItem('yaan_auth_user', username);
+  };
+
   const checkLeetCodeStatus = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/leetcode/status');
+      const response = await fetch('http://localhost:8000/api/leetcode/status', {
+        headers: getAuthHeaders()
+      });
       const data = await response.json();
       if (data.success && data.data) {
         setLeetcodeStatus(data.data);
@@ -83,19 +100,70 @@ const CommandCenter: React.FC = () => {
       return;
     }
 
+    if (!authToken && !leetcodePassword.trim()) {
+      alert('Please enter your LeetCode password');
+      return;
+    }
+
     try {
       setSyncing(true);
       console.log('Syncing LeetCode account:', leetcodeUsername);
 
-      const response = await fetch(`http://localhost:8000/api/leetcode/sync?username=${leetcodeUsername}`, {
-        method: 'POST'
-      });
+      let data: any = null;
+      let sessionToken = authToken;
 
-      const data = await response.json();
+      if (!authToken) {
+        const loginResponse = await fetch('http://localhost:8000/api/auth/login/leetcode', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            username: leetcodeUsername.trim(),
+            password: leetcodePassword
+          })
+        });
+
+        const loginData = await loginResponse.json();
+        if (!loginData.success) {
+          throw new Error(loginData.detail || loginData.error || 'LeetCode login failed');
+        }
+
+        sessionToken = loginData.data.token;
+        saveAuthSession(sessionToken, loginData.data.user?.username || leetcodeUsername.trim());
+        data = { success: true, data: loginData.data.leetcodeSync || null };
+      } else {
+        // Existing user flow: link/update account and auto-sync
+        const linkResponse = await fetch('http://localhost:8000/api/auth/leetcode/link', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            ...getAuthHeaders()
+          },
+          body: JSON.stringify({ username: leetcodeUsername.trim(), auto_sync: true })
+        });
+
+        const linkData = await linkResponse.json();
+        if (linkData.success) {
+          data = { success: true, data: linkData.data.leetcodeSync || null };
+        } else {
+          data = linkData;
+        }
+      }
+
+      // Fallback to old sync endpoint if auth/link flow doesn't return sync payload
+      if (data?.success && !data?.data) {
+        const response = await fetch(`http://localhost:8000/api/leetcode/sync?username=${leetcodeUsername}`, {
+          method: 'POST',
+          headers: sessionToken ? { Authorization: `Bearer ${sessionToken}` } : {}
+        });
+        data = await response.json();
+      }
 
       if (data.success) {
         console.log('LeetCode sync successful:', data.data);
         setLeetcodeStatus(data.data);
+        setLeetcodePassword('');
         setShowLeetCodeModal(false);
         
         // Refresh all data to show updated stats
@@ -109,7 +177,7 @@ const CommandCenter: React.FC = () => {
       setSyncing(false);
     } catch (error) {
       console.error('Error syncing LeetCode:', error);
-      alert('Failed to sync with LeetCode. Check your username and try again.');
+      alert('Failed to sync with LeetCode. Check your credentials and try again.');
       setSyncing(false);
     }
   };
@@ -125,6 +193,7 @@ const CommandCenter: React.FC = () => {
     e.preventDefault();
     e.stopPropagation();
     console.log('LeetCode button clicked!');
+    setLeetcodePassword('');
     setShowLeetCodeModal(true);
   };
 
@@ -259,6 +328,15 @@ const CommandCenter: React.FC = () => {
             <h1 className="command-title">Command Center</h1>
             <p className="command-subtitle">
               Track your coding journey
+              {authUsername ? (
+                <span style={{ marginLeft: '16px', fontSize: '12px', color: '#9ca3af' }}>
+                  👤 {authUsername}
+                </span>
+              ) : (
+                <span style={{ marginLeft: '16px', fontSize: '12px', color: '#f59e0b' }}>
+                  🔐 Login required for sync
+                </span>
+              )}
               {leetcodeStatus && (
                 <span style={{ marginLeft: '16px', fontSize: '12px', color: '#10b981' }}>
                   🔗 Linked to LeetCode: @{leetcodeStatus.username}
@@ -458,7 +536,9 @@ const CommandCenter: React.FC = () => {
             
             <div className="modal-body">
               <p style={{ marginBottom: '16px', color: 'rgba(255, 255, 255, 0.7)' }}>
-                Enter your LeetCode username to sync your problem-solving progress.
+                {authToken
+                  ? 'Enter your LeetCode username to link and sync your progress.'
+                  : 'Login with your LeetCode username and password to sync your progress.'}
               </p>
               
               {leetcodeStatus && (
@@ -488,6 +568,19 @@ const CommandCenter: React.FC = () => {
                 disabled={syncing}
                 autoFocus
               />
+
+              {!authToken && (
+                <input
+                  type="password"
+                  className="leetcode-username-input"
+                  placeholder="Enter LeetCode password"
+                  value={leetcodePassword}
+                  onChange={(e) => setLeetcodePassword(e.target.value)}
+                  onKeyPress={(e) => e.key === 'Enter' && syncLeetCode()}
+                  disabled={syncing}
+                  style={{ marginTop: '12px' }}
+                />
+              )}
               
               <div style={{ 
                 display: 'flex', 
@@ -512,19 +605,25 @@ const CommandCenter: React.FC = () => {
                 </button>
                 <button
                   onClick={syncLeetCode}
-                  disabled={syncing || !leetcodeUsername.trim()}
+                  disabled={syncing || !leetcodeUsername.trim() || (!authToken && !leetcodePassword.trim())}
                   style={{
-                    background: syncing || !leetcodeUsername.trim() ? 'rgba(99, 102, 241, 0.3)' : 'rgba(99, 102, 241, 0.8)',
+                    background:
+                      syncing || !leetcodeUsername.trim() || (!authToken && !leetcodePassword.trim())
+                        ? 'rgba(99, 102, 241, 0.3)'
+                        : 'rgba(99, 102, 241, 0.8)',
                     border: '1px solid rgba(99, 102, 241, 0.5)',
                     borderRadius: '8px',
                     padding: '10px 20px',
                     color: 'white',
-                    cursor: syncing || !leetcodeUsername.trim() ? 'not-allowed' : 'pointer',
+                    cursor:
+                      syncing || !leetcodeUsername.trim() || (!authToken && !leetcodePassword.trim())
+                        ? 'not-allowed'
+                        : 'pointer',
                     fontSize: '14px',
                     fontWeight: 600
                   }}
                 >
-                  {syncing ? '⏳ Syncing...' : 'Sync Now'}
+                  {syncing ? '⏳ Syncing...' : authToken ? 'Link & Sync' : 'Login & Sync'}
                 </button>
               </div>
             </div>

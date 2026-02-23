@@ -2,6 +2,7 @@ const { app, BrowserWindow, ipcMain, Tray, Menu, globalShortcut } = require('ele
 const path = require('path');
 const { spawn } = require('child_process');
 const axios = require('axios');
+const fs = require('fs');
 
 let mainWindow;
 let tray;
@@ -53,7 +54,12 @@ async function startBackend() {
   // Use python with properly quoted path (no shell to avoid argument issues)
   pythonProcess = spawn(pythonExecutable, [pythonScript], {
     cwd: backendPath,
-    shell: false
+    shell: false,
+    env: {
+      ...process.env,
+      PYTHONUTF8: '1',
+      PYTHONIOENCODING: 'utf-8'
+    }
   });
 
   pythonProcess.stdout.on('data', (data) => {
@@ -112,9 +118,11 @@ function createWindow() {
     // Development: Load from webpack dev server
     startUrl = process.env.ELECTRON_START_URL;
   } else {
-    // Production: Load from dist folder (relative to main.js location)
-    const distPath = path.resolve(__dirname, 'dist', 'index.html');
-    startUrl = `file://${distPath}`;
+    // Production: Prefer packaged dist files, fallback to backend-hosted UI
+    const distIndexPath = path.resolve(__dirname, 'dist', 'index.html');
+    const distRendererPath = path.resolve(__dirname, 'dist', 'renderer.js');
+    const hasPackagedUi = fs.existsSync(distIndexPath) && fs.existsSync(distRendererPath);
+    startUrl = hasPackagedUi ? `file://${distIndexPath}` : BACKEND_URL;
   }
   
   console.log(`Loading UI from: ${startUrl}`);
@@ -122,6 +130,17 @@ function createWindow() {
   mainWindow.loadURL(startUrl).catch(err => {
     console.error('Failed to load UI:', err);
     mainWindow.loadURL(`data:text/html,<html><body style="background:#1a1a1a;color:#fff;font-family:system-ui;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;"><div style="text-align:center;"><h1>⚠️  UI Load Failed</h1><p>${err.message}</p><p style="font-size:12px;margin-top:10px;color:#999;">Expected: ${startUrl}</p><button onclick="location.reload()" style="padding:10px 20px;margin-top:20px;font-size:16px;cursor:pointer;">Retry</button></div></body></html>`);
+  });
+
+  mainWindow.webContents.on('did-fail-load', async (event, errorCode, errorDescription, validatedURL) => {
+    console.error(`Renderer failed to load: [${errorCode}] ${errorDescription} @ ${validatedURL}`);
+    if (validatedURL !== BACKEND_URL) {
+      try {
+        await mainWindow.loadURL(BACKEND_URL);
+      } catch (fallbackError) {
+        console.error('Fallback to backend UI failed:', fallbackError);
+      }
+    }
   });
 
   // Always open DevTools for debugging
@@ -141,7 +160,9 @@ function createWindow() {
 
 // Create system tray
 function createTray() {
-  const iconPath = path.join(__dirname, 'assets', 'tray-icon.png');
+  const trayIconPath = path.join(__dirname, 'assets', 'tray-icon.png');
+  const mainIconPath = path.join(__dirname, 'assets', 'icon.png');
+  const iconPath = require('fs').existsSync(trayIconPath) ? trayIconPath : mainIconPath;
   
   // Check if icon exists, skip tray if not
   if (!require('fs').existsSync(iconPath)) {
