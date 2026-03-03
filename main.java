@@ -27,7 +27,7 @@
  * @version 0.1.0
  * @since 2026-02-16
  */
-public class main {
+class Main {
     public static void main(String[] args) {
         System.out.println("╔═══════════════════════════════════════════╗");
         System.out.println("║                                           ║");
